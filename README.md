@@ -1,6 +1,6 @@
 # Ni Mod
 NiMod 是游戏[Terraria](https://store.steampowered.com/app/105600/Terraria/)的一个模组。  
-该模组旨在为泰拉瑞亚添加**其他游戏**的内容，包括但不限于物品，敌怪，BOSS，新机制等  
+该模组旨在为泰拉瑞亚添加**其他游戏**的内容，包括但不限于物品，敌怪，BOSS，新机制等（你可以理解为私货模组）  
 ## 模组内容
 ### Done（已完成）：  
   DeadCells（死亡细胞）  
