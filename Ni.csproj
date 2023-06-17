@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\tModLoader.targets" />
+  <PropertyGroup>
+    <AssemblyName>Ni</AssemblyName>
+    <TargetFramework>net6.0</TargetFramework>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <LangVersion>latest</LangVersion>
+    <SignAssembly>False</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <Optimize>False</Optimize>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="QuickAssetReference.TModLoader" Version="1.0.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="tModLoader.CodeAssist" Version="0.1.*" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="NAudio">
+      <HintPath>..\..\..\..\..\..\Downloads\soundtouch-2.3.2\soundtouch\source\csharp-example\NAudio.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <HintPath>..\..\..\..\..\..\..\..\Windows\SysWOW64\System.Windows.Forms.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ModFile Remove="DownWell\DownWellPlayer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ModFile Remove="Systems\NiCM.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ModFile Remove="Items\AccEffects\AccATC.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ModFile Remove="Buffs\MarbledBuff.cs" />
+  </ItemGroup>
+</Project>

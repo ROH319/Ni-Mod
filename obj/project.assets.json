@@ -1,0 +1,140 @@
+{
+  "version": 3,
+  "targets": {
+    "net6.0": {
+      "QuickAssetReference.TModLoader/1.0.2": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Hjson.dll": {},
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {},
+          "lib/netstandard2.0/QuickAssetReference.TModLoader.dll": {}
+        },
+        "build": {
+          "build/QuickAssetReference.TModLoader.targets": {}
+        }
+      },
+      "tModLoader.CodeAssist/0.1.5": {
+        "type": "package"
+      }
+    }
+  },
+  "libraries": {
+    "QuickAssetReference.TModLoader/1.0.2": {
+      "sha512": "aCaYzV41ID1WaW9Y16lT0aExKLPa1ghUE1QTMCkwyqtq5/vnV/tW8Sp/38VenI11QD93bCp7I4Nm5qj4ne0PXQ==",
+      "type": "package",
+      "path": "quickassetreference.tmodloader/1.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/QuickAssetReference.TModLoader.targets",
+        "lib/netstandard2.0/Hjson.dll",
+        "lib/netstandard2.0/Newtonsoft.Json.dll",
+        "lib/netstandard2.0/QuickAssetReference.TModLoader.dll",
+        "quickassetreference.tmodloader.1.0.2.nupkg.sha512",
+        "quickassetreference.tmodloader.nuspec"
+      ]
+    },
+    "tModLoader.CodeAssist/0.1.5": {
+      "sha512": "Sg/jKEg/z5eN+Cdi3/9CU4JfJwvXHVH+UDJf4Lipo26uTa+guLLJXH1XDJNPShTFwKK8jMUYbthINP4QhsgHSA==",
+      "type": "package",
+      "path": "tmodloader.codeassist/0.1.5",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "NugetIcon.png",
+        "analyzers/dotnet/cs/tModLoader.CodeAssist.dll",
+        "tmodloader.codeassist.0.1.5.nupkg.sha512",
+        "tmodloader.codeassist.nuspec",
+        "tools/install.ps1",
+        "tools/uninstall.ps1"
+      ]
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net6.0": [
+      "QuickAssetReference.TModLoader >= 1.0.2",
+      "tModLoader.CodeAssist >= 0.1.*"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\ROH\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\ROH\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Ni\\Ni.csproj",
+      "projectName": "Ni",
+      "projectPath": "C:\\Users\\ROH\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Ni\\Ni.csproj",
+      "packagesPath": "C:\\Users\\ROH\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ROH\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Ni\\obj\\",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\ROH\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net6.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files (x86)\\Steam\\steamapps\\common\\tModLoader\\Libraries": {},
+        "C:\\Users\\ROH\\.nuget\\Json130r3": {},
+        "https://nuget.cdn.azure.cn/v3/index.json": {}
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "projectReferences": {}
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net6.0": {
+        "targetAlias": "net6.0",
+        "dependencies": {
+          "QuickAssetReference.TModLoader": {
+            "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+            "suppressParent": "All",
+            "target": "Package",
+            "version": "[1.0.2, )"
+          },
+          "tModLoader.CodeAssist": {
+            "target": "Package",
+            "version": "[0.1.*, )"
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

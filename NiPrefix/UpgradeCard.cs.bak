@@ -1,0 +1,53 @@
+using Terraria.ID;
+using Terraria.ModLoader;
+using Terraria.Localization;
+using Terraria;
+using Ni;
+using Microsoft.Xna.Framework;
+using System;
+using Microsoft.Xna.Framework.Graphics;
+using Ni.Items.Weapons;
+using Ni.Items.Accessories;
+using Ni.NiModPlayer;
+
+namespace Ni.NiPrefix
+{
+    public class UpgradeCard: ModPrefix
+    {
+        public override PrefixCategory Category => PrefixCategory.Custom;
+
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("");
+            base.SetStaticDefaults();
+        }
+        public override void Apply(Item item)
+        {
+            Player player = Main.player[Main.myPlayer];
+            player.TryGetModPlayer<NiPlayer>(out NiPlayer niplayer);
+            if (niplayer != null)
+            {
+                if (item.type == ModContent.ItemType<Barricade>())
+                {
+                    niplayer.Upgraded[0] = true;
+                }
+                if (item.type == ModContent.ItemType<ATC>())
+                {
+                    niplayer.Upgraded[1] = true;
+                }
+                if (item.type == ModContent.ItemType<Electrodynamics>())
+                {
+                    niplayer.Upgraded[2] = true;
+                }
+                if (item.type == ModContent.ItemType<Fasting>())
+                {
+                    niplayer.Upgraded[3] = true;
+                }
+            }
+            item.SetNameOverride(item.Name + "+");
+            base.Apply(item);
+        }
+        
+    }
+}
+

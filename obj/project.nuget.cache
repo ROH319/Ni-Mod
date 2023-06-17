@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "agwroibev6DXTYhrctqsJpZnGHLikLyVyMLZK8t4GhZ88k9McCUs5mBBbvry5Uhvbl1a0633HugA5nvLekiF9w==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\ROH\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Ni\\Ni.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ROH\\.nuget\\packages\\quickassetreference.tmodloader\\1.0.2\\quickassetreference.tmodloader.1.0.2.nupkg.sha512",
+    "C:\\Users\\ROH\\.nuget\\packages\\tmodloader.codeassist\\0.1.5\\tmodloader.codeassist.0.1.5.nupkg.sha512"
+  ],
+  "logs": []
+}

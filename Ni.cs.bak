@@ -1,0 +1,297 @@
+﻿using Terraria.ModLoader;
+using Terraria;
+using Terraria.ID;
+using Terraria.Localization;
+using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
+using Ni.NiUtils;
+using ReLogic.Content;
+using Terraria.GameContent;
+using Microsoft.Xna.Framework;
+using Terraria.GameContent.Achievements;
+using Ni.Items.Weapons;
+using Ni.Projectiles.Minions;
+using log4net.Util;
+using Ni.Dusts;
+using System;
+using static System.Formats.Asn1.AsnWriter;
+using Ni.NiGlobalNPC;
+using Ni.NiModPlayer;
+using MonoMod.Cil;
+using System.Reflection;
+using Ni.Buffs;
+
+namespace Ni
+{
+    public class TemporaryFix : PreJITFilter
+    {
+        public override bool ShouldJIT(MemberInfo member)
+        {
+            return false;
+        }
+    }
+    public class Ni : Mod
+    {
+        public static Ni instance;
+        public static bool CanUsualUpdate;
+        public static int pumpkinTimer;
+        
+        public static Dictionary<int, string> eliteStr = new Dictionary<int, string>();
+
+        public Ni()
+        {
+            instance = this;
+            PreJITFilter = new TemporaryFix();
+        }
+
+        public override void Load()
+        {
+            
+            AssetLoader.LoadAsset();
+            #region 加字典
+            eliteStr.Add(1, "分裂");
+            eliteStr.Add(2, "再生");
+            eliteStr.Add(3, "嘲讽");
+            eliteStr.Add(4, "致盲");
+            eliteStr.Add(5, "冰霜");
+            eliteStr.Add(6, "？？？");
+            eliteStr.Add(7, "伪装");
+            eliteStr.Add(8, "饥饿");
+            eliteStr.Add(9, "复仇");
+            eliteStr.Add(10, "狱火");
+            eliteStr.Add(11, "柔韧");
+            eliteStr.Add(12, "鼓舞");
+            eliteStr.Add(13, "治疗");
+            eliteStr.Add(14, "传播");
+            eliteStr.Add(15, "吸血");
+            eliteStr.Add(16, "易位");
+            eliteStr.Add(17, "映像");
+            #endregion
+            On.Terraria.Player.FreeUpPetsAndMinions += Player_FreeUpPetsAndMinions;
+            On.Terraria.NPC.AddBuff += NPC_AddBuff;
+            On.Terraria.Main.DrawDust += Main_DrawDust;
+            IL.Terraria.Projectile.Update += Projectile_Update;
+            On.Terraria.Player.Heal += Player_Heal;
+            On.Terraria.Player.UpdateLifeRegen += Player_UpdateLifeRegen;
+            On.Terraria.Player.AddBuff += Player_AddBuff;
+            #region STOP
+            //On.Terraria.Cloud.Update += Cloud_Update;
+            //On.Terraria.Main.UpdateWeather += Main_UpdateWeather;
+            //On.Terraria.Main.UpdateTime_SpawnTownNPCs += Main_UpdateTime_SpawnTownNPCs;
+            //On.Terraria.Main.DoUpdate_AnimateWaterfalls += Main_DoUpdate_AnimateWaterfalls;
+            #endregion
+            pumpkinTimer = 0;
+            instance = this;
+            base.Load();
+        }
+
+
+        private void Player_AddBuff(On.Terraria.Player.orig_AddBuff orig, Player self, int type, int timeToAdd, bool quiet, bool foodHack)
+        {
+            self.TryGetModPlayer<NiPlayer>(out NiPlayer niplayer);
+            if(niplayer.Artifact && Main.debuff[type] && !Main.buffNoTimeDisplay[type])
+            {
+                niplayer.Artifact = false;
+                self.AddBuff(ModContent.BuffType<ClockworkCooldown>(), 20 * 60);
+                return;
+            }
+            orig(self, type, timeToAdd, quiet, foodHack);
+        }
+
+        private void Player_UpdateLifeRegen(On.Terraria.Player.orig_UpdateLifeRegen orig, Player self)
+        {
+            orig(self);
+            if (self.GetModPlayer<NiPlayer>().MagicFlower)
+            {
+                self.lifeRegen += self.lifeRegen / 2;
+            }
+        }
+
+        private void Player_Heal(On.Terraria.Player.orig_Heal orig, Player self, int amount)
+        {
+            bool magicflower = self.GetModPlayer<NiPlayer>().MagicFlower;
+            orig(self, (int)(magicflower ? amount * 1.5 : amount));
+        }
+
+        private void Projectile_Update(MonoMod.Cil.ILContext il)
+        {
+            /*
+            try
+            {
+                // Start the Cursor at the start
+                var c = new ILCursor(il);
+                //var c1 = new ILCursor(il);
+                //c1.GotoNext(i => i.match)
+                //var label = il.DefineLabel()
+                // Try to find where 566 is placed onto the stack
+                c.GotoNext(i => i.MatchLdfld<bool>("Terraria.Projectile::minion"));//找判断Projectile.minion那一行
+                c.Index++;//移到下一行
+                c.Emit(Mono.Cecil.Cil.OpCodes.Ldc_I4, 0);//把0压入栈顶
+                // After the delegate, the stack will once again have an int and the ret instruction will return from this method
+            }
+            catch (Exception e)
+            {
+            }
+            */
+        }
+        #region STOP
+        /*
+        private void Main_DoUpdate_AnimateWaterfalls(On.Terraria.Main.orig_DoUpdate_AnimateWaterfalls orig, Main self)
+        {
+            if (!CanUsualUpdate)
+            {
+                return;
+            }
+            orig(self);
+        }
+
+        private void Main_UpdateTime_SpawnTownNPCs(On.Terraria.Main.orig_UpdateTime_SpawnTownNPCs orig)
+        {
+            if (!CanUsualUpdate)
+            {
+                return;
+            }
+            orig();
+        }
+
+        private void Main_UpdateWeather(On.Terraria.Main.orig_UpdateWeather orig, Main self, GameTime gameTime)
+        {
+            if (!CanUsualUpdate)
+            {
+                return;
+            }
+            orig(self, gameTime);
+        }
+
+        private void Cloud_Update(On.Terraria.Cloud.orig_Update orig, Cloud self)
+        {
+            if (!CanUsualUpdate)
+            {
+                return;
+            }
+            orig(self);
+        }
+        */
+        #endregion
+
+        private void Main_DrawDust(On.Terraria.Main.orig_DrawDust orig, Main self)
+        {
+            //Main.pixelShader.CurrentTechnique.Passes[0].Apply();
+            orig(self); 
+            SpriteBatch sb = Main.spriteBatch;
+            Rectangle rectangle = new Rectangle((int)Main.screenPosition.X - 1000, (int)Main.screenPosition.Y - 1050, Main.screenWidth + 2000, Main.screenHeight + 2100);
+            sb.Begin(SpriteSortMode.Deferred, BlendState.Additive, SamplerState.PointClamp, DepthStencilState.None, RasterizerState.CullNone, null, Main.Transform);
+            for (int i = 0; i < Main.maxDustToDraw; i++)
+            {
+                Dust dust = Main.dust[i];
+                if (new Rectangle((int)dust.position.X, (int)dust.position.Y, 4, 4).Intersects(rectangle))
+                {
+                    if (!dust.active || dust.type != ModContent.DustType<ElecCyan>())
+                        continue;
+                    float num5 = Math.Abs(dust.velocity.X) + Math.Abs(dust.velocity.Y);
+                    num5 *= 0.3f;
+                    num5 *= 10f;
+                    if (num5 > 10f)
+                        num5 = 10f;
+
+                    for (int n = 0; n < num5; n++)
+                    {
+                        Vector2 velocity5 = dust.velocity;
+                        Vector2 value5 = dust.position - velocity5 * n;
+                        float scale6 = dust.scale * (1f - n / 10f);
+                        Color color5 = Lighting.GetColor((int)(dust.position.X + 4.0) / 16, (int)(dust.position.Y + 4.0) / 16);
+                        color5 = dust.GetAlpha(color5);
+                        sb.Draw(AssetLoader.ElecCyan_Dust, value5 - Main.screenPosition, dust.frame, color5, dust.rotation, new Vector2(4f, 4f), scale6, SpriteEffects.None, 0f);
+                    }
+                    Color newColor = Lighting.GetColor((int)(dust.position.X + 4.0) / 16, (int)(dust.position.Y + 4.0) / 16);
+                    newColor = dust.GetAlpha(newColor);
+                    sb.Draw(AssetLoader.ElecCyan_Dust, dust.position - Main.screenPosition, dust.frame, newColor, dust.GetVisualRotation(), new Vector2(4f, 4f), dust.scale, SpriteEffects.None, 0f);
+                }
+            }
+            sb.End();
+        }
+
+        private void NPC_AddBuff(On.Terraria.NPC.orig_AddBuff orig, NPC self, int type, int time, bool quiet)
+        {
+            //if (self.buffImmune[type])
+            //{
+            //    NiGNPC niGNPC = self.GetGlobalNPC<NiGNPC>();
+            //    if (niGNPC.Artifact[type] == -1)
+            //    {
+            //        niGNPC.Artifact[type] = self.IsBoss() ? 6 : 2;
+            //    }
+            //    niGNPC.Artifact[type]--;
+            //    if (niGNPC.Artifact[type] == 0)
+            //    {
+            //        self.buffImmune[type] = false;
+            //    }
+            //    return;
+            //}
+            orig(self,type,time,quiet);
+        }
+
+        private void Player_FreeUpPetsAndMinions(On.Terraria.Player.orig_FreeUpPetsAndMinions orig, Player self, Item sItem)
+        {
+            /*
+            if (ProjectileID.Sets.MinionSacrificable[sItem.shoot])
+            {
+                if (sItem.type == ModContent.ItemType<Electrodynamics>() && NiSystem.UsedMinionSlots >= self.maxMinions)
+                {
+                    List<int> orb1 = new();
+                    //int[] orbs = new int[14] { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 }; //用orbs数组来存电球proj在main.projectile数组中的索引
+                    bool reorder = false;
+                    //int count = 0;
+                    for (int i = 0; i < 1000; i++)
+                    {
+                        if (Main.projectile[i].active && Main.projectile[i].type == ModContent.ProjectileType<LightningOrb>())
+                        {
+                            if (Main.projectile[i].ai[0] == 1)
+                            {
+                                Main.projectile[i].Kill();
+                                reorder = true;
+                            }
+                            else
+                            {
+                                //orbs[count++] = i;
+                                orb1.Add(i);
+                            }
+                        }
+                    }
+                    if (reorder)
+                    {
+                        orb1.RemoveAll(x => x == 0);
+                        for(int i = 0; i < orb1.Count; i++)
+                        {
+                            if (orb1[i] != -1)
+                            {
+                                Main.projectile[orb1[i]].ai[0] -= 1;
+                            }
+                        }
+                    }
+                    return;
+                }
+            }
+            */
+            //orig(self,sItem);
+        }
+
+        public override void Unload()
+        {
+            //On.Terraria.Main.DrawInventory -= PrefixDrawInventory;
+            //On.Terraria.Player.Hurt -= Player_Hurt;
+            On.Terraria.Player.FreeUpPetsAndMinions -= Player_FreeUpPetsAndMinions;
+            On.Terraria.NPC.AddBuff -= NPC_AddBuff;
+            On.Terraria.Main.DrawDust -= Main_DrawDust;
+            On.Terraria.Player.Heal -= Player_Heal;
+            On.Terraria.Player.UpdateLifeRegen -= Player_UpdateLifeRegen;
+            On.Terraria.Player.AddBuff -= Player_AddBuff;
+            //On.Terraria.Cloud.Update -= Cloud_Update;
+            //On.Terraria.Main.UpdateWeather -= Main_UpdateWeather;
+            //On.Terraria.Main.UpdateTime_SpawnTownNPCs -= Main_UpdateTime_SpawnTownNPCs;
+            //On.Terraria.Main.DoUpdate_AnimateWaterfalls -= Main_DoUpdate_AnimateWaterfalls;
+            AssetLoader.UnloadAsset();
+            instance = null;
+            base.Unload();
+        }
+    }
+}

@@ -1,0 +1,19 @@
+添加了几个来自其他游戏的武器或饰品
+死亡细胞：电鞭、致命牌组、战争投枪、紧急治疗、冷血无情
+杀戮尖塔：齿轮工艺品、弹珠袋、邪教徒头套
+	魔法花、纸鹤、符文电容器、圣水
+	壁垒、凌迟、电动力学、斋戒
+Dungreed：分叉枪弹、索罗贝欧之血、SEERI-战斗助手、阿朱那、血刀-“克莱”
+
+Added several weapons or accessories from other games.
+
+From Dead Cells:
+Electric Whip, Killing Deck, War Javelin, Emergency Triage, No Mercy
+
+From Slay the Spire:
+Clockwork, Marbles, Cultist Mask
+Magic Flower, Paper Crane, Runic Capacitor, Holy Water
+Barricade, A Thousand Cuts, Electrodynamics, Fasting
+
+From Dungreed：
+Scatter Bullets, Blood of Sorbeo, SEERI - Combat Helper, Arzuna, Bloodbeam Sword 'Kurai'

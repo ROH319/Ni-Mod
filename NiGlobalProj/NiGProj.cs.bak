@@ -1,0 +1,193 @@
+﻿using Ni.NiModPlayer;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Terraria;
+using Terraria.ModLoader;
+using Terraria.ID;
+using Terraria.DataStructures;
+using Microsoft.Xna.Framework;
+using Ni.Projectiles;
+using static System.Formats.Asn1.AsnWriter;
+
+namespace Ni.NiGlobalProj
+{
+    public class NiGProj:GlobalProjectile
+    {
+        public override bool InstancePerEntity => true;
+        public List<int> DontSplitProjs = new List<int> { 714, 615 };
+        public IEntitySource entitySource;
+        public bool Carbine = false;
+        public bool Barried = false;
+        public bool Seeried = false;
+        public bool Scatter = false;
+        public override void OnSpawn(Projectile projectile, IEntitySource source)
+        {
+            Player player = Main.player[projectile.owner];
+            player.TryGetModPlayer(out NiPlayer niPlayer);
+            entitySource = source;
+            //Main.projectile[0].ai[0] += 0;
+            #region 凌迟
+            if (projectile.owner == player.whoAmI && projectile.friendly && projectile.damage > 0 && !projectile.hostile 
+                && projectile.active
+                && source is not EntitySource_Misc
+                && niPlayer.ATC > 0)
+            {
+                //Main.NewText($"{Main.time} {source.GetType()}");
+                foreach (NPC npc in Main.npc)
+                {
+                    if (npc.active && npc.CanBeChasedBy())
+                    {
+                        NPC truenpc = npc.realLife == -1 ? npc : Main.npc[npc.realLife];
+                        for (int i = 0; i < niPlayer.ATC; i++)
+                        {
+                            int damage = (niPlayer.HasUpgradedItem[1] ? 8 : 4) * (npc.type == 414 ? 10 : 1);
+                            //npc.StrikeNPCNoInteraction(3, 0f, 0);
+                            CombatText.NewText(truenpc.getRect(), Color.Red, damage);
+                            truenpc.life -= damage;
+                            player.addDPS(damage);
+                            if (truenpc.life < 0)
+                            {
+                                truenpc.checkDead();
+                            }
+                        }
+                    }
+                }
+            }
+            #endregion
+            #region 魔法花影响吸血
+            if (projectile.type == ProjectileID.VampireHeal || projectile.type == ProjectileID.SpiritHeal)
+            {
+                if (niPlayer.MagicFlower)
+                {
+                    projectile.ai[1] += projectile.ai[1] / 2;
+                }
+            }
+            #endregion
+            #region 保存玩家拥有的召唤物
+            if (projectile.minion && projectile.minionSlots > 0)
+            {
+                niPlayer.OwnedMinions.Add(projectile);
+            }
+            #endregion
+            //Main.NewText($"{niPlayer.ScatterBullets} {!projectile.minion} {!projectile.sentry} {player.heldProj != projectile.whoAmI} {!projectile.hostile} {new List<int> { 714, 615 }.Contains(projectile.type)}");
+            #region 分叉枪弹效果
+            if (niPlayer.ScatterBullets && !projectile.minion && !projectile.sentry
+                && player.heldProj != projectile.whoAmI 
+                && !projectile.hostile && !DontSplitProjs.Contains(projectile.type))
+            {
+                if ((source is EntitySource_ItemUse parent && parent.Item.type == Main.player[projectile.owner].HeldItem.type)
+                || (source is EntitySource_ItemUse_WithAmmo parent1 && parent1.Item.type == Main.player[projectile.owner].HeldItem.type))
+                {
+                    //EntitySource_Parent parentSource = source as EntitySource_Parent;
+                    //if(parentSource != null && parentSource.Entity is Projectile && !(parentSource.Entity as Projectile).GetGlobalProjectile<NiGProj>().Scatter)
+                    Scatter = true;
+                    projectile.damage /= 2;
+                    //projectile.usesLocalNPCImmunity = true;
+                    //if (projectile.localNPCHitCooldown > 5)
+                    //{
+                    //    projectile.localNPCHitCooldown = 5;
+                    //}
+                    //Main.NewText($"{projectile.localNPCHitCooldown} {projectile.usesLocalNPCImmunity}");
+                    var newsource = projectile.GetSource_FromThis();
+                    Projectile proj1 = Projectile.NewProjectileDirect(newsource, projectile.position, projectile.velocity.RotatedBy(MathHelper.ToRadians(10)), projectile.type, projectile.damage, projectile.knockBack, projectile.owner, projectile.ai[0], projectile.ai[1]);
+                    //proj1.usesLocalNPCImmunity = true;
+                    //if (proj1.localNPCHitCooldown > 5)
+                    //{
+                    //    proj1.localNPCHitCooldown = 5;
+                    //}
+                    //proj1.GetGlobalProjectile<NiGProj>().Scatter = true;
+                    Projectile proj2 = Projectile.NewProjectileDirect(newsource, projectile.position, projectile.velocity.RotatedBy(MathHelper.ToRadians(-10)), projectile.type, projectile.damage, projectile.knockBack, projectile.owner, projectile.ai[0], projectile.ai[1]);
+                    //proj2.usesLocalNPCImmunity = true;
+                    //if (proj2.localNPCHitCooldown > 5)
+                    //{
+                    //    proj2.localNPCHitCooldown = 5;
+                    //}
+                    //proj2.GetGlobalProjectile<NiGProj>().Scatter = true;
+                    //Main.NewText("onspawn");
+                    //先执行分裂射弹的onspawn,再执行分裂射弹的gproj的onspawn，最后才到下一行的onspawn
+                }
+            }
+            #endregion
+            #region 魔法放大镜
+            if (niPlayer.Magnifier && !projectile.hostile)
+            {
+                projectile.position = projectile.Center;
+                projectile.scale *= 2f;
+                //projectile.width += projectile.width;
+                //projectile.height += projectile.height;
+                projectile.width *= 2;
+                projectile.height *= 2;
+                projectile.Center = projectile.position;
+                projectile.damage = (int)(projectile.damage * 1.5);
+            }
+            #endregion
+            #region SEERI火箭衍生弹幕
+            if(source is EntitySource_Parent && !projectile.hostile)
+            {
+                EntitySource_Parent parentSource = source as EntitySource_Parent;
+                if(parentSource != null && parentSource.Entity is Projectile && (parentSource.Entity as Projectile).GetGlobalProjectile<NiGProj>().Seeried)
+                {
+                    projectile.friendly = true;
+                    projectile.npcProj = true;
+                }
+            }
+            #endregion
+            
+            
+        }
+        public override void OnHitNPC(Projectile projectile, NPC target, int damage, float knockback, bool crit)
+        {
+            Player player = Main.player[Main.myPlayer];
+            player.TryGetModPlayer(out NiPlayer niPlayer);
+        }
+
+        public override void ModifyDamageHitbox(Projectile projectile, ref Rectangle hitbox)
+        {
+            Player player = Main.player[Main.myPlayer];
+            player.TryGetModPlayer(out NiPlayer niPlayer);
+        }
+        
+        int count = 0;
+        public override bool PreAI(Projectile projectile)
+        {
+            #region 音速卡宾枪效果
+            if (Carbine && projectile.numHits > 0)
+            {
+                projectile.CritChance = 100;
+            }
+            #endregion
+            #region SEERI火箭
+            if (Seeried && projectile.type is 134 or 137 or 140 or 143 or 776 or 780 or 784 or 787 or 790 or 793 or 796 or 799)
+            {
+                projectile.rotation = projectile.velocity.ToRotation() + MathHelper.PiOver2;
+                projectile.friendly = true;
+                projectile.npcProj = true;
+                NPC target = projectile.FindTargetWithinRange(1000f, true);
+                if (target != null)
+                {
+                    // 目标速度
+                    var targetVel = Vector2.Normalize(target.Center - projectile.Center) * 10f;
+                    // 加权平均 1份目标速度和10份当前速度
+                    projectile.velocity = (targetVel * 3 + projectile.velocity * 8) / 11f;
+                }
+                
+                return true;
+            }
+            #endregion
+            return base.PreAI(projectile);
+        }
+        public override void PostAI(Projectile projectile)
+        {
+            Player player = Main.player[Main.myPlayer];
+            player.TryGetModPlayer(out NiPlayer niPlayer);
+            if (Seeried)
+            {
+                projectile.friendly = true;
+                projectile.hostile = false;
+            }
+        }
+    }
+}

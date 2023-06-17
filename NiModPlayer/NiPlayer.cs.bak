@@ -1,0 +1,415 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
+using Terraria.Localization;
+using Terraria.GameContent;
+using Terraria.DataStructures;
+using Terraria.ObjectData;
+using Ni;
+using Ni.Items.Accessories;
+using Microsoft.Xna.Framework;
+using Ni.Projectiles.Minions;
+using Terraria.ModLoader.IO;
+using Ni.Buffs;
+using Terraria.GameInput;
+using Ni.Projectiles;
+using Ni.GlobalItems;
+using Ni.NiGlobalProj;
+using Ni.NiPrefix;
+using Ni.NiGlobalNPC;
+
+namespace Ni.NiModPlayer
+{
+    public partial class NiPlayer : ModPlayer
+    {
+        public List<Projectile> OwnedMinions = new();
+        public bool[] HasUpgradedItem = new bool[4];
+        public bool[] Upgraded = new bool[4];
+        public float EmergencyMul = 0.5f;
+        public float FlowerMul = 1.5f;
+        public float PaperCraneMul = 0.75f;
+
+        public bool BaseCheckActive;
+        public int SnakeCount;
+        public int BloodCupCount;
+        public bool ScatterBullets;
+        public bool Magnifier;
+        public bool LightningOrb;
+        public bool PenNibCanCount;
+        public int PenNibCount;
+        public bool EmotionChip;
+        public bool FlameBarrier;
+        public bool Brimstone;
+        public bool Seeri;
+        public bool Envenom;
+        public bool EmergencyTriage;
+        public bool NoMercy;
+        public bool WBlade;
+        public bool NinjaScroll;
+        public bool MagicFlower;
+        public bool Artifact;
+        public int ATC;
+        public bool PaperCrane;
+        public bool Marbles;
+        public bool Barricade;
+        public bool[] UpgradedEffect = new bool[4];
+        //public bool critup;
+
+        public override void Initialize()
+        {
+            for(int i = 0; i < 4; i++)
+            {
+                Upgraded[i] = false;
+            }
+            base.Initialize();
+        }
+        
+        public override void ModifyItemScale(Item item, ref float scale)
+        {
+            #region 魔法放大镜效果
+            if (Magnifier)
+            {
+                scale *= 2f;
+            }
+            #endregion
+            base.ModifyItemScale(item, ref scale);
+        }
+        public override void PostHurt(bool pvp, bool quiet, double damage, int hitDirection, bool crit, int cooldownCounter)
+        {
+            #region 情感芯片上buff
+            if (EmotionChip)
+            {
+                Player.AddBuff(ModContent.BuffType<EmotionChipBuff>(), 6 * 60, false);
+            }
+            #endregion
+            base.PostHurt(pvp, quiet, damage, hitDirection, crit, cooldownCounter);
+        }
+        public override void OnHitNPC(Item item, NPC target, int damage, float knockback, bool crit)
+        {
+            #region 血杯回血效果
+            if(crit && BloodCupCount > 0)
+            {
+                Player.Heal(2);
+                BloodCupCount--;
+            }
+            #endregion
+            #region 钢笔尖计数
+            if (Player.HasBuff<PenNibBuff>())
+            {
+                PenNibCount = 0;
+                Player.ClearBuff(ModContent.BuffType<PenNibBuff>());
+            }
+            if (PenNibCanCount)
+            {
+                PenNibCount++;
+                if (PenNibCount > 8 && !Player.HasBuff<PenNibBuff>())
+                {
+                    PenNibCount = 0;
+                    Player.AddBuff(ModContent.BuffType<PenNibBuff>(), 1145141919);
+                }
+            }
+
+            #endregion
+            #region 涂毒效果
+            //if (Envenom)
+            //{
+            //    target.AddBuff(BuffID.Poisoned, item.damage / 5);
+            //}
+            #endregion
+            #region 纸鹤上毒
+            if (PaperCrane && Main.rand.NextBool(6))
+            {
+                target.AddBuff(BuffID.Venom, 15 * 60);
+            }
+            #endregion
+            base.OnHitNPC(item, target, damage, knockback, crit);
+        }
+
+        public override void OnHitNPCWithProj(Projectile proj, NPC target, int damage, float knockback, bool crit)
+        {
+            #region 血杯回血效果
+            if (crit && BloodCupCount > 0)
+            {
+                Player.Heal(2);
+                BloodCupCount--;
+            }
+            #endregion
+            #region 钢笔尖计数
+            if (Player.HasBuff<PenNibBuff>())
+            {
+                PenNibCount = 0;
+                Player.ClearBuff(ModContent.BuffType<PenNibBuff>());
+            }
+            if (PenNibCanCount)
+            {
+                PenNibCount++;
+                if (PenNibCount > 8 && !Player.HasBuff<PenNibBuff>())
+                {
+                    Player.AddBuff(ModContent.BuffType<PenNibBuff>(), 1145141919);
+                }
+            }
+            #endregion
+            #region 涂毒效果
+            if (Envenom)
+            {
+                target.AddBuff(BuffID.Poisoned, (proj.damage / 10 < 1) ? 1 : proj.damage / 10);
+            }
+            #endregion
+            #region 纸鹤上毒
+            if (PaperCrane && Main.rand.NextBool(6))
+            {
+                target.AddBuff(BuffID.Venom, 15 * 60);
+            }
+            #endregion
+            base.OnHitNPCWithProj(proj, target, damage, knockback, crit);
+        }
+        
+        public override void ModifyHitNPC(Item item, NPC target, ref int damage, ref float knockback, ref bool crit)
+        {
+            #region 钢笔尖双倍伤害效果
+            if (Player.HasBuff<PenNibBuff>())
+            {
+                damage *= 2;
+            }
+            #endregion
+        }
+        public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        {
+            #region 钢笔尖双倍伤害效果
+            if (Player.HasBuff<PenNibBuff>())
+            {
+                damage *= 2;
+            }
+            #endregion
+            #region SEERI召唤暴击
+            if (Seeri && proj.DamageType == DamageClass.Summon)
+            {
+                if (Main.rand.NextBool(20))
+                {
+                    crit = true;
+                }
+            }
+            #endregion
+            #region 袖剑
+            if (WBlade && !proj.hostile && damage < 10)
+            {
+                damage += 4;
+            }
+            #endregion
+        }
+        public override void ModifyHitByNPC(NPC npc, ref int damage, ref bool crit)
+        {
+            var source = npc.GetGlobalNPC<NiGNPC>().entitySource;
+            EntitySource_Parent parent = source is EntitySource_Parent ? source as EntitySource_Parent : null;
+            #region 纸鹤
+            if (PaperCrane && (npc.lifeMax == 1 ? (NPC)parent?.Entity : npc).HasBuff(BuffID.Venom))
+            {
+                damage = (int)(damage * (PaperCrane ? PaperCraneMul : 1));
+            }
+            #endregion
+            #region 硫磺加伤
+            if (Brimstone)
+            {
+                damage += damage / 10;
+            }
+            #endregion
+            base.ModifyHitByNPC(npc, ref damage, ref crit);
+        }
+        public override void ModifyHitByProjectile(Projectile proj, ref int damage, ref bool crit)
+        {
+            NiGProj niGProj = proj.GetGlobalProjectile<NiGProj>();
+            #region 纸鹤
+            if (PaperCrane && proj.GetGlobalProjectile<NiGProj>().entitySource is EntitySource_Parent parent && parent.Entity is NPC npc && npc.HasBuff(BuffID.Venom))//源npc有酸性毒液debuff
+            {
+                damage = (int)(damage * (PaperCrane ? PaperCraneMul : 1));
+            }
+            #endregion
+            #region 硫磺加伤
+            if (Brimstone)
+            {
+                damage += damage / 10;
+            }
+            #endregion
+            //Main.NewText($"proj.damage: {proj.damage} damage: {damage}");
+            //--------------proj.damage: 35 普通: 70(两倍) 专家: 140(四倍) 大师: 210(六倍) ------------------
+            base.ModifyHitByProjectile(proj, ref damage, ref crit);
+        }
+
+
+        public override void ResetEffects()
+        {
+            BaseCheckActive = false;
+            SnakeCount = 0;
+            //BloodCupCount = 0;
+            ScatterBullets = false;
+            Magnifier = false;
+            LightningOrb = false;
+            PenNibCanCount = false;
+            EmotionChip = false;
+            FlameBarrier = false;
+            Brimstone = false;
+            Seeri = false;
+            Envenom = false;
+            EmergencyTriage = false;
+            NoMercy = false;
+            WBlade = false;
+            NinjaScroll = false;
+            MagicFlower = false;
+            Artifact = false;
+            ATC = 0;
+            PaperCrane = false;
+            Marbles = false;
+            Barricade = false;
+            for(int i = 0; i < 4; i++)
+            {
+                HasUpgradedItem[i] = false;
+            }
+            //critup = false;
+        }
+
+        public override float UseSpeedMultiplier(Item item)
+        {
+            
+            return Magnifier ? 0.7f : 1f;
+        }
+        public override void GetHealLife(Item item, bool quickHeal, ref int healValue)
+        {
+            healValue = (int)(healValue * (EmergencyTriage ? EmergencyMul : 1) * (MagicFlower ? FlowerMul : 1));
+            //每帧执行
+            base.GetHealLife(item, quickHeal, ref healValue);
+        }
+        public override bool CanUseItem(Item item)
+        {
+            NiGItem niGItem = item.GetGlobalItem<NiGItem>();
+            return base.CanUseItem(item);
+        }
+        public override void PreUpdateMovement()
+        {
+
+            base.PreUpdateMovement();
+        }
+        public override void PostUpdate()
+        {
+            //Main.NewText($"{Player.itemTimeMax} {Player.itemTime}");
+            Ni.CanUsualUpdate = false;
+            Vector2 tomouse = Main.MouseWorld - Player.Center;
+            tomouse.Normalize();
+            #region 壁垒
+            if (Barricade)
+            {
+                //Player.statLifeMax2 += (int)(Player.statDefense * (HasUpgradedItem[0] ? 1.5 : 1));
+            }
+            #endregion
+            #region 检查召唤物是否溢出
+            if (OwnedMinions.Count > 0)
+            {
+                OwnedMinions[0].ai[0] += 0;
+                OwnedMinions.RemoveAll(x => x == null || !x.active);
+                //OwnedMinions.Sort((x,y) => x.whoAmI > y.whoAmI ? 1 : 0);
+            }
+            if (OwnedMinions.Count > Player.maxMinions)
+            {
+                int count = OwnedMinions.Count - Player.maxMinions;
+                for(int i = 0; i < count; i++)
+                {
+                    OwnedMinions.RemoveAll(x => x == null || !x.active);
+                    var p = OwnedMinions.Find(x => x.ai[0] == 1);
+                    if (p != null)
+                    {
+                        for(int j = 0; j < OwnedMinions.Count; j++)
+                        {
+                            if (OwnedMinions[j].type == ModContent.ProjectileType<LightningOrb>() && OwnedMinions[j].ai[0] != 1)
+                            {
+                                OwnedMinions[j].ai[0] -= 1;
+                            }
+                        }
+                        p.Kill();
+                    }
+                    //if (OwnedMinions[i].type == ModContent.ProjectileType<LightningOrb>() && OwnedMinions[i].ai[0] == 1)
+                    //{
+                    //    if (OwnedMinions[i].ai[0] == 1)
+                    //    {
+                    //        for(int j = i + 1; j < OwnedMinions.Count; j++)
+                    //        {
+                    //            if (OwnedMinions[j].type == ModContent.ProjectileType<LightningOrb>())
+                    //            {
+                    //                OwnedMinions[j].ai[0]--;
+                    //            }
+                    //        }
+                    //    }
+                    //}
+                }
+            }
+            #endregion
+            #region 冷血无情处决效果
+            if (NoMercy)
+            {
+                foreach (NPC npc in Main.npc)
+                {
+                    if (npc.lifeMax != 0 
+                        && npc.active 
+                        && (float)((float)npc.life / npc.lifeMax) <= (npc.IsBoss() ? 0.05 : 0.15)
+                        && !npc.immortal
+                        && npc.type != NPCID.GolemHead
+                        )
+                    {
+                        if (Vector2.Distance(Player.Center, npc.Center) < 1200)
+                        {
+                            //怒了，CombatText怎么还有上限
+                            CombatText.NewText(new Rectangle((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height), Color.DarkRed, npc.IsBoss() ? "处决BOSS！" : "处决！");
+                            npc.life = 0;
+                            npc.checkDead();
+                        }
+                    }
+                }
+            }
+            #endregion
+        }
+        
+        public override void SaveData(TagCompound tag)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                if (Upgraded[i])
+                {
+                    tag[$"Upgraded{i}"] = true;
+                }
+            }
+            base.SaveData(tag);
+        }
+        public override void LoadData(TagCompound tag)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                Upgraded[i] = tag.ContainsKey($"Upgraded{i}");
+            }
+            base.LoadData(tag);
+        }
+
+        public override void ProcessTriggers(TriggersSet triggersSet)
+        {
+            //if (NiSystem.FlameKey.JustPressed && Player.active && !Player.dead)
+            //{
+            //    if (!Player.HasBuff(ModContent.BuffType<FlameBarrierBuff>()) && FlameBarrier)
+            //    {
+            //        bool cardprefix = false;
+            //        for(int i = 0; i < 10; i++)
+            //        {
+            //            if (Player.armor[i].type == ModContent.ItemType<FlameBarrier>() && Player.armor[i].prefix == ModContent.PrefixType<UpgradeCard>())
+            //            {
+            //                cardprefix = true;
+            //            }
+            //        }
+            //        Player.AddBuff(ModContent.BuffType<FlameBarrierBuff>(), 4 * 60);
+            //        Projectile p = Projectile.NewProjectileDirect(Player.GetSource_FromThis(), Player.Center, Vector2.Zero, ModContent.ProjectileType<FlameLogicProj>(), 0, 0f, Player.whoAmI, cardprefix ? 400 : 300);
+            //    }
+            //}
+            base.ProcessTriggers(triggersSet);
+        }
+    }
+}
