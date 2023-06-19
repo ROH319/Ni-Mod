@@ -7,12 +7,13 @@ using Microsoft.Xna.Framework;
 using System;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.DataStructures;
+using Ni.Helpers;
 
 namespace Ni.Projectiles
 {
     public class HecateBullet : BaseRotateProj
     {
-        public static Texture2D tex = NiUtil.GetTex("Ni/Projectiles/HecateBullet");
+        public static Texture2D tex = NiUtils.GetTex("Ni/Projectiles/HecateBullet");
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Type] = 70;
@@ -26,7 +27,7 @@ namespace Ni.Projectiles
         }
         public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
         {
-            return NiUtil.CheckAABBvLineColliding(Projectile,targetHitbox);
+            return NiUtils.CheckAABBvLineColliding(Projectile,targetHitbox);
         }
         public override void AI()
         {

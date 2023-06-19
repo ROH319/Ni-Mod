@@ -7,9 +7,8 @@ using Microsoft.Xna.Framework;
 using System;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.DataStructures;
-using Ni.NiModPlayer;
+using Ni.Core;
 using System.Collections.Generic;
-using Ni.NiGlobalProj;
 
 namespace Ni.Items.AccEffects
 {

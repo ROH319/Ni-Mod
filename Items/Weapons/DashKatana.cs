@@ -8,7 +8,8 @@ using System;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.DataStructures;
 using Ni.Projectiles;
-using Ni.NiModPlayer;
+using Ni.Core;
+using Ni.Helpers;
 
 namespace Ni.Items.Weapons
 {

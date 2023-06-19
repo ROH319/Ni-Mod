@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria.DataStructures;
 using Ni.Projectiles;
 using Terraria.Audio;
+using Ni.Helpers;
 
 namespace Ni.Items.Weapons
 {
@@ -28,7 +29,7 @@ namespace Ni.Items.Weapons
             Vector2 tomouse = Main.MouseWorld - player.Center;
             tomouse.Normalize();
             Counter = 2 * 60;
-            SoundEngine.PlaySound(AssetLoader.Card_Release[Combo], player.Center);
+            SoundEngine.PlaySound(AssetHelper.Card_Release[Combo], player.Center);
             
             switch (Combo)
             {

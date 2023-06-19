@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 using System;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.DataStructures;
-using Ni.NiGlobalProj;
+using Ni.Core;
 
 namespace Ni.Items.Weapons
 {/*

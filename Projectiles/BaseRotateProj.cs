@@ -7,6 +7,7 @@ using Terraria;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using XPT.Core.Audio.MP3Sharp.Decoding.Decoders.LayerIII;
+using Ni.Helpers;
 
 namespace Ni.Projectiles
 {
@@ -17,7 +18,7 @@ namespace Ni.Projectiles
         bool hited = false;
         public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
         {
-            return NiUtil.CheckAABBvLineColliding(Projectile, targetHitbox);
+            return NiUtils.CheckAABBvLineColliding(Projectile, targetHitbox);
         }
 
         public override bool PreAI()

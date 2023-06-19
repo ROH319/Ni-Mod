@@ -6,9 +6,8 @@ using Ni;
 using Microsoft.Xna.Framework;
 using System;
 using Microsoft.Xna.Framework.Graphics;
-using Ni.NiGlobalNPC;
+using Ni.Core;
 using Terraria.DataStructures;
-using Ni.NiGlobalProj;
 
 namespace Ni.Items.AccEffects
 {

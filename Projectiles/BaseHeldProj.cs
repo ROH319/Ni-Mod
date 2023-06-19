@@ -6,6 +6,7 @@ using Ni;
 using Microsoft.Xna.Framework;
 using System;
 using Ni.Items.Weapons;
+using Ni.Helpers;
 
 namespace Ni.Projectiles
 {
@@ -63,7 +64,7 @@ namespace Ni.Projectiles
                 Vector2 endPoint = Projectile.Center + Projectile.rotation.ToRotationVector2() * (Projectile.width / 2);
                 Vector2 startPoint = Projectile.Center - Projectile.rotation.ToRotationVector2() * (Projectile.width / 2);
                 return Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), startPoint, endPoint, Projectile.height, ref point);*/
-                return NiUtil.CheckAABBvLineColliding(Projectile, targetHitbox);
+                return NiUtils.CheckAABBvLineColliding(Projectile, targetHitbox);
             }
             return false;
         }

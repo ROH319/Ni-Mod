@@ -12,6 +12,7 @@ using System.Security.Cryptography.X509Certificates;
 using Terraria.Audio;
 using System.Collections.Generic;
 using System.Linq;
+using Ni.Projectiles;
 
 namespace Ni.Items.Weapons
 {

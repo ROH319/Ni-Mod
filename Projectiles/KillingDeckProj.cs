@@ -9,12 +9,13 @@ using Microsoft.Xna.Framework.Graphics;
 using System.Security.Cryptography.X509Certificates;
 using static System.Net.Mime.MediaTypeNames;
 using Terraria.Audio;
+using Ni.Helpers;
 
 namespace Ni.Projectiles
 {
     public class KillingDeckProj : BaseRotateProj
     {
-        Texture2D tex = AssetLoader.GetTex("Ni/Projectiles/KillingDeckProj");
+        Texture2D tex = AssetHelper.GetTex("Ni/Projectiles/KillingDeckProj");
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Type] = 50;
@@ -29,7 +30,7 @@ namespace Ni.Projectiles
         }
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
-            SoundEngine.PlaySound(AssetLoader.Card_Hit, Projectile.Center);
+            SoundEngine.PlaySound(AssetHelper.Card_Hit, Projectile.Center);
             Projectile.velocity = Vector2.Zero;
             ai1 = 1;
             return false;
@@ -42,7 +43,7 @@ namespace Ni.Projectiles
                 Projectile.damage = 0;
                 tiedto = target;
                 offset = target.Center - Projectile.Center;
-                SoundEngine.PlaySound(AssetLoader.Card_Hit, Projectile.Center);
+                SoundEngine.PlaySound(AssetHelper.Card_Hit, Projectile.Center);
             }
             ai1 = 1;
         }

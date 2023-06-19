@@ -8,7 +8,7 @@ using System;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.DataStructures;
 using Terraria.GameContent;
-using Ni.NiGlobalProj;
+using Ni.Core;
 
 namespace Ni.Buffs
 {

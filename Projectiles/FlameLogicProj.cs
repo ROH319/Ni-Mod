@@ -8,18 +8,15 @@ using System;
 using Microsoft.Xna.Framework.Graphics;
 using static System.Formats.Asn1.AsnWriter;
 using Terraria.GameContent;
-using Ni.NiGlobalProj;
 using Ni.Buffs;
 using Terraria.DataStructures;
 using Terraria.Audio;
 using System.Collections.Generic;
-using Ni.NiUtils;
 using System.Numerics;
 using Vector3 = Microsoft.Xna.Framework.Vector3;
 using Vector2 = Microsoft.Xna.Framework.Vector2;
-using Ni.NiModPlayer;
-using Ni.NiGlobalNPC;
-using TemplateMod2.Utils;
+using Ni.Core;
+using Ni.Helpers;
 
 namespace Ni.Projectiles
 {
@@ -28,7 +25,7 @@ namespace Ni.Projectiles
         public float scale = 0f;
         public int radius = 50;
         public int FlameLife;
-        public override string Texture => AssetLoader.TransparentImg;
+        public override string Texture => AssetHelper.TransparentImg;
         public override void SetDefaults()
         {
             QuickSD(1, 1, 0, DamageClass.Default, 0f, true, false, -1, 0, -1, 1f, 10 * 60, false, false, false, true);
@@ -37,7 +34,7 @@ namespace Ni.Projectiles
         }
         public override void OnSpawn(IEntitySource source)
         {
-            SoundEngine.PlaySound(AssetLoader.FlameBarrier_Evoke, Projectile.Center);
+            SoundEngine.PlaySound(AssetHelper.FlameBarrier_Evoke, Projectile.Center);
             FlameLife = (int)ai0;
             base.OnSpawn(source);
         }
@@ -91,7 +88,7 @@ namespace Ni.Projectiles
                         //niGProj.Barried = true;
                         //p.Kill();
                         
-                        SoundEngine.PlaySound(AssetLoader.BlockAttack, p.Center);
+                        SoundEngine.PlaySound(AssetHelper.BlockAttack, p.Center);
                     }
                 }
             }
@@ -117,11 +114,11 @@ namespace Ni.Projectiles
         Vector2[] veclaser = new Vector2[600];
         public override void PostDraw(Color lightColor)
         {
-            Texture2D colorTex = AssetLoader.Heatmap;
-            Texture2D shapeTex = AssetLoader.Laser1;
-            Texture2D maskTex = AssetLoader.TrailLaser;
+            Texture2D colorTex = AssetHelper.Heatmap;
+            Texture2D shapeTex = AssetHelper.Laser1;
+            Texture2D maskTex = AssetHelper.TrailLaser;
             sb.End();
-            sb.Begin(SpriteSortMode.Immediate, BlendState.Additive, SamplerState.PointWrap, DepthStencilState.None, RasterizerState.CullNone, AssetLoader.MyColor, Main.GameViewMatrix.ZoomMatrix);
+            sb.Begin(SpriteSortMode.Immediate, BlendState.Additive, SamplerState.PointWrap, DepthStencilState.None, RasterizerState.CullNone, AssetHelper.MyColor, Main.GameViewMatrix.ZoomMatrix);
             if (player != null && player.active && !player.dead)
             {
                 /*
@@ -219,8 +216,8 @@ namespace Ni.Projectiles
                     var model = Matrix.CreateTranslation(new Vector3(-Main.screenPosition.X, -Main.screenPosition.Y, 0)) * Main.Transform;
 
                     // 把变换和所需信息丢给shader
-                    AssetLoader.Trail.Parameters["uTransform"].SetValue(model * projection);
-                    AssetLoader.Trail.Parameters["uTime"].SetValue(-(float)Main.time * 0.03f);
+                    AssetHelper.Trail.Parameters["uTransform"].SetValue(model * projection);
+                    AssetHelper.Trail.Parameters["uTime"].SetValue(-(float)Main.time * 0.03f);
 
                     Main.graphics.GraphicsDevice.Textures[0] = colorTex;
                     Main.graphics.GraphicsDevice.Textures[1] = shapeTex;
@@ -231,7 +228,7 @@ namespace Ni.Projectiles
                     //Main.graphics.GraphicsDevice.Textures[0] = (Texture)TextureAssets.MagicPixel;
                     //Main.graphics.GraphicsDevice.Textures[1] = (Texture)TextureAssets.MagicPixel;
                     //Main.graphics.GraphicsDevice.Textures[2] = (Texture)TextureAssets.MagicPixel;
-                    AssetLoader.Trail.CurrentTechnique.Passes[0].Apply();
+                    AssetHelper.Trail.CurrentTechnique.Passes[0].Apply();
 
                     Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList, triangleList.ToArray(), 0, triangleList.Count / 3);
                     sb.GraphicsDevice.RasterizerState = originalState;

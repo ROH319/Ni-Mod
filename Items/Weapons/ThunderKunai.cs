@@ -28,7 +28,7 @@ namespace Ni.Items.Weapons
     //        Vector2 tomouse = Main.MouseWorld - player.Center;
     //        tomouse.Normalize();
     //        Projectile p = Projectile.NewProjectileDirect(source, player.Center, tomouse * 4, type, Item.damage, knockback, player.whoAmI);
-    //        SoundEngine.PlaySound(AssetLoader.KunaiShoot, player.Center);
+    //        SoundEngine.PlaySound(AssetHelper.KunaiShoot, player.Center);
     //        return false;
     //    }
     //    public override void AddRecipes()

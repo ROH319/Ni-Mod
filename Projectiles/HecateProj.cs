@@ -6,7 +6,6 @@ using Ni;
 using Microsoft.Xna.Framework;
 using System;
 using Microsoft.Xna.Framework.Graphics;
-using Ni.NiUtils;
 using System.Collections.Generic;
 using Ni.Items.Weapons;
 
@@ -97,10 +96,10 @@ namespace Ni.Projectiles
 
                 if (collipos != new Vector2(0, 0))
                 {
-                    sb.Draw(AssetLoader.Ball, new Rectangle((int)((collipos - Main.screenPosition).X - 6), (int)((collipos - Main.screenPosition).Y - 6), 12, 12), Color.Red);
+                    sb.Draw(AssetHelper.Ball, new Rectangle((int)((collipos - Main.screenPosition).X - 6), (int)((collipos - Main.screenPosition).Y - 6), 12, 12), Color.Red);
                     
                 }
-                Main.graphics.GraphicsDevice.Textures[0] = AssetLoader.Laser1;
+                Main.graphics.GraphicsDevice.Textures[0] = AssetHelper.Laser1;
                 //Utils.DrawLine(Main.spriteBatch, player.Center.ToPoint(), (player.Center + (Main.MouseScreen - player.Center).ToRotation().ToRotationVector2() * 100).ToPoint(), Color.Red);
                 Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList, triangleList.ToArray(), 0, triangleList.Count / 3);
                 //Main.spriteBatch.Draw(Ni.laser1, new Rectangle(0, 0, 2000, 1), new Rectangle(1, 1, 256, 256), Color.White, (Main.MouseWorld - player.Center).ToRotation(), new Vector2(0, 128),0,0f);

@@ -11,6 +11,7 @@ using Ni.Projectiles;
 using Mono.Cecil;
 using static Terraria.ModLoader.PlayerDrawLayer;
 using Terraria.Audio;
+using Ni.Helpers;
 
 namespace Ni.Items.Weapons
 {
@@ -29,7 +30,7 @@ namespace Ni.Items.Weapons
             Vector2 tomouse = Main.MouseWorld - player.Center;
             tomouse.Normalize();
             Projectile p = Projectile.NewProjectileDirect(source, player.Center, tomouse * 10, ModContent.ProjectileType<arzunaProj>(), damage, knockback, player.whoAmI);
-            SoundEngine.PlaySound(AssetLoader.LaserBow_Use, player.Center);
+            SoundEngine.PlaySound(AssetHelper.LaserBow_Use, player.Center);
             return false;
         }
 
@@ -42,7 +43,7 @@ namespace Ni.Items.Weapons
                 Projectile p = Projectile.NewProjectileDirect(player.GetSource_FromThis(), player.Center, new Vector2(-tomouse.X, -tomouse.Y) * 15, ModContent.ProjectileType<arzunaProj>(), (int)player.GetTotalDamage(DamageClass.Ranged).ApplyTo(Item.damage) * 1, Item.knockBack, player.whoAmI, 1);
                 p.CritChance = Item.crit;
                 //Main.NewText($"{p.CritChance} {Item.crit} {player.GetCritChance(DamageClass.Ranged)}");
-                SoundEngine.PlaySound(AssetLoader.LaserBow_Extra, player.Center);            
+                SoundEngine.PlaySound(AssetHelper.LaserBow_Extra, player.Center);            
             }
             base.HoldItem(player);
         }

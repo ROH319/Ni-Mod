@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using TemplateMod2.Utils;
+using Ni.Helpers;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.ID;
@@ -12,7 +12,7 @@ using Terraria.ModLoader;
 namespace Ni.Projectiles 
 {
     public class TrailingProj : BaseRotateProj {
-        public override string Texture => AssetLoader.TransparentImg;
+        public override string Texture => AssetHelper.TransparentImg;
         public override void SetStaticDefaults() {
             // DisplayName.SetDefault("神秘弹幕");
         }
@@ -49,9 +49,9 @@ namespace Ni.Projectiles
 
 
         public override void PostDraw(Color lightColor) {
-            Texture2D MainColor = AssetLoader.Heatmap;
-            Texture2D MainShape = AssetLoader.Laser1;
-            Texture2D MaskColor = AssetLoader.TrailShape;
+            Texture2D MainColor = AssetHelper.Heatmap;
+            Texture2D MainShape = AssetHelper.Laser1;
+            Texture2D MaskColor = AssetHelper.TrailShape;
             List<CustomVertexInfo> bars = new List<CustomVertexInfo>();
 
             // 把所有的点都生成出来，按照顺序
@@ -105,8 +105,8 @@ namespace Ni.Projectiles
                 var projection = Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1);//正交投影
                 var model = Matrix.CreateTranslation(new Vector3(-Main.screenPosition.X, -Main.screenPosition.Y, 0));
 		        // 把变换和所需信息丢给shader
-                AssetLoader.Trail.Parameters["uTransform"].SetValue(model * projection);
-                AssetLoader.Trail.Parameters["uTime"].SetValue(-(float)Main.time * 0.03f);
+                AssetHelper.Trail.Parameters["uTransform"].SetValue(model * projection);
+                AssetHelper.Trail.Parameters["uTime"].SetValue(-(float)Main.time * 0.03f);
                 Main.graphics.GraphicsDevice.Textures[0] = MainColor;//颜色
                 Main.graphics.GraphicsDevice.Textures[1] = MainShape;//形状
                 Main.graphics.GraphicsDevice.Textures[2] = MaskColor;//蒙版
@@ -117,7 +117,7 @@ namespace Ni.Projectiles
                 //Main.graphics.GraphicsDevice.Textures[1] = (Texture)TextureAssets.MagicPixel;
                 //Main.graphics.GraphicsDevice.Textures[2] = (Texture)TextureAssets.MagicPixel;
 
-                AssetLoader.Trail.CurrentTechnique.Passes[0].Apply();
+                AssetHelper.Trail.CurrentTechnique.Passes[0].Apply();
 
                 Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList, triangleList.ToArray(), 0, triangleList.Count / 3);
 

@@ -14,14 +14,14 @@ using rail;
 using System.Linq;
 using Terraria.Audio;
 using Ni.Buffs;
-using TemplateMod2.Utils;
+using Ni.Helpers;
 
-namespace Ni
+namespace Ni.Projectiles
 {
     public class ElecWhipProj : BaseRotateProj
     {
         public NPC TargetNPC;
-        public override string Texture => AssetLoader.TransparentImg;
+        public override string Texture => AssetHelper.TransparentImg;
         //public List<Vector2> NPCPos = new();
         public List<Vector2> Nodes = new();
         public override void SetDefaults()
@@ -90,7 +90,7 @@ namespace Ni
                 //}
                 if (parent.ai[1] == -1 && parent.active)
                 {
-                    SoundEngine.PlaySound(AssetLoader.ElecWhipShoot, player.Center);
+                    SoundEngine.PlaySound(AssetHelper.ElecWhipShoot, player.Center);
                     foreach (NPC npc in Main.npc)
                     {
                         if (!npc.immortal && npc != null && npc.active && !npc.friendly && Vector2.Distance(npc.Center, Projectile.Center) < 200 * player.whipRangeMultiplier && npc.whoAmI != (parent.ModProjectile as ElecWhipProj).TargetNPC.whoAmI && Projectile.scale > 0.5f && Collision.CanHitLine(npc.Center, 0, 0, Projectile.Center, 0, 0))
@@ -105,7 +105,7 @@ namespace Ni
                 //for (float i = 0.05f; i < 1f; i += Main.rand.NextFloat(0.05f, MathHelper.Lerp(0.4f, 0.1f, Vector2.Distance(Main.projectile[(int)ai1].Center,Projectile.Center) / 400) ) )
                 for(float i = 0.05f; i < 1f;i += (source is EntitySource_OnHit) ? 0.5f : Main.rand.NextFloat(0.05f,0.1f))
                 {
-                    Nodes.Add(Vector2.Lerp(Projectile.Center, Main.projectile[(int)ai1].Center, i) + NiUtil.Vector2RandUnit(Main.rand.Next(2, (source is EntitySource_OnHit)? 8 : 12), 0, MathHelper.TwoPi));
+                    Nodes.Add(Vector2.Lerp(Projectile.Center, Main.projectile[(int)ai1].Center, i) + Helpers.NiUtils.Vector2RandUnit(Main.rand.Next(2, (source is EntitySource_OnHit) ? 8 : 12), 0, MathHelper.TwoPi));
                 }
                 Nodes.Add(Main.projectile[(int)ai1].Center);
             }
@@ -119,7 +119,7 @@ namespace Ni
                 bool[] canhit = new bool[Nodes.Count];
                 for(int i = 0; i < Nodes.Count - 2; i++)
                 {
-                    canhit[i] = NiUtil.CheckAABBvLineColliding(Nodes[i], Nodes[i + 1], (int)(8 * Projectile.scale), targetHitbox);
+                    canhit[i] = Helpers.NiUtils.CheckAABBvLineColliding(Nodes[i], Nodes[i + 1], (int)(8 * Projectile.scale), targetHitbox);
                 }
                 return canhit.ToList().Find(x => x == true);
             }
@@ -137,7 +137,7 @@ namespace Ni
         {
             for(int i = 0; i < 5; i++)
             {
-                Dust d = Dust.NewDustPerfect(target.Center, MyDustId.ElectricCyan, NiUtil.Vector2RandUnit(Main.rand.Next(3,8), 0, MathHelper.TwoPi), Scale: 0.5f);
+                Dust d = Dust.NewDustPerfect(target.Center, MyDustId.ElectricCyan, Helpers.NiUtils.Vector2RandUnit(Main.rand.Next(3,8), 0, MathHelper.TwoPi), Scale: 0.5f);
                 d.fadeIn = 0.1f;
                 d.noGravity = true;
             }
@@ -154,12 +154,12 @@ namespace Ni
             }
             for(int i = 1;i < Nodes.Count-1; i++)
             {
-                Nodes[i] += NiUtil.Vector2RandUnit(Main.rand.Next(3, (int)(8 * Projectile.scale)), 0, MathHelper.TwoPi);
+                Nodes[i] += Helpers.NiUtils.Vector2RandUnit(Main.rand.Next(3, (int)(8 * Projectile.scale)), 0, MathHelper.TwoPi);
             }
         }
         public override bool PreDraw(ref Color lightColor)
         {
-            Texture2D trail = AssetLoader.TrailShape;
+            Texture2D trail = AssetHelper.TrailShape;
             //sb.AdditiveBegin();
             sb.AdditiveBegin(SpriteSortMode.Deferred);
             //int n = 0;

@@ -8,8 +8,9 @@ using System;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
 using ReLogic.Graphics;
-using Ni.NiUtils;
+using Ni.Helpers;
 using System.Collections.Generic;
+using Ni.Core;
 
 namespace Ni.Projectiles
 {
@@ -40,7 +41,7 @@ namespace Ni.Projectiles
         {
             sb.End();
 
-            sb.Begin(SpriteSortMode.Immediate, BlendState.Additive, SamplerState.LinearWrap, DepthStencilState.None, RasterizerState.CullNone, AssetLoader.MyColor, Main.GameViewMatrix.ZoomMatrix);
+            sb.Begin(SpriteSortMode.Immediate, BlendState.Additive, SamplerState.LinearWrap, DepthStencilState.None, RasterizerState.CullNone, AssetHelper.MyColor, Main.GameViewMatrix.ZoomMatrix);
             if (player != null && player.active && !player.dead)
             {
                 /*
@@ -86,9 +87,9 @@ namespace Ni.Projectiles
                 //    bars.Add(new VertexInfo2(pos + (pos - player.Center).NormalizeV(),Color.White,new Vector3())
                 //    ++Count;
                 //}
-                Main.graphics.GraphicsDevice.Textures[0] = AssetLoader.TrailLaser;
-                Main.graphics.GraphicsDevice.Textures[1] = AssetLoader.Color_Yellow_Orange2;
-                AssetLoader.MyColor.CurrentTechnique.Passes[0].Apply();
+                Main.graphics.GraphicsDevice.Textures[0] = AssetHelper.TrailLaser;
+                Main.graphics.GraphicsDevice.Textures[1] = AssetHelper.Color_Yellow_Orange2;
+                AssetHelper.MyColor.CurrentTechnique.Passes[0].Apply();
 
             }
 

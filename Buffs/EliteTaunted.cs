@@ -5,8 +5,6 @@ using Terraria;
 using Ni;
 using Microsoft.Xna.Framework;
 using System;
-using Ni.NiGlobalNPC;
-using Ni.NiUtils;
 
 namespace Ni.Buffs
 {/*

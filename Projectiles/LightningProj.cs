@@ -8,12 +8,13 @@ using System;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.DataStructures;
 using Terraria.Audio;
+using Ni.Helpers;
 
 namespace Ni.Projectiles
 {
     public class LightningProj : BaseRotateProj
     {
-        public override string Texture => AssetLoader.TransparentImg;
+        public override string Texture => AssetHelper.TransparentImg;
         public override void SetDefaults()
         {
             QuickSD(1, 1, 50, DamageClass.Summon, 5f, true, false, -1, 0, -1, 1f, 5, false, false, false, true);
@@ -23,13 +24,13 @@ namespace Ni.Projectiles
         }
         public override void OnSpawn(IEntitySource source)
         {
-            SoundEngine.PlaySound(AssetLoader.LightningOrb_Passive, Main.projectile[(int)Projectile.localAI[0]].Center);
+            SoundEngine.PlaySound(AssetHelper.LightningOrb_Passive, Main.projectile[(int)Projectile.localAI[0]].Center);
             base.OnSpawn(source);
         }
 
         public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
         {
-            return NiUtil.CheckAABBvLineColliding(Projectile.Center,new Vector2(ai0,ai1), (int)(40 * Projectile.scale), targetHitbox);
+            return NiUtils.CheckAABBvLineColliding(Projectile.Center,new Vector2(ai0,ai1), (int)(40 * Projectile.scale), targetHitbox);
         }
 
         public override void AI()
@@ -59,7 +60,7 @@ namespace Ni.Projectiles
             //草，projectile.hide为true时就不执行postdraw了
             sb.AdditiveBegin();
             sb.Draw(
-                AssetLoader.LightningProj, 
+                AssetHelper.LightningProj, 
                 new Rectangle((int)(Projectile.Center.X - Main.screenPosition.X), (int)(Projectile.Center.Y - Main.screenPosition.Y), (int)(44 * Projectile.scale), (int)Vector2.Distance(Projectile.Center, target) ), 
                 new Rectangle(Projectile.frame * 85, 13, 85, 482), 
                 Color.White, 
@@ -67,8 +68,8 @@ namespace Ni.Projectiles
                 new Vector2(42, 0), 
                 ShouldFilp?SpriteEffects.FlipVertically : 0, 
                 0);
-            //sb.Draw(AssetLoader.LightningProj, Projectile.Center - Main.screenPosition, new Rectangle(Projectile.frame * 85 * (Projectile.width/40), 0, (int)(85 * (Projectile.width / 40.0)), (int)(512 * (Projectile.height/470.0))), Color.Yellow, Projectile.rotation, new Vector2(42, 0), Projectile.scale, 0, 0);
-            //sb.Draw(AssetLoader.LightningOrb, Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation, new Vector2(Projectile.width / 2, Projectile.height / 2), 1f, 0, 0);
+            //sb.Draw(AssetHelper.LightningProj, Projectile.Center - Main.screenPosition, new Rectangle(Projectile.frame * 85 * (Projectile.width/40), 0, (int)(85 * (Projectile.width / 40.0)), (int)(512 * (Projectile.height/470.0))), Color.Yellow, Projectile.rotation, new Vector2(42, 0), Projectile.scale, 0, 0);
+            //sb.Draw(AssetHelper.LightningOrb, Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation, new Vector2(Projectile.width / 2, Projectile.height / 2), 1f, 0, 0);
             sb.VanillaBegin();
         }
     }

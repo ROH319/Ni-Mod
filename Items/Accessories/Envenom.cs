@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 using System;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.DataStructures;
-using Ni.NiModPlayer;
+using Ni.Core;
 using Ni.NiPrefix;
 using Terraria.Utilities;
 using System.Collections.Generic;

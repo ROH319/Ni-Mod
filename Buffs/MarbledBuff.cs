@@ -6,7 +6,6 @@ using Ni;
 using Microsoft.Xna.Framework;
 using System;
 using Microsoft.Xna.Framework.Graphics;
-using Ni.NiGlobalNPC;
 using Ni.Items.AccEffects;
 
 namespace Ni.Buffs

@@ -1,5 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
-using Ni.NiModPlayer;
+using Ni.Core;
 using Ni.Projectiles;
 using Ni.Projectiles.Minions;
 using System;
@@ -9,11 +9,11 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Ni.DownWell;
-using Ni.Systems;
 using Terraria.Graphics.CameraModifiers;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using System.Xml.Schema;
+using Ni.Helpers;
 
 namespace Ni.Items.Weapons
 {
@@ -113,7 +113,7 @@ namespace Ni.Items.Weapons
             //{
             //	player.GetModPlayer<NiPlayer>().Upgraded[i] = false;
             //}
-            //AudioSystem.PlaySound(AssetLoader.SoundPath + "weapon_electricwhip_release1.wav", 1f);
+            //AudioSystem.PlaySound(AssetHelper.SoundPath + "weapon_electricwhip_release1.wav", 1f);
             //var p = Projectile.NewProjectileDirect(source, player.Center, Vector2.Zero, ModContent.ProjectileType<FlameLogicProj>(), 0, 0f, player.whoAmI);
             //for(int i = 0; i < 1000; i++)
             //{
@@ -138,7 +138,7 @@ namespace Ni.Items.Weapons
 
 	public class TestProj : BaseRotateProj
 	{
-        public override string Texture => AssetLoader.TransparentImg;
+        public override string Texture => AssetHelper.TransparentImg;
         public override void SetDefaults()
         {
 			QuickSD(1, 1, 0, DamageClass.Default, 0f, true, false, -1, timeLeft: 3 * 60);

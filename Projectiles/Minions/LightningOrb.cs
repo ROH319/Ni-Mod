@@ -10,20 +10,19 @@ using Ni.Buffs;
 using Terraria.DataStructures;
 using System.Collections.Specialized;
 using Terraria.Audio;
-using TemplateMod2.Utils;
 using Ni.Dusts;
 using Ni.NiPrefix;
 using ReLogic.Content;
-using Ni.NiModPlayer;
 using System.Collections.Generic;
 using System.Linq;
-using Ni.NiGlobalProj;
+using Ni.Helpers;
+using Ni.Core;
 
 namespace Ni.Projectiles.Minions
 {
     public class LightningOrb : BaseMinion
     {
-        public override string Texture => AssetLoader.TransparentImg;
+        public override string Texture => AssetHelper.TransparentImg;
         public override int BuffType => ModContent.BuffType<LightningBuff>();
 
         static int Currentslot;
@@ -61,16 +60,16 @@ namespace Ni.Projectiles.Minions
         int drawcount;
         public override void PostDraw(Color lightColor)
         {
-            //Texture2D passive = AssetLoader.LightningPassive[4 - drawcount];
+            //Texture2D passive = AssetHelper.LightningPassive[4 - drawcount];
             //Texture2D orb = ModContent.Request<Texture2D>("Ni/Projectiles/Minions/LightningOrb", AssetRequestMode.ImmediateLoad).Value;
             //bool candraw = false;
             sb.AdditiveBegin();
-            sb.Draw(AssetLoader.LightningOrb, Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation, AssetLoader.LightningOrb.Size() / 2, Projectile.scale / 2, 0, 0);
+            sb.Draw(AssetHelper.LightningOrb, Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation, AssetHelper.LightningOrb.Size() / 2, Projectile.scale / 2, 0, 0);
             Lighting.AddLight(Projectile.Center, TorchID.Yellow);
             if (drawcount > 0 && !Main.gamePaused)
             {
                 //…¡
-                sb.Draw(AssetLoader.OrbFX, Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation, AssetLoader.OrbFX.Size() / 2, Projectile.scale / 2, 0, 0f);
+                sb.Draw(AssetHelper.OrbFX, Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation, AssetHelper.OrbFX.Size() / 2, Projectile.scale / 2, 0, 0f);
                 //±ª∂Ø
                 //sb.Draw(passive, Projectile.Center - Main.screenPosition, null, Color.White, Main.rand.NextFloat()*Projectile.rotation, passive.Size() / 2, 0.5f, 0, 0f);
             }
@@ -246,7 +245,7 @@ namespace Ni.Projectiles.Minions
             for (int i = 0; i < 20; i++)
             {
                 Dust d = Dust.NewDustPerfect(targetCenter, ModContent.DustType<ElecCyan>(), null, 0, default, 0.7f);
-                d.velocity = NiUtil.Vector2RandUnit(Main.rand.Next(10), 0, MathHelper.TwoPi);
+                d.velocity = NiUtils.Vector2RandUnit(Main.rand.Next(10), 0, MathHelper.TwoPi);
                 d.noGravity = true;
                 d.noLight = true;
             }
@@ -263,7 +262,7 @@ namespace Ni.Projectiles.Minions
             }
             //Currentslot--;
             //Main.NewText($"Kill Currentslot {Currentslot} {Main.time}");
-            SoundEngine.PlaySound(AssetLoader.LightningOrb_Evoke, Projectile.Center);
+            SoundEngine.PlaySound(AssetHelper.LightningOrb_Evoke, Projectile.Center);
         }
     }
 }

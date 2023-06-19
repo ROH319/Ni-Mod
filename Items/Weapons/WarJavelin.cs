@@ -24,7 +24,7 @@ namespace Ni.Items.Weapons
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            //SoundEngine.PlaySound(AssetLoader.WarJavelin_Use, player.Center);
+            //SoundEngine.PlaySound(AssetHelper.WarJavelin_Use, player.Center);
             
             Vector2 tomouse = Main.MouseWorld - player.Center;
             tomouse.Normalize();

@@ -6,18 +6,19 @@ using Ni;
 using Microsoft.Xna.Framework;
 using System;
 using Microsoft.Xna.Framework.Graphics;
-using Ni.NiUtils;
+using Ni.Helpers;
 using System.Collections.Generic;
 using System.Drawing;
 using Color = Microsoft.Xna.Framework.Color;
 using Rectangle = Microsoft.Xna.Framework.Rectangle;
 using Terraria.GameContent;
+using Ni.Core;
 
 namespace Ni.Projectiles
 {
     public class WarJavelin_Tele : BaseProj
     {
-        public override string Texture => AssetLoader.TransparentImg;
+        public override string Texture => AssetHelper.TransparentImg;
         public override void SetDefaults()
         {
             QuickSD(1, 1, 0, DamageClass.Default, 0f, true, false, -1, 0, -1, 1, 8);
@@ -37,14 +38,14 @@ namespace Ni.Projectiles
         public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
         {
             //return NiUtil.CheckAABBvLineColliding(new Vector2(ai0, ai1), Collision.SolidTiles(Projectile.position + new Vector2(0, 20), 16, 16) ? Projectile.position + new Vector2(0, -20) : Projectile.position, 100,targetHitbox);
-            return NiUtil.CheckAABBvLineColliding(pretelepos, currpos, 40, targetHitbox);
+            return NiUtils.CheckAABBvLineColliding(pretelepos, currpos, 40, targetHitbox);
         }
 
         public override void PostDraw(Color lightColor)
         {
-            Texture2D colorTex = AssetLoader.Color_Yellow_Orange2;
-            Texture2D shapeTex = AssetLoader.Laser1;
-            Texture2D maskTex = AssetLoader.TrailShape;
+            Texture2D colorTex = AssetHelper.Color_Yellow_Orange2;
+            Texture2D shapeTex = AssetHelper.Laser1;
+            Texture2D maskTex = AssetHelper.TrailShape;
             float size = 1f;
             var rotation = (currpos - pretelepos).ToRotation() +MathHelper.PiOver2;
             //Main.NewText($"{plrpos} {player.Center}");
@@ -110,12 +111,12 @@ namespace Ni.Projectiles
                     var model = Matrix.CreateTranslation(new Vector3(-Main.screenPosition.X, -Main.screenPosition.Y, 0));
                     
 
-                    //var shader = AssetLoader.Trail;
+                    //var shader = AssetHelper.Trail;
                     
 
                     // 把变换和所需信息丢给shader
-                    AssetLoader.Trail.Parameters["uTransform"].SetValue(model * projection);
-                    AssetLoader.Trail.Parameters["uTime"].SetValue(-(float)Main.time * 0.1f);
+                    AssetHelper.Trail.Parameters["uTransform"].SetValue(model * projection);
+                    AssetHelper.Trail.Parameters["uTime"].SetValue(-(float)Main.time * 0.1f);
 
                     Main.graphics.GraphicsDevice.Textures[0] = colorTex;
                     Main.graphics.GraphicsDevice.Textures[1] = shapeTex;
@@ -127,7 +128,7 @@ namespace Ni.Projectiles
                     //Main.graphics.GraphicsDevice.Textures[1] = (Texture)TextureAssets.MagicPixel;
                     //Main.graphics.GraphicsDevice.Textures[2] = (Texture)TextureAssets.MagicPixel;
 
-                    AssetLoader.Trail.CurrentTechnique.Passes[0].Apply();
+                    AssetHelper.Trail.CurrentTechnique.Passes[0].Apply();
                     Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList, triangleList.ToArray(), 0, triangleList.Count / 3);
                     sb.GraphicsDevice.RasterizerState = originalState;
                     sb.End();

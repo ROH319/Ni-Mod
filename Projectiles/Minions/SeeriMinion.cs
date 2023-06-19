@@ -8,15 +8,17 @@ using System;
 using Microsoft.Xna.Framework.Graphics;
 using Ni.Buffs;
 using System.Collections.Generic;
-using Ni.NiGlobalProj;
+using Ni.Core;
 using Ni.Items.Accessories;
 using Ni.Items.AccEffects;
+using Ni.Helpers;
+using Ni.Core.Systems;
 
 namespace Ni.Projectiles.Minions
 {
     public class SeeriMinion : BaseMinion
     {
-        public override string Texture => AssetLoader.TransparentImg;
+        public override string Texture => AssetHelper.TransparentImg;
         public override int BuffType => ModContent.BuffType<SeeriBuff>();
         public override void SetStaticDefaults()
         {
@@ -31,7 +33,7 @@ namespace Ni.Projectiles.Minions
         }
         public override void PostDraw(Color lightColor)
         {
-            sb.Draw(AssetLoader.Seeri[Projectile.frame], Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation, AssetLoader.Seeri[Projectile.frame].Size() / 2, 
+            sb.Draw(AssetHelper.Seeri[Projectile.frame], Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation, AssetHelper.Seeri[Projectile.frame].Size() / 2, 
                 Projectile.scale, player.direction == -1 ? 0 : SpriteEffects.FlipHorizontally, 0);
         }
         //int drawcount = 0;

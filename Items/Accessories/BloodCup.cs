@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Terraria.ModLoader;
 using Terraria;
 using Terraria.ID;
-using Ni.NiModPlayer;
+using Ni.Core;
 using Ni.Items.AccEffects;
 
 namespace Ni.Items.Accessories

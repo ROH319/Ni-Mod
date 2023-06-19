@@ -11,11 +11,12 @@ using Terraria.DataStructures;
 using Ni.Buffs;
 using Terraria.Audio;
 using Terraria.Utilities;
-using Ni.NiModPlayer;
+using Ni.Core;
 using Ni.NiPrefix;
 using System.Collections.Generic;
 using System.Linq;
 using Ni.Items.AccEffects;
+using Ni.Helpers;
 
 namespace Ni.Items.Weapons
 {
@@ -40,7 +41,7 @@ namespace Ni.Items.Weapons
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
 
-            SoundEngine.PlaySound(AssetLoader.LightningOrb_Channel,player.Center);
+            SoundEngine.PlaySound(AssetHelper.LightningOrb_Channel,player.Center);
             player.GetModPlayer<NiPlayer>().OwnedMinions.RemoveAll(x => !x.active);
             int order = player.GetModPlayer<NiPlayer>().OwnedMinions.Count(x => x.type == type);
             

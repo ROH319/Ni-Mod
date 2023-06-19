@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 using System;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
-using TemplateMod2.Utils;
+using Ni.Helpers;
 
 namespace Ni.Projectiles
 {
@@ -37,7 +37,7 @@ namespace Ni.Projectiles
             int width = Projectile.width / 2;
 
             //return NiUtil.CheckAABBvLineColliding(Projectile.Center - length, Projectile.Center + length, width, targetHitbox);
-            return NiUtil.CheckAABBvLineColliding(Projectile, targetHitbox);
+            return Helpers.NiUtils.CheckAABBvLineColliding(Projectile, targetHitbox);
         }
         public override void AI()
         {

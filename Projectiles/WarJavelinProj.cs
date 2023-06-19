@@ -5,10 +5,9 @@ using Terraria;
 using Ni;
 using Microsoft.Xna.Framework;
 using System;
-using Ni.NiUtils;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.Audio;
-using TemplateMod2.Utils;
+using Ni.Helpers;
 
 namespace Ni.Projectiles
 {
@@ -38,7 +37,7 @@ namespace Ni.Projectiles
                 //d.alpha /= 2;
             }
             //Lighting.AddLight(player.Center, TorchID.Yellow);
-            SoundEngine.PlaySound(AssetLoader.WarJavelin_Tp, player.Center);
+            SoundEngine.PlaySound(AssetHelper.WarJavelin_Tp, player.Center);
             //NiUtil.VertexLaserDraw(null, Ni.Color_Yellow_Orange2, Ni.TrailShape, Ni.Laser1, verLasers, plrpos, (plrpos - player.Center).ToRotation(), 3f, 0);
             base.Kill(timeLeft);
         }

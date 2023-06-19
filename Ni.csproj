@@ -38,4 +38,10 @@
   <ItemGroup>
     <ModFile Remove="Buffs\MarbledBuff.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ModFile Remove="Helpers\NiUtils.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ModFile Remove="Helpers\AssetHelper.cs" />
+  </ItemGroup>
 </Project>

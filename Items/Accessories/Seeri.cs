@@ -6,11 +6,10 @@ using Ni;
 using Microsoft.Xna.Framework;
 using System;
 using Microsoft.Xna.Framework.Graphics;
-using Ni.NiModPlayer;
+using Ni.Core;
 using Ni.Projectiles.Minions;
 using Ni.Buffs;
 using Ni.Items.AccEffects;
-using Ni.NiGlobalProj;
 using Terraria.DataStructures;
 
 namespace Ni.Items.Accessories

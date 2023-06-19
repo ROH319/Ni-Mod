@@ -12,13 +12,14 @@ using Terraria.Audio;
 using ReLogic.Content;
 using Terraria.GameContent;
 using ReLogic.Graphics;
+using Ni.Helpers;
 
 namespace Ni.Projectiles
 {
     public class KatanaProj : BaseHeldProj
     {
-        //public override string Texture => AssetLoader.TransparentImg; 
-        //public Texture2D image = AssetLoader.GetTex("Ni/Projectiles/KatanaProj");
+        //public override string Texture => AssetHelper.TransparentImg; 
+        //public Texture2D image = AssetHelper.GetTex("Ni/Projectiles/KatanaProj");
         public override int Weapon => ModContent.ItemType<DashKatana>();
         public bool cooldowned;
         public int cooldowncounter;
@@ -100,7 +101,7 @@ namespace Ni.Projectiles
             }
             if(cooldowned && player.controlUseItem && player.altFunctionUse == 0)
             {
-                SoundStyle sound = AssetLoader.Katana with { MaxInstances = 20 };
+                SoundStyle sound = AssetHelper.Katana with { MaxInstances = 20 };
                 SoundEngine.PlaySound(sound, player.Center);
                 Projectile p = Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), player.Center + ToMouse.NormalizeV() * 135, player.velocity, ModContent.ProjectileType<KatanaSwing>(), Projectile.damage + (ai1 > 0 ? 60 : 0), Projectile.knockBack, player.whoAmI, Main.rand.NextBool() ? 0 : 1);
                 p.rotation = ToMouse.ToRotation() + MathHelper.PiOver2;
@@ -121,9 +122,9 @@ namespace Ni.Projectiles
             if(ai0 > 0)
             {
                 //иак╦
-                sb.Draw(AssetLoader.KatanaFlash, Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation, AssetLoader.KatanaFlash.Size() / 2, Projectile.scale, 0, 0);
+                sb.Draw(AssetHelper.KatanaFlash, Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation, AssetHelper.KatanaFlash.Size() / 2, Projectile.scale, 0, 0);
             }
-            sb.Draw(AssetLoader.KatanaHUD, player.position - Main.screenPosition + new Vector2(10, 60), null, Color.White, 0f, AssetLoader.KatanaHUD.Size() / 2, 2f, 0, 0);
+            sb.Draw(AssetHelper.KatanaHUD, player.position - Main.screenPosition + new Vector2(10, 60), null, Color.White, 0f, AssetHelper.KatanaHUD.Size() / 2, 2f, 0, 0);
             sb.DrawString(FontAssets.MouseText.Value, $"{ai1}", player.position - Main.screenPosition + new Vector2(5, 60), Color.Lerp(Color.White, Color.Blue, ai1 / maxStrength));
             //Utils.DrawLine(sb,player.Center,player.Center + dashvec,Color.White);
             //Utils.DrawBorderStringFourWay

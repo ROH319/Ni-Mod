@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
-using Ni.NiModPlayer;
+using Ni.Core;
 
 namespace Ni.Items.Accessories
 {/*

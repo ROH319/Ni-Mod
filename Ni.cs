@@ -4,7 +4,6 @@ using Terraria.ID;
 using Terraria.Localization;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
-using Ni.NiUtils;
 using ReLogic.Content;
 using Terraria.GameContent;
 using Microsoft.Xna.Framework;
@@ -15,12 +14,12 @@ using log4net.Util;
 using Ni.Dusts;
 using System;
 using static System.Formats.Asn1.AsnWriter;
-using Ni.NiGlobalNPC;
-using Ni.NiModPlayer;
 using MonoMod.Cil;
 using System.Reflection;
 using Ni.Buffs;
 using Ni.Items.AccEffects;
+using Ni.Core;
+using Ni.Helpers;
 
 namespace Ni
 {
@@ -48,7 +47,7 @@ namespace Ni
         public override void Load()
         {
             
-            AssetLoader.LoadAsset();
+            AssetHelper.LoadAsset();
             #region 加字典
             eliteStr.Add(1, "分裂");
             eliteStr.Add(2, "再生");
@@ -180,11 +179,11 @@ namespace Ni
                         float scale6 = dust.scale * (1f - n / 10f);
                         Color color5 = Lighting.GetColor((int)(dust.position.X + 4.0) / 16, (int)(dust.position.Y + 4.0) / 16);
                         color5 = dust.GetAlpha(color5);
-                        sb.Draw(AssetLoader.ElecCyan_Dust, value5 - Main.screenPosition, dust.frame, color5, dust.rotation, new Vector2(4f, 4f), scale6, SpriteEffects.None, 0f);
+                        sb.Draw(AssetHelper.ElecCyan_Dust, value5 - Main.screenPosition, dust.frame, color5, dust.rotation, new Vector2(4f, 4f), scale6, SpriteEffects.None, 0f);
                     }
                     Color newColor = Lighting.GetColor((int)(dust.position.X + 4.0) / 16, (int)(dust.position.Y + 4.0) / 16);
                     newColor = dust.GetAlpha(newColor);
-                    sb.Draw(AssetLoader.ElecCyan_Dust, dust.position - Main.screenPosition, dust.frame, newColor, dust.GetVisualRotation(), new Vector2(4f, 4f), dust.scale, SpriteEffects.None, 0f);
+                    sb.Draw(AssetHelper.ElecCyan_Dust, dust.position - Main.screenPosition, dust.frame, newColor, dust.GetVisualRotation(), new Vector2(4f, 4f), dust.scale, SpriteEffects.None, 0f);
                 }
             }
             sb.End();
@@ -268,7 +267,7 @@ namespace Ni
             //On.Terraria.Main.UpdateWeather -= Main_UpdateWeather;
             //On.Terraria.Main.UpdateTime_SpawnTownNPCs -= Main_UpdateTime_SpawnTownNPCs;
             //On.Terraria.Main.DoUpdate_AnimateWaterfalls -= Main_DoUpdate_AnimateWaterfalls;
-            AssetLoader.UnloadAsset();
+            AssetHelper.UnloadAsset();
             instance = null;
             base.Unload();
         }

@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 using System;
 using Microsoft.Xna.Framework.Graphics;
 using System.Text;
-using Ni.NiModPlayer;
+using Ni.Core;
 
 namespace Ni.Projectiles.Minions
 {

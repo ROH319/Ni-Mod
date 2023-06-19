@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework;
 using System;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.Audio;
+using Ni.Helpers;
 
 namespace Ni.Items.Accessories
 {
@@ -30,7 +31,7 @@ namespace Ni.Items.Accessories
             {
                 cooldown = 300;
                 CombatText.NewText(player.getRect(), Color.White, "咔！咔咔！");
-                SoundEngine.PlaySound(AssetLoader.Kakaa, player.Center);
+                SoundEngine.PlaySound(AssetHelper.Kakaa, player.Center);
             }
             base.UpdateAccessory(player, hideVisual);
         }
@@ -44,7 +45,7 @@ namespace Ni.Items.Accessories
             {
                 cooldown = 300;
                 CombatText.NewText(player.getRect(), Color.White, "咔！咔咔！");
-                SoundEngine.PlaySound(AssetLoader.Kakaa, player.Center);
+                SoundEngine.PlaySound(AssetHelper.Kakaa, player.Center);
             }
             base.UpdateVanity(player);
         }

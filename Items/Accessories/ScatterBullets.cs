@@ -5,7 +5,7 @@ using Terraria;
 using Ni;
 using Microsoft.Xna.Framework;
 using System;
-using Ni.NiModPlayer;
+using Ni.Core;
 using Ni.Items.AccEffects;
 
 namespace Ni.Items.Accessories

@@ -1,8 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
+using Ni.Core;
 using Ni.Items.Accessories;
 using Ni.Items.Weapons;
-using Ni.NiGlobalNPC;
-using Ni.NiModPlayer;
 using ReLogic.Content;
 using System;
 using System.Collections.Generic;

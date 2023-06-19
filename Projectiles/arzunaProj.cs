@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 using System;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.DataStructures;
-using TemplateMod2.Utils;
+using Ni.Helpers;
 
 namespace Ni.Projectiles
 {
@@ -83,7 +83,7 @@ namespace Ni.Projectiles
 
         public override bool PreDraw(ref Color lightColor)
         {
-            Texture2D tex = AssetLoader.GetTex(Texture);
+            Texture2D tex = AssetHelper.GetTex(Texture);
             sb.AdditiveBegin();
             sb.Draw(tex, Projectile.position - Main.screenPosition, null, Color.White, Projectile.rotation, tex.Size() / 2, Projectile.scale, 0, 0);
             sb.VanillaBegin();

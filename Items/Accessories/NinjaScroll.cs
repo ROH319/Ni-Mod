@@ -6,7 +6,7 @@ using Ni;
 using Microsoft.Xna.Framework;
 using System;
 using Microsoft.Xna.Framework.Graphics;
-using Ni.NiModPlayer;
+using Ni.Core;
 
 namespace Ni.Items.Accessories
 {/*

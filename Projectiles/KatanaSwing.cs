@@ -6,12 +6,13 @@ using Ni;
 using Microsoft.Xna.Framework;
 using System;
 using Microsoft.Xna.Framework.Graphics;
+using Ni.Helpers;
 
 namespace Ni.Projectiles
 {
     public class KatanaSwing : BaseRotateProj
     {
-        public override string Texture => AssetLoader.TransparentImg;
+        public override string Texture => AssetHelper.TransparentImg;
         public override void SetStaticDefaults()
         {
             Main.projFrames[Type] = 6;
@@ -49,7 +50,7 @@ namespace Ni.Projectiles
         }
         public override void PostDraw(Color lightColor)
         {
-            sb.Draw(AssetLoader.KatanaSwing[Projectile.frame], Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation, AssetLoader.KatanaSwing[Projectile.frame].Size() / 2,
+            sb.Draw(AssetHelper.KatanaSwing[Projectile.frame], Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation, AssetHelper.KatanaSwing[Projectile.frame].Size() / 2,
                 Projectile.scale, ai0 == 1 ? SpriteEffects.FlipHorizontally : 0, 0);
             base.PostDraw(lightColor);
         }

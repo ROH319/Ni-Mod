@@ -8,6 +8,7 @@ using System;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.DataStructures;
 using ReLogic.Content;
+using Ni.Helpers;
 
 namespace Ni.Buffs
 {
@@ -22,7 +23,7 @@ namespace Ni.Buffs
             if (Main.netMode != NetmodeID.Server)
             {
                 // 不! 要! 在服务器上加载材质!
-                tex = AssetLoader.GetTex("Ni/Buffs/PenNibBuff");
+                tex = AssetHelper.GetTex("Ni/Buffs/PenNibBuff");
             }
         }
         public override void Update(Player player, ref int buffIndex)
