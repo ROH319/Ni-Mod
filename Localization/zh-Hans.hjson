@@ -303,11 +303,7 @@ Mods: {
 			Envenom: 你的伤害减少{0}%
 			Barricade1: 增加等同于防御力的最大生命值
 			Barricade2: 增加最大生命值,数值等同于防御力*1.5
-			ATC:
-				'''
-				发射弹幕时，对附近所有敌怪造成{0}{1}点伤害
-				[c/AAAAAA:花后地牢掉落]
-				'''
+			ATC: 发射弹幕时，对附近所有敌怪造成{0}{1}点伤害 /n[c/AAAAAA:花后地牢掉落]
 			Electrodynamics: 充能球弹幕被清除时，电击附近所有敌怪，造成{0}{1}%伤害
 			Fasting1: 增加{0}{1}%魔法伤害
 			Fasting2: "{0}{1}点防御力"
@@ -331,6 +327,16 @@ Mods: {
 			// WarJavelin_Tele.DisplayName: War Javelin_ Tele
 			// WarJavelinProj.DisplayName: War Javelin Proj
 			// TestProj.DisplayName: Test Proj
+			// DownWellLogicProj.DisplayName: Down Well Logic Proj
+			// IceBullet.DisplayName: Ice Bullet
+			// IceCrystal.DisplayName: Ice Crystal
+			// IceSpear.DisplayName: Ice Spear
+			// Icicle.DisplayName: Icicle
+		}
+
+		NPCs: {
+			Niflheim.DisplayName: 尼福尔海姆
+			// IcePillar.DisplayName: Ice Pillar
 		}
 	}
 }

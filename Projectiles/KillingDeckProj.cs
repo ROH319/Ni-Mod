@@ -53,25 +53,28 @@ namespace Ni.Projectiles
         bool canback;
         public override void AI()
         {
-            toplr = player.Center - Projectile.Center;
-            toplr.Normalize();
-            if (ai0 == 0)
+            #region CheckActive
+            if (tiedto != null)
             {
-                Projectile.rotation += (ai1 == 0) ? 0.1f : 0f;
-                if (Main.time % 2 == 0)
+                Projectile.Center = tiedto.Center - offset;
+                if (!tiedto.active)
                 {
-                    Projectile.velocity *= 0.99f;
-                }
-                if (tiedto != null)
-                {
-                    Projectile.Center = tiedto.Center - offset;
-                    if (!tiedto.active)
-                    {
-                        Projectile.Kill();
-                    }
+                    Projectile.Kill();
                 }
             }
-            else if(ai0 == 1)
+            #endregion
+            toplr = player.Center - Projectile.Center;
+            toplr.Normalize();
+            #region ¼ÇÂ¼µ¯Ä»¹ì¼£
+            for (int i = Projectile.oldPos.Length - 1; i > 0; i--)
+            {
+                Projectile.oldPos[i] = Projectile.oldPos[i - 1];
+                Projectile.oldRot[i] = Projectile.oldRot[i - 1];
+            }
+            Projectile.oldPos[0] = Projectile.Center;
+            Projectile.oldRot[0] = Projectile.rotation;
+            #endregion
+            if (ai0 == 1)
             {
                 Projectile.damage = (int)player.GetTotalDamage(DamageClass.Ranged).ApplyTo(Projectile.originalDamage);
                 Projectile.CritChance = 100;
@@ -85,58 +88,27 @@ namespace Ni.Projectiles
                     }
                 }
                 canback = true;
+                return;
             }
-
-            #region ??????
-            for (int i = Projectile.oldPos.Length - 1; i > 0; i--)
+            Projectile.rotation += (ai1 == 0) ? 0.1f : 0f;
+            if (Main.time % 2 == 0)
             {
-                Projectile.oldPos[i] = Projectile.oldPos[i - 1];
-                Projectile.oldRot[i] = Projectile.oldRot[i - 1];
+                Projectile.velocity *= 0.99f;
             }
-            Projectile.oldPos[0] = Projectile.Center;
-            Projectile.oldRot[0] = Projectile.rotation;
-            #endregion
         }
 
         public override bool PreDraw(ref Color lightColor)
         {
-            if (Projectile.velocity != Vector2.Zero)
+            if (Projectile.velocity == Vector2.Zero) return base.PreDraw(ref lightColor);
+            sb.AdditiveBegin(SpriteSortMode.Deferred);
+            for (int i = Projectile.oldPos.Length - 1; i >= 0; i -= 1)
             {
-                sb.AdditiveBegin(SpriteSortMode.Deferred);
-                for (int i = Projectile.oldPos.Length - 1; i >= 0; i -= 1)
-                {
-                    //Vector2 oldpos = Projectile.oldPos[i] + Projectile.Center - Projectile.position;
-                    float factor = 1 - (float)i / Projectile.oldPos.Length;
-                    sb.Draw(tex, Projectile.oldPos[i] - Main.screenPosition, null, Projectile.GetAlpha(Color.White) * factor * 0.6f, Projectile.rotation, tex.Size() / 2, 1, 0, 0);
-                }
-                sb.VanillaBegin();
+                float factor = 1 - (float)i / Projectile.oldPos.Length;
+                sb.Draw(tex, Projectile.oldPos[i] - Main.screenPosition, null, Projectile.GetAlpha(Color.White) * factor * 0.6f, Projectile.rotation, tex.Size() / 2, 1, 0, 0);
             }
+            sb.VanillaBegin();
             return base.PreDraw(ref lightColor);
         }
-        public override void PostDraw(Color lightColor)
-        {
-            /*
-            sb.AdditiveBegin();
-            float traillength = Math.Abs(Projectile.velocity.X) + Math.Abs(Projectile.velocity.Y);
-            traillength *= 0.3f;
-            traillength *= 10f;
-            if (traillength > 80f)
-                traillength = 80f;
-
-            for (int n = 0; n < traillength; n++)
-            {
-                Vector2 pos = Projectile.Center - Projectile.velocity * n / 3;
-                float scale = 0.5f * (1f - n / 120f);
-                Color poscolor = Projectile.GetAlpha(lightColor);
-                sb.Draw(tex, pos - Main.screenPosition, null, poscolor, Projectile.rotation + MathHelper.PiOver2, tex.Size() / 2, scale, SpriteEffects.None, 0f);
-            }
-            //Color newColor = Projectile.GetAlpha(lightColor);
-            //sb.Draw(tex, Projectile.Center - Main.screenPosition, null, newColor, Projectile.rotation, new Vector2(3f, 5f), Projectile.scale, SpriteEffects.None, 0f);
-
-            sb.VanillaBegin();
-            */
-        }
-
     }
 }
 

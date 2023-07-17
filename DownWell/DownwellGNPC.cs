@@ -28,7 +28,7 @@ namespace Ni.DownWell
             {
                 switch (self.type)
                 {
-                    case 495:
+                    case 495://ÁúÏº
 
                         self.frameCounter += 0.6;
                         if (self.frameCounter < 6)
@@ -42,7 +42,7 @@ namespace Ni.DownWell
                         else
                             self.frameCounter = 0;
                         return;
-                    case 497:
+                    case 497://¾ÞÐÍ¾í¿Ç¹Ö
 
                         self.frameCounter += 0.5;
                         if (self.frameCounter < 6)

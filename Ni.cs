@@ -68,10 +68,7 @@ namespace Ni
             eliteStr.Add(17, "映像");
             #endregion
             Terraria.On_Player.FreeUpPetsAndMinions += Player_FreeUpPetsAndMinions;
-            Terraria.On_NPC.AddBuff += NPC_AddBuff;
             Terraria.On_Main.DrawDust += Main_DrawDust;
-            Terraria.On_Player.Heal += Player_Heal;
-            Terraria.On_Player.UpdateLifeRegen += Player_UpdateLifeRegen;
             Terraria.On_Player.AddBuff += Player_AddBuff;
             #region STOP
             //On.Terraria.Cloud.Update += Cloud_Update;
@@ -84,7 +81,6 @@ namespace Ni
             base.Load();
         }
 
-
         private void Player_AddBuff(Terraria.On_Player.orig_AddBuff orig, Player self, int type, int timeToAdd, bool quiet, bool foodHack)
         {
             self.TryGetModPlayer<NiPlayer>(out NiPlayer niplayer);
@@ -95,21 +91,6 @@ namespace Ni
                 return;
             }
             orig(self, type, timeToAdd, quiet, foodHack);
-        }
-
-        private void Player_UpdateLifeRegen(Terraria.On_Player.orig_UpdateLifeRegen orig, Player self)
-        {
-            orig(self);
-            if (self.TryGetModPlayer<AccMagicFlower>(out AccMagicFlower mf) && mf.MagicFlower)
-            {
-                self.lifeRegen += self.lifeRegen / 2;
-            }
-        }
-
-        private void Player_Heal(Terraria.On_Player.orig_Heal orig, Player self, int amount)
-        {
-            bool magicflower = self.TryGetModPlayer<AccMagicFlower>(out AccMagicFlower mf) && mf.MagicFlower;
-            orig(self, (int)(magicflower ? amount * 1.5 : amount));
         }
 
         #region STOP
@@ -189,24 +170,6 @@ namespace Ni
             sb.End();
         }
 
-        private void NPC_AddBuff(Terraria.On_NPC.orig_AddBuff orig, NPC self, int type, int time, bool quiet)
-        {
-            //if (self.buffImmune[type])
-            //{
-            //    NiGNPC niGNPC = self.GetGlobalNPC<NiGNPC>();
-            //    if (niGNPC.Artifact[type] == -1)
-            //    {
-            //        niGNPC.Artifact[type] = self.IsBoss() ? 6 : 2;
-            //    }
-            //    niGNPC.Artifact[type]--;
-            //    if (niGNPC.Artifact[type] == 0)
-            //    {
-            //        self.buffImmune[type] = false;
-            //    }
-            //    return;
-            //}
-            orig(self,type,time,quiet);
-        }
 
         private void Player_FreeUpPetsAndMinions(Terraria.On_Player.orig_FreeUpPetsAndMinions orig, Player self, Item sItem)
         {
@@ -258,10 +221,7 @@ namespace Ni
             //On.Terraria.Main.DrawInventory -= PrefixDrawInventory;
             //On.Terraria.Player.Hurt -= Player_Hurt;
             Terraria.On_Player.FreeUpPetsAndMinions -= Player_FreeUpPetsAndMinions;
-            Terraria.On_NPC.AddBuff -= NPC_AddBuff;
             Terraria.On_Main.DrawDust -= Main_DrawDust;
-            Terraria.On_Player.Heal -= Player_Heal;
-            Terraria.On_Player.UpdateLifeRegen -= Player_UpdateLifeRegen;
             Terraria.On_Player.AddBuff -= Player_AddBuff;
             //On.Terraria.Cloud.Update -= Cloud_Update;
             //On.Terraria.Main.UpdateWeather -= Main_UpdateWeather;

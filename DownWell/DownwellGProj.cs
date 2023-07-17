@@ -27,7 +27,7 @@ namespace Ni.DownWell
         {
             if (!projectile.noDropItem)
             {
-                if (projectile.type >= 736 && projectile.type <= 738)
+                if (projectile.type >= 736 && projectile.type <= 738)//µØÀÎËé×©
                 {
                     SoundEngine.PlaySound(SoundID.Item127, projectile.position);
                     for (int num978 = 0; num978 < 3; num978++)
@@ -40,8 +40,8 @@ namespace Ni.DownWell
                     if (Main.myPlayer == projectile.owner && Main.tile[projx, projy].HasTile && TileID.Sets.CrackedBricks[Main.tile[projx, projy].TileType] && Main.rand.NextBool(2))
                     {
                         WorldGen.KillTile(projx, projy);
-                        if (Main.netMode != 0)
-                            NetMessage.SendData(17, -1, -1, null, 20, projx, projy);
+                        if (Main.netMode != NetmodeID.SinglePlayer)
+                            NetMessage.SendData(MessageID.TileManipulation, -1, -1, null, 20, projx, projy);
                     }
                 }
             }

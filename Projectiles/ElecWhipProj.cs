@@ -22,7 +22,6 @@ namespace Ni.Projectiles
     {
         public NPC TargetNPC;
         public override string Texture => AssetHelper.TransparentImg;
-        //public List<Vector2> NPCPos = new();
         public List<Vector2> Nodes = new();
         public override void SetDefaults()
         {
@@ -33,7 +32,6 @@ namespace Ni.Projectiles
         public override void OnSpawn(IEntitySource source)
         {
             TargetNPC = Projectile.FindTargetWithinRange(5f);
-            //Main.projectile[0].whoAmI += 0;
             if (ai1 == -1) // 本体，生成其他弹幕
             {
                 /*Vector2 tomouse = Main.MouseWorld - Projectile.Center;
@@ -74,20 +72,7 @@ namespace Ni.Projectiles
                 {
                     Projectile.scale = iscale - 0.2f;
                 }
-                //List<NPC> npcs = new();
                 Projectile parent = Main.projectile[(int)ai1];
-                //if(!npcs.Contains((parent.ModProjectile as ElecWhipProj).TargetNPC))
-                //{
-                //    npcs.Add((parent.ModProjectile as ElecWhipProj).TargetNPC);
-                //}
-                //while (parent.ai[1] != -1)
-                //{
-                //    parent = Main.projectile[(int)parent.ai[1]];
-                //    if (!npcs.Contains((parent.ModProjectile as ElecWhipProj).TargetNPC))
-                //    {
-                //        npcs.Add((parent.ModProjectile as ElecWhipProj).TargetNPC);
-                //    }
-                //}
                 if (parent.ai[1] == -1 && parent.active)
                 {
                     SoundEngine.PlaySound(AssetHelper.ElecWhipShoot, player.Center);
@@ -96,13 +81,11 @@ namespace Ni.Projectiles
                         if (!npc.immortal && npc != null && npc.active && !npc.friendly && Vector2.Distance(npc.Center, Projectile.Center) < 200 * player.whipRangeMultiplier && npc.whoAmI != (parent.ModProjectile as ElecWhipProj).TargetNPC.whoAmI && Projectile.scale > 0.5f && Collision.CanHitLine(npc.Center, 0, 0, Projectile.Center, 0, 0))
                         {
                             TargetNPC = npc;
-                            //Main.NewText($"{npc.whoAmI} {(Main.projectile[(int)ai1].ModProjectile as ElecWhipProj).TargetNPC.whoAmI}");
                             var p = Projectile.NewProjectileDirect(Projectile.GetSource_OnHit(npc,$"{Projectile.scale}"), npc.Center, Vector2.Zero, Projectile.type, Projectile.damage / 2, Projectile.knockBack, player.whoAmI, -1, Projectile.whoAmI);
                         }
                     }
                 }
                 Nodes.Add(Projectile.Center);
-                //for (float i = 0.05f; i < 1f; i += Main.rand.NextFloat(0.05f, MathHelper.Lerp(0.4f, 0.1f, Vector2.Distance(Main.projectile[(int)ai1].Center,Projectile.Center) / 400) ) )
                 for(float i = 0.05f; i < 1f;i += (source is EntitySource_OnHit) ? 0.5f : Main.rand.NextFloat(0.05f,0.1f))
                 {
                     Nodes.Add(Vector2.Lerp(Projectile.Center, Main.projectile[(int)ai1].Center, i) + Helpers.NiUtils.Vector2RandUnit(Main.rand.Next(2, (source is EntitySource_OnHit) ? 8 : 12), 0, MathHelper.TwoPi));
@@ -114,16 +97,14 @@ namespace Ni.Projectiles
         public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
         {
             Nodes.RemoveAll(x => x == Vector2.Zero);
-            if (ai0 == -1)
+            if (ai0 != -1) return base.Colliding(projHitbox, targetHitbox);
+
+            bool[] canhit = new bool[Nodes.Count];
+            for (int i = 0; i < Nodes.Count - 2; i++)
             {
-                bool[] canhit = new bool[Nodes.Count];
-                for(int i = 0; i < Nodes.Count - 2; i++)
-                {
-                    canhit[i] = Helpers.NiUtils.CheckAABBvLineColliding(Nodes[i], Nodes[i + 1], (int)(8 * Projectile.scale), targetHitbox);
-                }
-                return canhit.ToList().Find(x => x == true);
+                canhit[i] = Helpers.NiUtils.CheckAABBvLineColliding(Nodes[i], Nodes[i + 1], (int)(8 * Projectile.scale), targetHitbox);
             }
-            return base.Colliding(projHitbox, targetHitbox);
+            return canhit.ToList().Find(x => x == true);
         }
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
@@ -143,8 +124,6 @@ namespace Ni.Projectiles
             }
             target.AddBuff(ModContent.BuffType<ElectronicWhipDebuff>(), 6 * 60);
             player.MinionAttackTargetNPC = target.whoAmI;
-            //Projectile.friendly = false;
-            //base.OnHitNPC(target, damage, knockback, crit);
         }
         public override void AI()
         {
@@ -160,24 +139,18 @@ namespace Ni.Projectiles
         public override bool PreDraw(ref Color lightColor)
         {
             Texture2D trail = AssetHelper.TrailShape;
-            //sb.AdditiveBegin();
             sb.AdditiveBegin(SpriteSortMode.Deferred);
-            //int n = 0;
             for (int i = 0; i < Nodes.Count - 1; i++)
             {
                 float distance = Vector2.Distance(Nodes[i], Nodes[i + 1]);
                 for (float j = 0; j < distance; j += 0.5f)
                 {
-                    //n++;
                     sb.Draw(trail, Vector2.Lerp(Nodes[i], Nodes[i + 1], j / distance) - Main.screenPosition, null, Color.SkyBlue, 0f, trail.Size() / 2, Projectile.scale / 48, 0, 0);
                 }
-                //sb.Draw(tex, Vector2.Lerp(Nodes[i], Nodes[i + 1], 0.5f) - Main.screenPosition, null, Color.SkyBlue, (Nodes[i + 1] - Nodes[i]).ToRotation(), trail.Size() / 2, Projectile.scale / 6, 0, 0);
             }
-            //Main.NewText($"{n}");
             sb.VanillaBegin();
             return false;
         }
     }
-
 }
 

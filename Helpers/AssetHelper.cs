@@ -1,3 +1,4 @@
+using Microsoft.CodeAnalysis.Host.Mef;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 using Terraria.Audio;
@@ -7,10 +8,27 @@ namespace Ni.Helpers
 {
     public class AssetHelper
     {
-
         public static string ImagePath = "Ni/Images/";
         public static string SoundPath = "Ni/Sounds/";
+        public static string EffectPath = "Ni/Effects/";
         public static string TransparentImg = "Ni/Images/A";
+
+        public static string DeadCellsSoundPath = SoundPath + "DeadCells/";
+        public static string DungreedSoundPath = SoundPath + "Dungreed/";
+        public static string STSSoundPath = SoundPath + "SlayTheSpire/";
+
+        public static string NiflheimPath = ImagePath + "Niflheim/";
+
+        public static Texture2D[] IcicleDestroy = new Texture2D[3];
+        public static Texture2D[] Icicle = new Texture2D[10];
+        public static Texture2D[] IceSpear = new Texture2D[13];
+        public static Texture2D[] IcePillarDestroy = new Texture2D[3];
+        public static Texture2D[] IcePillar = new Texture2D[20];
+        public static Texture2D[] IceCryStal = new Texture2D[21];
+        public static Texture2D[] NiflheimIdle = new Texture2D[6];
+        public static Texture2D[] NiflheimEnter = new Texture2D[16];
+        public static Texture2D[] NiflheimDie = new Texture2D[30];
+        public static Texture2D[] NiflheimAttack = new Texture2D[11];
         public static Texture2D KatanaHUD;
         public static Texture2D KatanaFlash;
         public static Texture2D[] KatanaSwing = new Texture2D[6];
@@ -33,18 +51,11 @@ namespace Ni.Helpers
         public static Texture2D Color_Yellow;
         public static Texture2D Color_Yellow_Orange;
         public static Texture2D Color_Yellow_Orange2;
-        public static Texture2D EliteBarBorder;
-        public static Texture2D EliteBarFill;
-        public static Texture2D EliteBarGrow;
-        public static Texture2D CrimsonCircle;
-        public static Texture2D MawOfDeepProj;
         public static Texture2D TrailShape;
-
         public static SoundStyle Kakaa;
         public static SoundStyle Katana;
         public static SoundStyle BlockAttack;
         public static SoundStyle ElecWhipShoot;
-        public static SoundStyle KunaiShoot;
         public static SoundStyle[] Card_Release = new SoundStyle[4];
         public static SoundStyle Card_Hit;
         public static SoundStyle LaserBow_Extra;
@@ -62,35 +73,84 @@ namespace Ni.Helpers
 
         public static void LoadAsset()
         {
-            SetColor = ModContent.Request<Effect>("Ni/Effects/SetColor", AssetRequestMode.ImmediateLoad).Value;
-            MyColor = ModContent.Request<Effect>("Ni/Effects/MyColor", AssetRequestMode.ImmediateLoad).Value;
-            Trail = ModContent.Request<Effect>("Ni/Effects/Trail", AssetRequestMode.ImmediateLoad).Value;
+            SetColor = ModContent.Request<Effect>(EffectPath + "SetColor", AssetRequestMode.ImmediateLoad).Value;
+            MyColor = ModContent.Request<Effect>(EffectPath + "MyColor", AssetRequestMode.ImmediateLoad).Value;
+            Trail = ModContent.Request<Effect>(EffectPath + "Trail", AssetRequestMode.ImmediateLoad).Value;
 
-            BlockAttack = GetSound(SoundPath + "SOTE_SFX_BlockAtk_v2");
-            ElecWhipShoot = GetSound(SoundPath + "weapon_electricwhip_release1");
-            KunaiShoot = GetSound(SoundPath + "weapon-sound8");
+            #region DeadCells
+            ElecWhipShoot = GetSound(DeadCellsSoundPath + "Electricwhip_release1");
 
-            Kakaa = GetSound(SoundPath + "STS_VO_CrowCultist_1a");
-            Katana = GetSound(SoundPath + "katana");
-            
-            for(int i = 1;i<5; i++)
+            for (int i = 1; i < 5; i++)
             {
-                Card_Release[i - 1] = GetSound(SoundPath + $"cards_release{i}");
+                Card_Release[i - 1] = GetSound(DeadCellsSoundPath + $"cards_release{i}");
             }
-            Card_Hit = GetSound(SoundPath + "cards_hit");
+            Card_Hit = GetSound(DeadCellsSoundPath + "cards_hit");
 
-            LaserBow_Use = GetSound(SoundPath + "LaserBow_Use");
-            LaserBow_Extra = GetSound(SoundPath + "LaserBow_Extra");
+            WarJavelin_Tp = GetSound(DeadCellsSoundPath + "WarJavelin_Tp");
+            WarJavelin_Use = GetSound(DeadCellsSoundPath + "WarJavelin_Use");
 
-            WarJavelin_Tp = GetSound(SoundPath + "WarJavelin_Tp");
-            WarJavelin_Use = GetSound(SoundPath + "WarJavelin_Use");
+            #endregion
 
-            LightningOrb_Channel = GetSound(SoundPath + "LightningOrb_Channel");
-            LightningOrb_Evoke = GetSound(SoundPath + "LightningOrb_Evoke");
-            LightningOrb_Passive = GetSound(SoundPath + "LightningOrb_Passive");
+            #region Dungreed
+            Katana = GetSound(DungreedSoundPath + "Katana");
 
-            FlameBarrier_Evoke = GetSound(SoundPath + "FlameBarrier_Evoke");
-            FlameBarrier_Graze = GetSound(SoundPath + "FireIgnite");
+            LaserBow_Use = GetSound(DungreedSoundPath + "LaserBow_Use");
+            LaserBow_Extra = GetSound(DungreedSoundPath + "LaserBow_Extra");
+            #endregion
+
+            #region SlayTheSpire
+            BlockAttack = GetSound(STSSoundPath + "BlockAtk");
+            Kakaa = GetSound(STSSoundPath + "CrowCultist");
+
+            LightningOrb_Channel = GetSound(STSSoundPath + "LightningOrb_Channel");
+            LightningOrb_Evoke = GetSound(STSSoundPath + "LightningOrb_Evoke");
+            LightningOrb_Passive = GetSound(STSSoundPath + "LightningOrb_Passive");
+
+            FlameBarrier_Evoke = GetSound(STSSoundPath + "FlameBarrier_Evoke");
+            FlameBarrier_Graze = GetSound(STSSoundPath + "FireIgnite");
+            #endregion
+
+
+            for(int i = 0; i < 3; i++)
+            {
+                IcicleDestroy[i] = GetTex(NiflheimPath + $"Icicle/IcicleDestroyFX{i}");
+            }
+            for(int i = 0; i < 10; i++)
+            {
+                Icicle[i] = GetTex(NiflheimPath + $"Icicle/Icicle{i}");
+            }
+            for(int i = 0; i < 13; i++)
+            {
+                IceSpear[i] = GetTex(NiflheimPath + "IceSpear/IceSpear" + (i < 10 ? "0" + $"{i}" : $"{i}"));
+            }
+            for(int i = 0; i < 3; i++)
+            {
+                IcePillarDestroy[i] = GetTex(NiflheimPath + $"IcePillar/IcePillarDestroyFX{i}");
+            }
+            for(int i = 0; i < 20; i++)
+            {
+                IcePillar[i] = GetTex(NiflheimPath + "IcePillar/IcePillar" + (i < 10 ? "0" + $"{i}" : $"{i}"));
+            }
+            for(int i = 0; i < 21; i++)
+            {
+                IceCryStal[i] = GetTex(NiflheimPath + "IceCrystal/IceCrystalFX" + (i < 10 ? "0" + $"{i}" : $"{i}"));
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                NiflheimIdle[i] = GetTex(NiflheimPath + $"TrueNPC/NiflheimIdle{i}");
+            }
+            for(int i = 0; i < 16; i++)
+            {
+                NiflheimEnter[i] = GetTex(NiflheimPath + "TrueNPC/NiflheimEnter" + (i < 10 ? "0" + $"{i}" : $"{i}"));
+            }
+            for(int i = 0; i < 30; i++)
+            {
+                NiflheimDie[i] = GetTex(NiflheimPath + "TrueNPC/NiflheimDie" + (i < 10 ? "0" + $"{i}" : $"{i}"));
+            }
+            for (int i = 0; i < 11; i++) 
+            {
+                NiflheimAttack[i] = GetTex(NiflheimPath + "TrueNPC/NiflheimAttack" + (i < 10 ? "0" + $"{i}" : $"{i}"));
+            }
 
             KatanaHUD = GetTex(ImagePath + "KatanaSwing/DashKatanaHUD");
             KatanaFlash = GetTex(ImagePath + "KatanaSwing/KatanaFlash");
@@ -127,18 +187,11 @@ namespace Ni.Helpers
             Color_Yellow = GetTex(ImagePath + "Color_Yellow");
             Color_Yellow_Orange = GetTex(ImagePath + "Color_Yellow_Orange");
             Color_Yellow_Orange2 = GetTex(ImagePath + "Color_Yellow_Orange2");
-            EliteBarBorder = GetTex(ImagePath + "EliteBarBorder");
-            EliteBarFill = GetTex(ImagePath + "EliteBarFill");
-            EliteBarGrow = GetTex(ImagePath + "EliteBarGrow");
-            CrimsonCircle = GetTex("Ni/Projectiles/CrimsonCircle");
-            MawOfDeepProj = GetTex("Ni/Projectiles/MawOfDeepProj");
         }
 
         public static void UnloadAsset()
         {
             SetColor = null;
-
-            
             LightningOrb = null;
             OrbFX = null;
             LightningProj = null;
@@ -152,14 +205,9 @@ namespace Ni.Helpers
             Color_Yellow = null;
             Color_Yellow_Orange = null;
             Color_Yellow_Orange2 = null;
-            EliteBarBorder = null;
-            EliteBarFill = null;
-            EliteBarGrow = null;
-            CrimsonCircle = null;
-            MawOfDeepProj = null;
         }
 
-        public static Texture2D GetTex(string path) => ModContent.Request<Texture2D>(path, AssetRequestMode.ImmediateLoad).Value;
+        public static Texture2D GetTex(string path) => ModContent.Request<Texture2D>(path, AssetRequestMode.ImmediateLoad)?.Value;
 
         public static SoundStyle GetSound(string path) => new SoundStyle(path, SoundType.Sound);
     }

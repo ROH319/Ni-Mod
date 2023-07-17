@@ -13,29 +13,9 @@ namespace Ni.Projectiles
 {
     public abstract class BaseRotateProj:BaseProj
     {
-        
-        bool canhit = true;
-        bool hited = false;
         public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
         {
             return NiUtils.CheckAABBvLineColliding(Projectile, targetHitbox);
         }
-
-        public override bool PreAI()
-        {
-            //Main.NewText($"{hitcooldown}");
-            if (hited && hitcooldown > 0)
-            {
-                hitcooldown--;
-                
-            }
-            if (hitcooldown < 1)
-            {
-                canhit = true;
-                hited = false;
-            }
-            return true;
-        }
-        
     }
 }

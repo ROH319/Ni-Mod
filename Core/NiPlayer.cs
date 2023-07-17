@@ -30,56 +30,56 @@ namespace Ni.Core
         public bool BaseCheckActive;
         public int SnakeCount;
         public bool Magnifier;
-        public bool LightningOrb;
-        public bool PenNibCanCount;
-        public int PenNibCount;
-        public bool EmotionChip;
+        //public bool LightningOrb;
+        //public bool PenNibCanCount;
+        //public int PenNibCount;
+        //public bool EmotionChip;
         public bool FlameBarrier;
-        public bool Brimstone;
-        public bool Envenom;
-        public bool WBlade;
-        public bool NinjaScroll;
+        //public bool Brimstone;
+        //public bool Envenom;
+        //public bool WBlade;
+        //public bool NinjaScroll;
         public bool Artifact;
-        public bool Barricade;
+        //public bool Barricade;
         public bool[] UpgradedEffect = new bool[4];
         //public bool critup;
 
         public override void ModifyItemScale(Item item, ref float scale)
         {
             #region 魔法放大镜效果
-            if (Magnifier)
-            {
-                scale *= 2f;
-            }
+            //if (Magnifier)
+            //{
+            //    scale *= 2f;
+            //}
             #endregion
             base.ModifyItemScale(item, ref scale);
         }
         public override void PostHurt(Player.HurtInfo info)
         {
             #region 情感芯片上buff
-            if (EmotionChip)
-            {
-                Player.AddBuff(ModContent.BuffType<EmotionChipBuff>(), 6 * 60, false);
-            }
+            //if (EmotionChip)
+            //{
+            //    Player.AddBuff(ModContent.BuffType<EmotionChipBuff>(), 6 * 60, false);
+            //}
             #endregion
             base.PostHurt(info);
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             #region 钢笔尖计数
-            if (Player.HasBuff<PenNibBuff>())
-            {
-                PenNibCount = 0;
-                Player.ClearBuff(ModContent.BuffType<PenNibBuff>());
-            }
-            if (PenNibCanCount)
-            {
-                PenNibCount++;
-                if (PenNibCount > 8 && !Player.HasBuff<PenNibBuff>())
-                {
-                    Player.AddBuff(ModContent.BuffType<PenNibBuff>(), 1145141919);
-                }
-            }
+            //if (Player.HasBuff<PenNibBuff>())
+            //{
+            //    PenNibCount = 0;
+            //    Player.ClearBuff(ModContent.BuffType<PenNibBuff>());
+            //}
+            //if (PenNibCanCount)
+            //{
+            //    PenNibCount++;
+            //    if (PenNibCount > 8 && !Player.HasBuff<PenNibBuff>())
+            //    {
+            //        Player.AddBuff(ModContent.BuffType<PenNibBuff>(), 1145141919);
+            //    }
+            //}
             #endregion
             base.OnHitNPC(target, hit, damageDone);
         }
@@ -99,20 +99,20 @@ namespace Ni.Core
         {
             
             #region 涂毒效果
-            if (Envenom)
-            {
-                target.AddBuff(BuffID.Poisoned, (proj.damage / 10 < 1) ? 1 : proj.damage / 10);
-            }
+            //if (Envenom)
+            //{
+            //    target.AddBuff(BuffID.Poisoned, (proj.damage / 10 < 1) ? 1 : proj.damage / 10);
+            //}
             #endregion
             base.OnHitNPCWithProj(proj, target, hit, damageDone);
         }
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
             #region 钢笔尖双倍伤害效果
-            if (Player.HasBuff<PenNibBuff>())
-            {
-                modifiers.FinalDamage *= 2;
-            }
+            //if (Player.HasBuff<PenNibBuff>())
+            //{
+            //    modifiers.FinalDamage *= 2;
+            //}
             #endregion
             base.ModifyHitNPC(target, ref modifiers);
         }
@@ -121,10 +121,10 @@ namespace Ni.Core
             var source = npc.GetGlobalNPC<NiGNPC>().entitySource;
             EntitySource_Parent parent = source is EntitySource_Parent ? source as EntitySource_Parent : null;
             #region 硫磺加伤
-            if (Brimstone)
-            {
-                modifiers.FinalDamage *= 1.1f;
-            }
+            //if (Brimstone)
+            //{
+            //    modifiers.FinalDamage *= 1.1f;
+            //}
             #endregion
             base.ModifyHitByNPC(npc, ref modifiers);
         }
@@ -132,10 +132,10 @@ namespace Ni.Core
         {
             NiGProj niGProj = proj.GetGlobalProjectile<NiGProj>();
             #region 硫磺加伤
-            if (Brimstone)
-            {
-                modifiers.FinalDamage *= 1.1f;
-            }
+            //if (Brimstone)
+            //{
+            //    modifiers.FinalDamage *= 1.1f;
+            //}
             #endregion
             //Main.NewText($"proj.damage: {proj.damage} damage: {damage}");
             //--------------proj.damage: 35 普通: 70(两倍) 专家: 140(四倍) 大师: 210(六倍) ------------------
@@ -146,29 +146,25 @@ namespace Ni.Core
         public override void ResetEffects()
         {
             BaseCheckActive = false;
-            SnakeCount = 0;
-            Magnifier = false;
-            LightningOrb = false;
-            PenNibCanCount = false;
-            EmotionChip = false;
-            FlameBarrier = false;
-            Brimstone = false;
-            Envenom = false;
-            WBlade = false;
-            NinjaScroll = false;
-            Artifact = false;
-            Barricade = false;
+            //SnakeCount = 0;
+            //Magnifier = false;
+            //LightningOrb = false;
+            //PenNibCanCount = false;
+            //EmotionChip = false;
+            //FlameBarrier = false;
+            //Brimstone = false;
+            //Envenom = false;
+            //WBlade = false;
+            //NinjaScroll = false;
+            //Artifact = false;
+            //Barricade = false;
             //critup = false;
         }
 
         public override float UseSpeedMultiplier(Item item)
         {
-            return Magnifier ? 0.7f : 1f;
-        }
-        public override bool CanUseItem(Item item)
-        {
-            NiGItem niGItem = item.GetGlobalItem<NiGItem>();
-            return base.CanUseItem(item);
+            //return Magnifier ? 0.7f : 1f;
+            return base.UseSpeedMultiplier(item);
         }
         public override void PreUpdateMovement()
         {
@@ -181,17 +177,16 @@ namespace Ni.Core
             Vector2 tomouse = Main.MouseWorld - Player.Center;
             tomouse.Normalize();
             #region 壁垒
-            if (Barricade)
-            {
-                //Player.statLifeMax2 += (int)(Player.statDefense * (HasUpgradedItem[0] ? 1.5 : 1));
-            }
+            //if (Barricade)
+            //{
+            //    Player.statLifeMax2 += (int)(Player.statDefense * (HasUpgradedItem[0] ? 1.5 : 1));
+            //}
             #endregion
             #region 检查召唤物是否溢出
             if (OwnedMinions.Count > 0)
             {
                 OwnedMinions[0].ai[0] += 0;
                 OwnedMinions.RemoveAll(x => x == null || !x.active);
-                //OwnedMinions.Sort((x,y) => x.whoAmI > y.whoAmI ? 1 : 0);
             }
             if (OwnedMinions.Count > Player.maxMinions)
             {
@@ -211,19 +206,6 @@ namespace Ni.Core
                         }
                         p.Kill();
                     }
-                    //if (OwnedMinions[i].type == ModContent.ProjectileType<LightningOrb>() && OwnedMinions[i].ai[0] == 1)
-                    //{
-                    //    if (OwnedMinions[i].ai[0] == 1)
-                    //    {
-                    //        for(int j = i + 1; j < OwnedMinions.Count; j++)
-                    //        {
-                    //            if (OwnedMinions[j].type == ModContent.ProjectileType<LightningOrb>())
-                    //            {
-                    //                OwnedMinions[j].ai[0]--;
-                    //            }
-                    //        }
-                    //    }
-                    //}
                 }
             }
             #endregion

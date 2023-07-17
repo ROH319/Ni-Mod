@@ -37,7 +37,6 @@ namespace Ni.Projectiles
 
         public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
         {
-            //return NiUtil.CheckAABBvLineColliding(new Vector2(ai0, ai1), Collision.SolidTiles(Projectile.position + new Vector2(0, 20), 16, 16) ? Projectile.position + new Vector2(0, -20) : Projectile.position, 100,targetHitbox);
             return NiUtils.CheckAABBvLineColliding(pretelepos, currpos, 40, targetHitbox);
         }
 

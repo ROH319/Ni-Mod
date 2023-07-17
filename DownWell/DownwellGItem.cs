@@ -24,14 +24,21 @@ namespace Ni.DownWell
                 {
                     return false;
                 }
-                Main.NewText($"Shoot{ Main.time}");
+                Main.NewText($"Shoot{player.itemAnimation} {player.itemTime}");
                 ChargerCost(player);
+                item.autoReuse = true;
+                item.reuseDelay = 1;
+                dwplayer.FireBufferFrame = 7;
                 var length = velocity.Length();
                 velocity = new Vector2(length, 0).RotatedBy(MathHelper.ToRadians(90));
-                player.gravity = 0f;
-                player.velocity.Y -= 2f;
                 var proj = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI);
+                proj.scale *= 2;
+                proj.position = proj.Center;
+                proj.width *= 2;
+                proj.height *= 2;
+                proj.Center = proj.position;
 
+                
                 var strength = Main.rand.Next(8, 10);
                 var directionVector = new Vector2(0, (Main.rand.NextBool(2) ? -1 : 1) * 6);
                 PunchCameraModifier modifier = new(player.Center, directionVector, strength * 0.1f, 5f, 5, 600f, "NiCM");

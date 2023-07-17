@@ -28,27 +28,25 @@ namespace Ni.Items.AccEffects
         public override void OnHitByItem(NPC npc, Player player, Item item, NPC.HitInfo hit, int damageDone)
         {
             player.TryGetModPlayer<AccMarbles>(out AccMarbles mplr);
-            if (!FirstAttacked)
+            if (FirstAttacked) return;
+            if (mplr.Marbles)
             {
-                if (mplr.Marbles)
-                {
-                    npc.AddBuff(ModContent.BuffType<MarbledBuff>(), 2 * 60);
-                }
-                FirstAttacked = true;
+                npc.AddBuff(ModContent.BuffType<MarbledBuff>(), 2 * 60);
             }
+            FirstAttacked = true;
         }
+
         public override void OnHitByProjectile(NPC npc, Projectile projectile, NPC.HitInfo hit, int damageDone)
         {
             Main.player[projectile.owner].TryGetModPlayer<AccMarbles>(out AccMarbles mplr);
-            if (!FirstAttacked)
+            if (FirstAttacked) return;
+            if (mplr.Marbles)
             {
-                if (mplr.Marbles)
-                {
-                    npc.AddBuff(ModContent.BuffType<MarbledBuff>(), 2 * 60);
-                }
-                FirstAttacked = true;
+                npc.AddBuff(ModContent.BuffType<MarbledBuff>(), 2 * 60);
             }
+            FirstAttacked = true;
         }
+
         public override void ModifyHitNPC(NPC npc, NPC target, ref NPC.HitModifiers modifiers)
         {
             if (Marbled)

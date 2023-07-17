@@ -18,15 +18,12 @@ namespace Ni.Projectiles
 {
     public class KatanaProj : BaseHeldProj
     {
-        //public override string Texture => AssetHelper.TransparentImg; 
-        //public Texture2D image = AssetHelper.GetTex("Ni/Projectiles/KatanaProj");
         public override int Weapon => ModContent.ItemType<DashKatana>();
         public bool cooldowned;
         public int cooldowncounter;
 
         public int dashduration;
         public Vector2 dashvec;
-        public Vector2 dashpre;
         public int maxStrength;
         public override void SetDefaults()
         {
@@ -44,7 +41,6 @@ namespace Ni.Projectiles
         public override void AI()
         {
             Projectile.damage = (int)player.GetTotalDamage(DamageClass.Melee).ApplyTo(player.HeldItem.damage);
-            //Main.slimeRain = false;
             #region CheckActive
             if (player.dead)
             {
@@ -52,7 +48,6 @@ namespace Ni.Projectiles
             }
             #endregion
             maxStrength = (int)(7 + (player.GetTotalAttackSpeed(DamageClass.Melee) - 1) / 2 * 10);
-            //player.velocity.Y = 1000;
             #region ≥Â¥Ã¬ﬂº≠
             float progress = dashduration < 6 ? dashduration * 1.5f / 10f : 1;
             if (dashduration == 0)
@@ -60,7 +55,6 @@ namespace Ni.Projectiles
                 dashduration = 12;
                 player.dashDelay = 22;
                 dashvec = Vector2.Zero;
-                //player.velocity = dashpre;//∏¥‘≠ÀŸ∂»
             }
             if(dashvec != Vector2.Zero)//≥Â¥Ã◊¥Ã¨
             {
@@ -71,7 +65,6 @@ namespace Ni.Projectiles
             }
             if(player.altFunctionUse == 1 && player.dashDelay == 0 && !player.mount.Active)//∞¥œ¬”“º¸«“¿‰»¥Œ™0 ±
             {
-                dashpre = player.velocity;
                 dashvec = (Main.MouseWorld - player.Center).NormalizeV() * 45;
                 if (ai1 < maxStrength)
                 {
@@ -118,7 +111,6 @@ namespace Ni.Projectiles
         }
         public override void PostDraw(Color lightColor)
         {
-            //sb.AdditiveBegin();
             if(ai0 > 0)
             {
                 //…¡À∏
@@ -126,9 +118,7 @@ namespace Ni.Projectiles
             }
             sb.Draw(AssetHelper.KatanaHUD, player.position - Main.screenPosition + new Vector2(10, 60), null, Color.White, 0f, AssetHelper.KatanaHUD.Size() / 2, 2f, 0, 0);
             sb.DrawString(FontAssets.MouseText.Value, $"{ai1}", player.position - Main.screenPosition + new Vector2(5, 60), Color.Lerp(Color.White, Color.Blue, ai1 / maxStrength));
-            //Utils.DrawLine(sb,player.Center,player.Center + dashvec,Color.White);
-            //Utils.DrawBorderStringFourWay
-            //sb.VanillaBegin();
+            
             base.PostDraw(lightColor);
         }
     }

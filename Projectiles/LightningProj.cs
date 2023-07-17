@@ -35,11 +35,9 @@ namespace Ni.Projectiles
 
         public override void AI()
         {
-            //Projectile.Center = Main.projectile[(int)Projectile.localAI[0]].Center;
             Projectile.penetrate = -1;
             Projectile.frame++;
             ShouldFilp = Main.rand.NextBool(2);
-            //Main.NewText($"{Projectile.width} {Projectile.height}");
             for (int i = 0; i < 20; i++)
             {
                 Lighting.AddLight(Vector2.Lerp(Projectile.Center, new Vector2(ai0, ai1), (float)i / 20), TorchID.Yellow);
@@ -51,13 +49,11 @@ namespace Ni.Projectiles
         {
             Vector2 target = new Vector2(ai0, ai1);
             Vector2 toplr = Projectile.Center - player.Center;
-            //float vertical = Projectile.rotation + MathHelper.PiOver2;
             toplr.Normalize();
             if (Projectile.frame > 5)
             {
                 Projectile.frame = 0;
             }
-            //草，projectile.hide为true时就不执行postdraw了
             sb.AdditiveBegin();
             sb.Draw(
                 AssetHelper.LightningProj, 
@@ -68,8 +64,6 @@ namespace Ni.Projectiles
                 new Vector2(42, 0), 
                 ShouldFilp?SpriteEffects.FlipVertically : 0, 
                 0);
-            //sb.Draw(AssetHelper.LightningProj, Projectile.Center - Main.screenPosition, new Rectangle(Projectile.frame * 85 * (Projectile.width/40), 0, (int)(85 * (Projectile.width / 40.0)), (int)(512 * (Projectile.height/470.0))), Color.Yellow, Projectile.rotation, new Vector2(42, 0), Projectile.scale, 0, 0);
-            //sb.Draw(AssetHelper.LightningOrb, Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation, new Vector2(Projectile.width / 2, Projectile.height / 2), 1f, 0, 0);
             sb.VanillaBegin();
         }
     }

@@ -19,7 +19,7 @@ namespace Ni.Projectiles
         public Vector2 ToMouse => Main.MouseWorld - player.Center;
         public float ai0 { get => Projectile.ai[0]; set => Projectile.ai[0] = value; }
         public float ai1 { get => Projectile.ai[1]; set => Projectile.ai[1] = value; }
-
+        public float ai2 { get => Projectile.ai[2]; set => Projectile.ai[2] = value; }
         /// <summary>
         /// 
         /// </summary>

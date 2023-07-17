@@ -80,6 +80,11 @@ namespace Ni.DownWell
             base.ModifyWorldGenTasks(tasks, ref totalWeight);
         }
 
+        public override void ModifyScreenPosition()
+        {
+            //Main.screenPosition.X = Main.spawnTileX * 16 + Main.screenWidth / 2;
+            base.ModifyScreenPosition();
+        }
         public static void SetupDungeon()
         {
 

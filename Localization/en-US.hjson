@@ -319,6 +319,16 @@ Mods: {
 			WarJavelin_Tele.DisplayName: War Javelin_ Tele
 			WarJavelinProj.DisplayName: War Javelin Proj
 			TestProj.DisplayName: Test Proj
+			DownWellLogicProj.DisplayName: Down Well Logic Proj
+			IceBullet.DisplayName: Ice Bullet
+			IceCrystal.DisplayName: Ice Crystal
+			IceSpear.DisplayName: Ice Spear
+			Icicle.DisplayName: Icicle
+		}
+
+		NPCs: {
+			Niflheim.DisplayName: Niflheim
+			IcePillar.DisplayName: Ice Pillar
 		}
 	}
 }

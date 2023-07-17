@@ -36,8 +36,6 @@ namespace Ni.Projectiles.Minions
             sb.Draw(AssetHelper.Seeri[Projectile.frame], Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation, AssetHelper.Seeri[Projectile.frame].Size() / 2, 
                 Projectile.scale, player.direction == -1 ? 0 : SpriteEffects.FlipHorizontally, 0);
         }
-        //int drawcount = 0;
-        //int cooldown = 0;
         public override void AI()
         {
             #region CheckActive
@@ -71,32 +69,6 @@ namespace Ni.Projectiles.Minions
                 Projectile.frame = 0;
             }
             Projectile.frameCounter++;
-            /*
-            if (Vector2.Distance(Projectile.Center,restpos) > 200)
-            {
-                if(Projectile.frame == 5 || Projectile.frame >= 6)
-                {
-                    Projectile.frame = 7;
-                }
-                else
-                {
-                    Projectile.frame = 5;
-                }
-            }
-            else
-            {
-                if (Projectile.frame >= 5)
-                {
-                    Projectile.frame = 1;
-                }
-                if (Projectile.frame != 5 && Projectile.frameCounter > 15 && Projectile.frame < 6)
-                {
-                    Projectile.frame++;
-                    Projectile.frameCounter = 0;
-                }
-                
-            }
-            */
             #endregion
             #region ·¢Éäµ¯Ä»
             if (ai0 > 60)

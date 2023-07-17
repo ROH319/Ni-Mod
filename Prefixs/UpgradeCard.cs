@@ -18,11 +18,6 @@ namespace Ni.NiPrefix
         public override LocalizedText DisplayName => base.DisplayName.WithFormatArgs("");
         public override PrefixCategory Category => PrefixCategory.Custom;
 
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("");
-            base.SetStaticDefaults();
-        }
         public override void Apply(Item item)
         {
             Player player = Main.player[Main.myPlayer];

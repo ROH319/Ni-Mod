@@ -24,9 +24,6 @@ namespace Ni.Projectiles
         }
         public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
         {
-            //Vector2[] rectangleVertices = { targetHitbox.TopLeft(), targetHitbox.TopRight(), targetHitbox.BottomRight(), targetHitbox.BottomLeft() };
-            //Vector2[] rectangleEdges = { rectangleVertices[1] - rectangleVertices[0], rectangleVertices[2] - rectangleVertices[1], rectangleVertices[3] - rectangleVertices[2], rectangleVertices[0] - rectangleVertices[3] };
-            //Vector2[] triangleEdges = {}
             float point = 0f;
             Vector2 endPoint = Projectile.Center + (Projectile.rotation + MathHelper.PiOver2).ToRotationVector2() * (Projectile.height * Projectile.scale / 2);
             Vector2 startPoint = Projectile.Center - (Projectile.rotation + MathHelper.PiOver2).ToRotationVector2() * (Projectile.height * Projectile.scale / 2);

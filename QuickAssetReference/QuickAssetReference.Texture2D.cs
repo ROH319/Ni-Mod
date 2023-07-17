@@ -33,9 +33,9 @@ public static class ModAssets_Texture2D
         public static Asset<Texture2D> LightningBuffAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(LightningBuffPath);
         public static Asset<Texture2D> LightningBuffImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(LightningBuffPath, AssetRequestMode.ImmediateLoad);
         public static string LightningBuffPath = "Buffs/LightningBuff";
-        public static Asset<Texture2D> MarbledAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(MarbledPath);
-        public static Asset<Texture2D> MarbledImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(MarbledPath, AssetRequestMode.ImmediateLoad);
-        public static string MarbledPath = "Buffs/Marbled";
+        public static Asset<Texture2D> MarbledBuffAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(MarbledBuffPath);
+        public static Asset<Texture2D> MarbledBuffImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(MarbledBuffPath, AssetRequestMode.ImmediateLoad);
+        public static string MarbledBuffPath = "Buffs/MarbledBuff";
         public static Asset<Texture2D> PenNibBuffAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(PenNibBuffPath);
         public static Asset<Texture2D> PenNibBuffImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(PenNibBuffPath, AssetRequestMode.ImmediateLoad);
         public static string PenNibBuffPath = "Buffs/PenNibBuff";
@@ -139,6 +139,12 @@ public static class ModAssets_Texture2D
         public static Asset<Texture2D> proj1Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(proj1Path);
         public static Asset<Texture2D> proj1ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(proj1Path, AssetRequestMode.ImmediateLoad);
         public static string proj1Path = "Images/proj1";
+        public static Asset<Texture2D> Tiles_206Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(Tiles_206Path);
+        public static Asset<Texture2D> Tiles_206ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(Tiles_206Path, AssetRequestMode.ImmediateLoad);
+        public static string Tiles_206Path = "Images/Tiles_206";
+        public static Asset<Texture2D> Wall_84Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(Wall_84Path);
+        public static Asset<Texture2D> Wall_84ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(Wall_84Path, AssetRequestMode.ImmediateLoad);
+        public static string Wall_84Path = "Images/Wall_84";
         public static Asset<Texture2D> WhiteFlashAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(WhiteFlashPath);
         public static Asset<Texture2D> WhiteFlashImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(WhiteFlashPath, AssetRequestMode.ImmediateLoad);
         public static string WhiteFlashPath = "Images/WhiteFlash";
@@ -275,6 +281,438 @@ public static class ModAssets_Texture2D
             public static string LightningFX09Path = "Images/Lightning/LightningFX09";
         }
 
+        public static class Niflheim
+        {
+            public static Asset<Texture2D> IceBulletAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceBulletPath);
+            public static Asset<Texture2D> IceBulletImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceBulletPath, AssetRequestMode.ImmediateLoad);
+            public static string IceBulletPath = "Images/Niflheim/IceBullet";
+            public static Asset<Texture2D> IceBullet_GlowAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceBullet_GlowPath);
+            public static Asset<Texture2D> IceBullet_GlowImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceBullet_GlowPath, AssetRequestMode.ImmediateLoad);
+            public static string IceBullet_GlowPath = "Images/Niflheim/IceBullet_Glow";
+            public static Asset<Texture2D> NiShelterAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiShelterPath);
+            public static Asset<Texture2D> NiShelterImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiShelterPath, AssetRequestMode.ImmediateLoad);
+            public static string NiShelterPath = "Images/Niflheim/NiShelter";
+            public static class IceCrystal
+            {
+                public static Asset<Texture2D> IceCrystalFX00Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceCrystalFX00Path);
+                public static Asset<Texture2D> IceCrystalFX00ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceCrystalFX00Path, AssetRequestMode.ImmediateLoad);
+                public static string IceCrystalFX00Path = "Images/Niflheim/IceCrystal/IceCrystalFX00";
+                public static Asset<Texture2D> IceCrystalFX01Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceCrystalFX01Path);
+                public static Asset<Texture2D> IceCrystalFX01ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceCrystalFX01Path, AssetRequestMode.ImmediateLoad);
+                public static string IceCrystalFX01Path = "Images/Niflheim/IceCrystal/IceCrystalFX01";
+                public static Asset<Texture2D> IceCrystalFX02Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceCrystalFX02Path);
+                public static Asset<Texture2D> IceCrystalFX02ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceCrystalFX02Path, AssetRequestMode.ImmediateLoad);
+                public static string IceCrystalFX02Path = "Images/Niflheim/IceCrystal/IceCrystalFX02";
+                public static Asset<Texture2D> IceCrystalFX03Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceCrystalFX03Path);
+                public static Asset<Texture2D> IceCrystalFX03ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceCrystalFX03Path, AssetRequestMode.ImmediateLoad);
+                public static string IceCrystalFX03Path = "Images/Niflheim/IceCrystal/IceCrystalFX03";
+                public static Asset<Texture2D> IceCrystalFX04Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceCrystalFX04Path);
+                public static Asset<Texture2D> IceCrystalFX04ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceCrystalFX04Path, AssetRequestMode.ImmediateLoad);
+                public static string IceCrystalFX04Path = "Images/Niflheim/IceCrystal/IceCrystalFX04";
+                public static Asset<Texture2D> IceCrystalFX05Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceCrystalFX05Path);
+                public static Asset<Texture2D> IceCrystalFX05ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceCrystalFX05Path, AssetRequestMode.ImmediateLoad);
+                public static string IceCrystalFX05Path = "Images/Niflheim/IceCrystal/IceCrystalFX05";
+                public static Asset<Texture2D> IceCrystalFX06Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceCrystalFX06Path);
+                public static Asset<Texture2D> IceCrystalFX06ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceCrystalFX06Path, AssetRequestMode.ImmediateLoad);
+                public static string IceCrystalFX06Path = "Images/Niflheim/IceCrystal/IceCrystalFX06";
+                public static Asset<Texture2D> IceCrystalFX07Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceCrystalFX07Path);
+                public static Asset<Texture2D> IceCrystalFX07ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceCrystalFX07Path, AssetRequestMode.ImmediateLoad);
+                public static string IceCrystalFX07Path = "Images/Niflheim/IceCrystal/IceCrystalFX07";
+                public static Asset<Texture2D> IceCrystalFX08Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceCrystalFX08Path);
+                public static Asset<Texture2D> IceCrystalFX08ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceCrystalFX08Path, AssetRequestMode.ImmediateLoad);
+                public static string IceCrystalFX08Path = "Images/Niflheim/IceCrystal/IceCrystalFX08";
+                public static Asset<Texture2D> IceCrystalFX09Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceCrystalFX09Path);
+                public static Asset<Texture2D> IceCrystalFX09ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceCrystalFX09Path, AssetRequestMode.ImmediateLoad);
+                public static string IceCrystalFX09Path = "Images/Niflheim/IceCrystal/IceCrystalFX09";
+                public static Asset<Texture2D> IceCrystalFX10Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceCrystalFX10Path);
+                public static Asset<Texture2D> IceCrystalFX10ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceCrystalFX10Path, AssetRequestMode.ImmediateLoad);
+                public static string IceCrystalFX10Path = "Images/Niflheim/IceCrystal/IceCrystalFX10";
+                public static Asset<Texture2D> IceCrystalFX11Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceCrystalFX11Path);
+                public static Asset<Texture2D> IceCrystalFX11ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceCrystalFX11Path, AssetRequestMode.ImmediateLoad);
+                public static string IceCrystalFX11Path = "Images/Niflheim/IceCrystal/IceCrystalFX11";
+                public static Asset<Texture2D> IceCrystalFX12Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceCrystalFX12Path);
+                public static Asset<Texture2D> IceCrystalFX12ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceCrystalFX12Path, AssetRequestMode.ImmediateLoad);
+                public static string IceCrystalFX12Path = "Images/Niflheim/IceCrystal/IceCrystalFX12";
+                public static Asset<Texture2D> IceCrystalFX13Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceCrystalFX13Path);
+                public static Asset<Texture2D> IceCrystalFX13ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceCrystalFX13Path, AssetRequestMode.ImmediateLoad);
+                public static string IceCrystalFX13Path = "Images/Niflheim/IceCrystal/IceCrystalFX13";
+                public static Asset<Texture2D> IceCrystalFX14Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceCrystalFX14Path);
+                public static Asset<Texture2D> IceCrystalFX14ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceCrystalFX14Path, AssetRequestMode.ImmediateLoad);
+                public static string IceCrystalFX14Path = "Images/Niflheim/IceCrystal/IceCrystalFX14";
+                public static Asset<Texture2D> IceCrystalFX15Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceCrystalFX15Path);
+                public static Asset<Texture2D> IceCrystalFX15ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceCrystalFX15Path, AssetRequestMode.ImmediateLoad);
+                public static string IceCrystalFX15Path = "Images/Niflheim/IceCrystal/IceCrystalFX15";
+                public static Asset<Texture2D> IceCrystalFX16Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceCrystalFX16Path);
+                public static Asset<Texture2D> IceCrystalFX16ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceCrystalFX16Path, AssetRequestMode.ImmediateLoad);
+                public static string IceCrystalFX16Path = "Images/Niflheim/IceCrystal/IceCrystalFX16";
+                public static Asset<Texture2D> IceCrystalFX17Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceCrystalFX17Path);
+                public static Asset<Texture2D> IceCrystalFX17ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceCrystalFX17Path, AssetRequestMode.ImmediateLoad);
+                public static string IceCrystalFX17Path = "Images/Niflheim/IceCrystal/IceCrystalFX17";
+                public static Asset<Texture2D> IceCrystalFX18Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceCrystalFX18Path);
+                public static Asset<Texture2D> IceCrystalFX18ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceCrystalFX18Path, AssetRequestMode.ImmediateLoad);
+                public static string IceCrystalFX18Path = "Images/Niflheim/IceCrystal/IceCrystalFX18";
+                public static Asset<Texture2D> IceCrystalFX19Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceCrystalFX19Path);
+                public static Asset<Texture2D> IceCrystalFX19ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceCrystalFX19Path, AssetRequestMode.ImmediateLoad);
+                public static string IceCrystalFX19Path = "Images/Niflheim/IceCrystal/IceCrystalFX19";
+                public static Asset<Texture2D> IceCrystalFX20Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceCrystalFX20Path);
+                public static Asset<Texture2D> IceCrystalFX20ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceCrystalFX20Path, AssetRequestMode.ImmediateLoad);
+                public static string IceCrystalFX20Path = "Images/Niflheim/IceCrystal/IceCrystalFX20";
+            }
+
+            public static class IcePillar
+            {
+                public static Asset<Texture2D> IcePillar00Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IcePillar00Path);
+                public static Asset<Texture2D> IcePillar00ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IcePillar00Path, AssetRequestMode.ImmediateLoad);
+                public static string IcePillar00Path = "Images/Niflheim/IcePillar/IcePillar00";
+                public static Asset<Texture2D> IcePillar01Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IcePillar01Path);
+                public static Asset<Texture2D> IcePillar01ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IcePillar01Path, AssetRequestMode.ImmediateLoad);
+                public static string IcePillar01Path = "Images/Niflheim/IcePillar/IcePillar01";
+                public static Asset<Texture2D> IcePillar02Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IcePillar02Path);
+                public static Asset<Texture2D> IcePillar02ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IcePillar02Path, AssetRequestMode.ImmediateLoad);
+                public static string IcePillar02Path = "Images/Niflheim/IcePillar/IcePillar02";
+                public static Asset<Texture2D> IcePillar03Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IcePillar03Path);
+                public static Asset<Texture2D> IcePillar03ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IcePillar03Path, AssetRequestMode.ImmediateLoad);
+                public static string IcePillar03Path = "Images/Niflheim/IcePillar/IcePillar03";
+                public static Asset<Texture2D> IcePillar04Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IcePillar04Path);
+                public static Asset<Texture2D> IcePillar04ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IcePillar04Path, AssetRequestMode.ImmediateLoad);
+                public static string IcePillar04Path = "Images/Niflheim/IcePillar/IcePillar04";
+                public static Asset<Texture2D> IcePillar05Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IcePillar05Path);
+                public static Asset<Texture2D> IcePillar05ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IcePillar05Path, AssetRequestMode.ImmediateLoad);
+                public static string IcePillar05Path = "Images/Niflheim/IcePillar/IcePillar05";
+                public static Asset<Texture2D> IcePillar06Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IcePillar06Path);
+                public static Asset<Texture2D> IcePillar06ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IcePillar06Path, AssetRequestMode.ImmediateLoad);
+                public static string IcePillar06Path = "Images/Niflheim/IcePillar/IcePillar06";
+                public static Asset<Texture2D> IcePillar07Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IcePillar07Path);
+                public static Asset<Texture2D> IcePillar07ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IcePillar07Path, AssetRequestMode.ImmediateLoad);
+                public static string IcePillar07Path = "Images/Niflheim/IcePillar/IcePillar07";
+                public static Asset<Texture2D> IcePillar08Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IcePillar08Path);
+                public static Asset<Texture2D> IcePillar08ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IcePillar08Path, AssetRequestMode.ImmediateLoad);
+                public static string IcePillar08Path = "Images/Niflheim/IcePillar/IcePillar08";
+                public static Asset<Texture2D> IcePillar09Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IcePillar09Path);
+                public static Asset<Texture2D> IcePillar09ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IcePillar09Path, AssetRequestMode.ImmediateLoad);
+                public static string IcePillar09Path = "Images/Niflheim/IcePillar/IcePillar09";
+                public static Asset<Texture2D> IcePillar10Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IcePillar10Path);
+                public static Asset<Texture2D> IcePillar10ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IcePillar10Path, AssetRequestMode.ImmediateLoad);
+                public static string IcePillar10Path = "Images/Niflheim/IcePillar/IcePillar10";
+                public static Asset<Texture2D> IcePillar11Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IcePillar11Path);
+                public static Asset<Texture2D> IcePillar11ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IcePillar11Path, AssetRequestMode.ImmediateLoad);
+                public static string IcePillar11Path = "Images/Niflheim/IcePillar/IcePillar11";
+                public static Asset<Texture2D> IcePillar12Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IcePillar12Path);
+                public static Asset<Texture2D> IcePillar12ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IcePillar12Path, AssetRequestMode.ImmediateLoad);
+                public static string IcePillar12Path = "Images/Niflheim/IcePillar/IcePillar12";
+                public static Asset<Texture2D> IcePillar13Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IcePillar13Path);
+                public static Asset<Texture2D> IcePillar13ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IcePillar13Path, AssetRequestMode.ImmediateLoad);
+                public static string IcePillar13Path = "Images/Niflheim/IcePillar/IcePillar13";
+                public static Asset<Texture2D> IcePillar14Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IcePillar14Path);
+                public static Asset<Texture2D> IcePillar14ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IcePillar14Path, AssetRequestMode.ImmediateLoad);
+                public static string IcePillar14Path = "Images/Niflheim/IcePillar/IcePillar14";
+                public static Asset<Texture2D> IcePillar15Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IcePillar15Path);
+                public static Asset<Texture2D> IcePillar15ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IcePillar15Path, AssetRequestMode.ImmediateLoad);
+                public static string IcePillar15Path = "Images/Niflheim/IcePillar/IcePillar15";
+                public static Asset<Texture2D> IcePillar16Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IcePillar16Path);
+                public static Asset<Texture2D> IcePillar16ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IcePillar16Path, AssetRequestMode.ImmediateLoad);
+                public static string IcePillar16Path = "Images/Niflheim/IcePillar/IcePillar16";
+                public static Asset<Texture2D> IcePillar17Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IcePillar17Path);
+                public static Asset<Texture2D> IcePillar17ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IcePillar17Path, AssetRequestMode.ImmediateLoad);
+                public static string IcePillar17Path = "Images/Niflheim/IcePillar/IcePillar17";
+                public static Asset<Texture2D> IcePillar18Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IcePillar18Path);
+                public static Asset<Texture2D> IcePillar18ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IcePillar18Path, AssetRequestMode.ImmediateLoad);
+                public static string IcePillar18Path = "Images/Niflheim/IcePillar/IcePillar18";
+                public static Asset<Texture2D> IcePillar19Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IcePillar19Path);
+                public static Asset<Texture2D> IcePillar19ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IcePillar19Path, AssetRequestMode.ImmediateLoad);
+                public static string IcePillar19Path = "Images/Niflheim/IcePillar/IcePillar19";
+                public static Asset<Texture2D> IcePillarDestroyFX0Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IcePillarDestroyFX0Path);
+                public static Asset<Texture2D> IcePillarDestroyFX0ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IcePillarDestroyFX0Path, AssetRequestMode.ImmediateLoad);
+                public static string IcePillarDestroyFX0Path = "Images/Niflheim/IcePillar/IcePillarDestroyFX0";
+                public static Asset<Texture2D> IcePillarDestroyFX1Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IcePillarDestroyFX1Path);
+                public static Asset<Texture2D> IcePillarDestroyFX1ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IcePillarDestroyFX1Path, AssetRequestMode.ImmediateLoad);
+                public static string IcePillarDestroyFX1Path = "Images/Niflheim/IcePillar/IcePillarDestroyFX1";
+                public static Asset<Texture2D> IcePillarDestroyFX2Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IcePillarDestroyFX2Path);
+                public static Asset<Texture2D> IcePillarDestroyFX2ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IcePillarDestroyFX2Path, AssetRequestMode.ImmediateLoad);
+                public static string IcePillarDestroyFX2Path = "Images/Niflheim/IcePillar/IcePillarDestroyFX2";
+            }
+
+            public static class IceSpear
+            {
+                public static Asset<Texture2D> IceSpear00Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceSpear00Path);
+                public static Asset<Texture2D> IceSpear00ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceSpear00Path, AssetRequestMode.ImmediateLoad);
+                public static string IceSpear00Path = "Images/Niflheim/IceSpear/IceSpear00";
+                public static Asset<Texture2D> IceSpear01Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceSpear01Path);
+                public static Asset<Texture2D> IceSpear01ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceSpear01Path, AssetRequestMode.ImmediateLoad);
+                public static string IceSpear01Path = "Images/Niflheim/IceSpear/IceSpear01";
+                public static Asset<Texture2D> IceSpear02Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceSpear02Path);
+                public static Asset<Texture2D> IceSpear02ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceSpear02Path, AssetRequestMode.ImmediateLoad);
+                public static string IceSpear02Path = "Images/Niflheim/IceSpear/IceSpear02";
+                public static Asset<Texture2D> IceSpear03Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceSpear03Path);
+                public static Asset<Texture2D> IceSpear03ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceSpear03Path, AssetRequestMode.ImmediateLoad);
+                public static string IceSpear03Path = "Images/Niflheim/IceSpear/IceSpear03";
+                public static Asset<Texture2D> IceSpear04Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceSpear04Path);
+                public static Asset<Texture2D> IceSpear04ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceSpear04Path, AssetRequestMode.ImmediateLoad);
+                public static string IceSpear04Path = "Images/Niflheim/IceSpear/IceSpear04";
+                public static Asset<Texture2D> IceSpear05Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceSpear05Path);
+                public static Asset<Texture2D> IceSpear05ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceSpear05Path, AssetRequestMode.ImmediateLoad);
+                public static string IceSpear05Path = "Images/Niflheim/IceSpear/IceSpear05";
+                public static Asset<Texture2D> IceSpear06Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceSpear06Path);
+                public static Asset<Texture2D> IceSpear06ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceSpear06Path, AssetRequestMode.ImmediateLoad);
+                public static string IceSpear06Path = "Images/Niflheim/IceSpear/IceSpear06";
+                public static Asset<Texture2D> IceSpear07Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceSpear07Path);
+                public static Asset<Texture2D> IceSpear07ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceSpear07Path, AssetRequestMode.ImmediateLoad);
+                public static string IceSpear07Path = "Images/Niflheim/IceSpear/IceSpear07";
+                public static Asset<Texture2D> IceSpear08Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceSpear08Path);
+                public static Asset<Texture2D> IceSpear08ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceSpear08Path, AssetRequestMode.ImmediateLoad);
+                public static string IceSpear08Path = "Images/Niflheim/IceSpear/IceSpear08";
+                public static Asset<Texture2D> IceSpear09Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceSpear09Path);
+                public static Asset<Texture2D> IceSpear09ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceSpear09Path, AssetRequestMode.ImmediateLoad);
+                public static string IceSpear09Path = "Images/Niflheim/IceSpear/IceSpear09";
+                public static Asset<Texture2D> IceSpear10Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceSpear10Path);
+                public static Asset<Texture2D> IceSpear10ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceSpear10Path, AssetRequestMode.ImmediateLoad);
+                public static string IceSpear10Path = "Images/Niflheim/IceSpear/IceSpear10";
+                public static Asset<Texture2D> IceSpear11Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceSpear11Path);
+                public static Asset<Texture2D> IceSpear11ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceSpear11Path, AssetRequestMode.ImmediateLoad);
+                public static string IceSpear11Path = "Images/Niflheim/IceSpear/IceSpear11";
+                public static Asset<Texture2D> IceSpear12Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceSpear12Path);
+                public static Asset<Texture2D> IceSpear12ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IceSpear12Path, AssetRequestMode.ImmediateLoad);
+                public static string IceSpear12Path = "Images/Niflheim/IceSpear/IceSpear12";
+            }
+
+            public static class Icicle
+            {
+                public static Asset<Texture2D> Icicle0Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(Icicle0Path);
+                public static Asset<Texture2D> Icicle0ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(Icicle0Path, AssetRequestMode.ImmediateLoad);
+                public static string Icicle0Path = "Images/Niflheim/Icicle/Icicle0";
+                public static Asset<Texture2D> Icicle1Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(Icicle1Path);
+                public static Asset<Texture2D> Icicle1ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(Icicle1Path, AssetRequestMode.ImmediateLoad);
+                public static string Icicle1Path = "Images/Niflheim/Icicle/Icicle1";
+                public static Asset<Texture2D> Icicle2Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(Icicle2Path);
+                public static Asset<Texture2D> Icicle2ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(Icicle2Path, AssetRequestMode.ImmediateLoad);
+                public static string Icicle2Path = "Images/Niflheim/Icicle/Icicle2";
+                public static Asset<Texture2D> Icicle3Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(Icicle3Path);
+                public static Asset<Texture2D> Icicle3ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(Icicle3Path, AssetRequestMode.ImmediateLoad);
+                public static string Icicle3Path = "Images/Niflheim/Icicle/Icicle3";
+                public static Asset<Texture2D> Icicle4Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(Icicle4Path);
+                public static Asset<Texture2D> Icicle4ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(Icicle4Path, AssetRequestMode.ImmediateLoad);
+                public static string Icicle4Path = "Images/Niflheim/Icicle/Icicle4";
+                public static Asset<Texture2D> Icicle5Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(Icicle5Path);
+                public static Asset<Texture2D> Icicle5ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(Icicle5Path, AssetRequestMode.ImmediateLoad);
+                public static string Icicle5Path = "Images/Niflheim/Icicle/Icicle5";
+                public static Asset<Texture2D> Icicle6Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(Icicle6Path);
+                public static Asset<Texture2D> Icicle6ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(Icicle6Path, AssetRequestMode.ImmediateLoad);
+                public static string Icicle6Path = "Images/Niflheim/Icicle/Icicle6";
+                public static Asset<Texture2D> Icicle7Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(Icicle7Path);
+                public static Asset<Texture2D> Icicle7ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(Icicle7Path, AssetRequestMode.ImmediateLoad);
+                public static string Icicle7Path = "Images/Niflheim/Icicle/Icicle7";
+                public static Asset<Texture2D> Icicle8Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(Icicle8Path);
+                public static Asset<Texture2D> Icicle8ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(Icicle8Path, AssetRequestMode.ImmediateLoad);
+                public static string Icicle8Path = "Images/Niflheim/Icicle/Icicle8";
+                public static Asset<Texture2D> Icicle9Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(Icicle9Path);
+                public static Asset<Texture2D> Icicle9ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(Icicle9Path, AssetRequestMode.ImmediateLoad);
+                public static string Icicle9Path = "Images/Niflheim/Icicle/Icicle9";
+                public static Asset<Texture2D> IcicleDestroyFX0Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IcicleDestroyFX0Path);
+                public static Asset<Texture2D> IcicleDestroyFX0ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IcicleDestroyFX0Path, AssetRequestMode.ImmediateLoad);
+                public static string IcicleDestroyFX0Path = "Images/Niflheim/Icicle/IcicleDestroyFX0";
+                public static Asset<Texture2D> IcicleDestroyFX1Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IcicleDestroyFX1Path);
+                public static Asset<Texture2D> IcicleDestroyFX1ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IcicleDestroyFX1Path, AssetRequestMode.ImmediateLoad);
+                public static string IcicleDestroyFX1Path = "Images/Niflheim/Icicle/IcicleDestroyFX1";
+                public static Asset<Texture2D> IcicleDestroyFX2Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IcicleDestroyFX2Path);
+                public static Asset<Texture2D> IcicleDestroyFX2ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(IcicleDestroyFX2Path, AssetRequestMode.ImmediateLoad);
+                public static string IcicleDestroyFX2Path = "Images/Niflheim/Icicle/IcicleDestroyFX2";
+            }
+
+            public static class TrueNPC
+            {
+                public static Asset<Texture2D> NiflheimAttack00Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimAttack00Path);
+                public static Asset<Texture2D> NiflheimAttack00ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimAttack00Path, AssetRequestMode.ImmediateLoad);
+                public static string NiflheimAttack00Path = "Images/Niflheim/TrueNPC/NiflheimAttack00";
+                public static Asset<Texture2D> NiflheimAttack01Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimAttack01Path);
+                public static Asset<Texture2D> NiflheimAttack01ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimAttack01Path, AssetRequestMode.ImmediateLoad);
+                public static string NiflheimAttack01Path = "Images/Niflheim/TrueNPC/NiflheimAttack01";
+                public static Asset<Texture2D> NiflheimAttack02Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimAttack02Path);
+                public static Asset<Texture2D> NiflheimAttack02ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimAttack02Path, AssetRequestMode.ImmediateLoad);
+                public static string NiflheimAttack02Path = "Images/Niflheim/TrueNPC/NiflheimAttack02";
+                public static Asset<Texture2D> NiflheimAttack03Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimAttack03Path);
+                public static Asset<Texture2D> NiflheimAttack03ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimAttack03Path, AssetRequestMode.ImmediateLoad);
+                public static string NiflheimAttack03Path = "Images/Niflheim/TrueNPC/NiflheimAttack03";
+                public static Asset<Texture2D> NiflheimAttack04Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimAttack04Path);
+                public static Asset<Texture2D> NiflheimAttack04ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimAttack04Path, AssetRequestMode.ImmediateLoad);
+                public static string NiflheimAttack04Path = "Images/Niflheim/TrueNPC/NiflheimAttack04";
+                public static Asset<Texture2D> NiflheimAttack05Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimAttack05Path);
+                public static Asset<Texture2D> NiflheimAttack05ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimAttack05Path, AssetRequestMode.ImmediateLoad);
+                public static string NiflheimAttack05Path = "Images/Niflheim/TrueNPC/NiflheimAttack05";
+                public static Asset<Texture2D> NiflheimAttack06Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimAttack06Path);
+                public static Asset<Texture2D> NiflheimAttack06ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimAttack06Path, AssetRequestMode.ImmediateLoad);
+                public static string NiflheimAttack06Path = "Images/Niflheim/TrueNPC/NiflheimAttack06";
+                public static Asset<Texture2D> NiflheimAttack07Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimAttack07Path);
+                public static Asset<Texture2D> NiflheimAttack07ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimAttack07Path, AssetRequestMode.ImmediateLoad);
+                public static string NiflheimAttack07Path = "Images/Niflheim/TrueNPC/NiflheimAttack07";
+                public static Asset<Texture2D> NiflheimAttack08Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimAttack08Path);
+                public static Asset<Texture2D> NiflheimAttack08ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimAttack08Path, AssetRequestMode.ImmediateLoad);
+                public static string NiflheimAttack08Path = "Images/Niflheim/TrueNPC/NiflheimAttack08";
+                public static Asset<Texture2D> NiflheimAttack09Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimAttack09Path);
+                public static Asset<Texture2D> NiflheimAttack09ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimAttack09Path, AssetRequestMode.ImmediateLoad);
+                public static string NiflheimAttack09Path = "Images/Niflheim/TrueNPC/NiflheimAttack09";
+                public static Asset<Texture2D> NiflheimAttack10Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimAttack10Path);
+                public static Asset<Texture2D> NiflheimAttack10ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimAttack10Path, AssetRequestMode.ImmediateLoad);
+                public static string NiflheimAttack10Path = "Images/Niflheim/TrueNPC/NiflheimAttack10";
+                public static Asset<Texture2D> NiflheimDie00Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimDie00Path);
+                public static Asset<Texture2D> NiflheimDie00ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimDie00Path, AssetRequestMode.ImmediateLoad);
+                public static string NiflheimDie00Path = "Images/Niflheim/TrueNPC/NiflheimDie00";
+                public static Asset<Texture2D> NiflheimDie01Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimDie01Path);
+                public static Asset<Texture2D> NiflheimDie01ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimDie01Path, AssetRequestMode.ImmediateLoad);
+                public static string NiflheimDie01Path = "Images/Niflheim/TrueNPC/NiflheimDie01";
+                public static Asset<Texture2D> NiflheimDie02Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimDie02Path);
+                public static Asset<Texture2D> NiflheimDie02ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimDie02Path, AssetRequestMode.ImmediateLoad);
+                public static string NiflheimDie02Path = "Images/Niflheim/TrueNPC/NiflheimDie02";
+                public static Asset<Texture2D> NiflheimDie03Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimDie03Path);
+                public static Asset<Texture2D> NiflheimDie03ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimDie03Path, AssetRequestMode.ImmediateLoad);
+                public static string NiflheimDie03Path = "Images/Niflheim/TrueNPC/NiflheimDie03";
+                public static Asset<Texture2D> NiflheimDie04Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimDie04Path);
+                public static Asset<Texture2D> NiflheimDie04ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimDie04Path, AssetRequestMode.ImmediateLoad);
+                public static string NiflheimDie04Path = "Images/Niflheim/TrueNPC/NiflheimDie04";
+                public static Asset<Texture2D> NiflheimDie05Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimDie05Path);
+                public static Asset<Texture2D> NiflheimDie05ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimDie05Path, AssetRequestMode.ImmediateLoad);
+                public static string NiflheimDie05Path = "Images/Niflheim/TrueNPC/NiflheimDie05";
+                public static Asset<Texture2D> NiflheimDie06Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimDie06Path);
+                public static Asset<Texture2D> NiflheimDie06ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimDie06Path, AssetRequestMode.ImmediateLoad);
+                public static string NiflheimDie06Path = "Images/Niflheim/TrueNPC/NiflheimDie06";
+                public static Asset<Texture2D> NiflheimDie07Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimDie07Path);
+                public static Asset<Texture2D> NiflheimDie07ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimDie07Path, AssetRequestMode.ImmediateLoad);
+                public static string NiflheimDie07Path = "Images/Niflheim/TrueNPC/NiflheimDie07";
+                public static Asset<Texture2D> NiflheimDie08Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimDie08Path);
+                public static Asset<Texture2D> NiflheimDie08ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimDie08Path, AssetRequestMode.ImmediateLoad);
+                public static string NiflheimDie08Path = "Images/Niflheim/TrueNPC/NiflheimDie08";
+                public static Asset<Texture2D> NiflheimDie09Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimDie09Path);
+                public static Asset<Texture2D> NiflheimDie09ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimDie09Path, AssetRequestMode.ImmediateLoad);
+                public static string NiflheimDie09Path = "Images/Niflheim/TrueNPC/NiflheimDie09";
+                public static Asset<Texture2D> NiflheimDie10Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimDie10Path);
+                public static Asset<Texture2D> NiflheimDie10ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimDie10Path, AssetRequestMode.ImmediateLoad);
+                public static string NiflheimDie10Path = "Images/Niflheim/TrueNPC/NiflheimDie10";
+                public static Asset<Texture2D> NiflheimDie11Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimDie11Path);
+                public static Asset<Texture2D> NiflheimDie11ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimDie11Path, AssetRequestMode.ImmediateLoad);
+                public static string NiflheimDie11Path = "Images/Niflheim/TrueNPC/NiflheimDie11";
+                public static Asset<Texture2D> NiflheimDie12Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimDie12Path);
+                public static Asset<Texture2D> NiflheimDie12ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimDie12Path, AssetRequestMode.ImmediateLoad);
+                public static string NiflheimDie12Path = "Images/Niflheim/TrueNPC/NiflheimDie12";
+                public static Asset<Texture2D> NiflheimDie13Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimDie13Path);
+                public static Asset<Texture2D> NiflheimDie13ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimDie13Path, AssetRequestMode.ImmediateLoad);
+                public static string NiflheimDie13Path = "Images/Niflheim/TrueNPC/NiflheimDie13";
+                public static Asset<Texture2D> NiflheimDie14Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimDie14Path);
+                public static Asset<Texture2D> NiflheimDie14ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimDie14Path, AssetRequestMode.ImmediateLoad);
+                public static string NiflheimDie14Path = "Images/Niflheim/TrueNPC/NiflheimDie14";
+                public static Asset<Texture2D> NiflheimDie15Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimDie15Path);
+                public static Asset<Texture2D> NiflheimDie15ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimDie15Path, AssetRequestMode.ImmediateLoad);
+                public static string NiflheimDie15Path = "Images/Niflheim/TrueNPC/NiflheimDie15";
+                public static Asset<Texture2D> NiflheimDie16Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimDie16Path);
+                public static Asset<Texture2D> NiflheimDie16ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimDie16Path, AssetRequestMode.ImmediateLoad);
+                public static string NiflheimDie16Path = "Images/Niflheim/TrueNPC/NiflheimDie16";
+                public static Asset<Texture2D> NiflheimDie17Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimDie17Path);
+                public static Asset<Texture2D> NiflheimDie17ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimDie17Path, AssetRequestMode.ImmediateLoad);
+                public static string NiflheimDie17Path = "Images/Niflheim/TrueNPC/NiflheimDie17";
+                public static Asset<Texture2D> NiflheimDie18Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimDie18Path);
+                public static Asset<Texture2D> NiflheimDie18ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimDie18Path, AssetRequestMode.ImmediateLoad);
+                public static string NiflheimDie18Path = "Images/Niflheim/TrueNPC/NiflheimDie18";
+                public static Asset<Texture2D> NiflheimDie19Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimDie19Path);
+                public static Asset<Texture2D> NiflheimDie19ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimDie19Path, AssetRequestMode.ImmediateLoad);
+                public static string NiflheimDie19Path = "Images/Niflheim/TrueNPC/NiflheimDie19";
+                public static Asset<Texture2D> NiflheimDie20Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimDie20Path);
+                public static Asset<Texture2D> NiflheimDie20ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimDie20Path, AssetRequestMode.ImmediateLoad);
+                public static string NiflheimDie20Path = "Images/Niflheim/TrueNPC/NiflheimDie20";
+                public static Asset<Texture2D> NiflheimDie21Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimDie21Path);
+                public static Asset<Texture2D> NiflheimDie21ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimDie21Path, AssetRequestMode.ImmediateLoad);
+                public static string NiflheimDie21Path = "Images/Niflheim/TrueNPC/NiflheimDie21";
+                public static Asset<Texture2D> NiflheimDie22Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimDie22Path);
+                public static Asset<Texture2D> NiflheimDie22ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimDie22Path, AssetRequestMode.ImmediateLoad);
+                public static string NiflheimDie22Path = "Images/Niflheim/TrueNPC/NiflheimDie22";
+                public static Asset<Texture2D> NiflheimDie23Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimDie23Path);
+                public static Asset<Texture2D> NiflheimDie23ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimDie23Path, AssetRequestMode.ImmediateLoad);
+                public static string NiflheimDie23Path = "Images/Niflheim/TrueNPC/NiflheimDie23";
+                public static Asset<Texture2D> NiflheimDie24Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimDie24Path);
+                public static Asset<Texture2D> NiflheimDie24ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimDie24Path, AssetRequestMode.ImmediateLoad);
+                public static string NiflheimDie24Path = "Images/Niflheim/TrueNPC/NiflheimDie24";
+                public static Asset<Texture2D> NiflheimDie25Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimDie25Path);
+                public static Asset<Texture2D> NiflheimDie25ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimDie25Path, AssetRequestMode.ImmediateLoad);
+                public static string NiflheimDie25Path = "Images/Niflheim/TrueNPC/NiflheimDie25";
+                public static Asset<Texture2D> NiflheimDie26Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimDie26Path);
+                public static Asset<Texture2D> NiflheimDie26ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimDie26Path, AssetRequestMode.ImmediateLoad);
+                public static string NiflheimDie26Path = "Images/Niflheim/TrueNPC/NiflheimDie26";
+                public static Asset<Texture2D> NiflheimDie27Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimDie27Path);
+                public static Asset<Texture2D> NiflheimDie27ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimDie27Path, AssetRequestMode.ImmediateLoad);
+                public static string NiflheimDie27Path = "Images/Niflheim/TrueNPC/NiflheimDie27";
+                public static Asset<Texture2D> NiflheimDie28Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimDie28Path);
+                public static Asset<Texture2D> NiflheimDie28ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimDie28Path, AssetRequestMode.ImmediateLoad);
+                public static string NiflheimDie28Path = "Images/Niflheim/TrueNPC/NiflheimDie28";
+                public static Asset<Texture2D> NiflheimDie29Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimDie29Path);
+                public static Asset<Texture2D> NiflheimDie29ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimDie29Path, AssetRequestMode.ImmediateLoad);
+                public static string NiflheimDie29Path = "Images/Niflheim/TrueNPC/NiflheimDie29";
+                public static Asset<Texture2D> NiflheimEnter00Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimEnter00Path);
+                public static Asset<Texture2D> NiflheimEnter00ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimEnter00Path, AssetRequestMode.ImmediateLoad);
+                public static string NiflheimEnter00Path = "Images/Niflheim/TrueNPC/NiflheimEnter00";
+                public static Asset<Texture2D> NiflheimEnter01Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimEnter01Path);
+                public static Asset<Texture2D> NiflheimEnter01ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimEnter01Path, AssetRequestMode.ImmediateLoad);
+                public static string NiflheimEnter01Path = "Images/Niflheim/TrueNPC/NiflheimEnter01";
+                public static Asset<Texture2D> NiflheimEnter02Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimEnter02Path);
+                public static Asset<Texture2D> NiflheimEnter02ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimEnter02Path, AssetRequestMode.ImmediateLoad);
+                public static string NiflheimEnter02Path = "Images/Niflheim/TrueNPC/NiflheimEnter02";
+                public static Asset<Texture2D> NiflheimEnter03Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimEnter03Path);
+                public static Asset<Texture2D> NiflheimEnter03ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimEnter03Path, AssetRequestMode.ImmediateLoad);
+                public static string NiflheimEnter03Path = "Images/Niflheim/TrueNPC/NiflheimEnter03";
+                public static Asset<Texture2D> NiflheimEnter04Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimEnter04Path);
+                public static Asset<Texture2D> NiflheimEnter04ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimEnter04Path, AssetRequestMode.ImmediateLoad);
+                public static string NiflheimEnter04Path = "Images/Niflheim/TrueNPC/NiflheimEnter04";
+                public static Asset<Texture2D> NiflheimEnter05Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimEnter05Path);
+                public static Asset<Texture2D> NiflheimEnter05ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimEnter05Path, AssetRequestMode.ImmediateLoad);
+                public static string NiflheimEnter05Path = "Images/Niflheim/TrueNPC/NiflheimEnter05";
+                public static Asset<Texture2D> NiflheimEnter06Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimEnter06Path);
+                public static Asset<Texture2D> NiflheimEnter06ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimEnter06Path, AssetRequestMode.ImmediateLoad);
+                public static string NiflheimEnter06Path = "Images/Niflheim/TrueNPC/NiflheimEnter06";
+                public static Asset<Texture2D> NiflheimEnter07Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimEnter07Path);
+                public static Asset<Texture2D> NiflheimEnter07ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimEnter07Path, AssetRequestMode.ImmediateLoad);
+                public static string NiflheimEnter07Path = "Images/Niflheim/TrueNPC/NiflheimEnter07";
+                public static Asset<Texture2D> NiflheimEnter08Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimEnter08Path);
+                public static Asset<Texture2D> NiflheimEnter08ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimEnter08Path, AssetRequestMode.ImmediateLoad);
+                public static string NiflheimEnter08Path = "Images/Niflheim/TrueNPC/NiflheimEnter08";
+                public static Asset<Texture2D> NiflheimEnter09Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimEnter09Path);
+                public static Asset<Texture2D> NiflheimEnter09ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimEnter09Path, AssetRequestMode.ImmediateLoad);
+                public static string NiflheimEnter09Path = "Images/Niflheim/TrueNPC/NiflheimEnter09";
+                public static Asset<Texture2D> NiflheimEnter10Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimEnter10Path);
+                public static Asset<Texture2D> NiflheimEnter10ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimEnter10Path, AssetRequestMode.ImmediateLoad);
+                public static string NiflheimEnter10Path = "Images/Niflheim/TrueNPC/NiflheimEnter10";
+                public static Asset<Texture2D> NiflheimEnter11Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimEnter11Path);
+                public static Asset<Texture2D> NiflheimEnter11ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimEnter11Path, AssetRequestMode.ImmediateLoad);
+                public static string NiflheimEnter11Path = "Images/Niflheim/TrueNPC/NiflheimEnter11";
+                public static Asset<Texture2D> NiflheimEnter12Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimEnter12Path);
+                public static Asset<Texture2D> NiflheimEnter12ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimEnter12Path, AssetRequestMode.ImmediateLoad);
+                public static string NiflheimEnter12Path = "Images/Niflheim/TrueNPC/NiflheimEnter12";
+                public static Asset<Texture2D> NiflheimEnter13Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimEnter13Path);
+                public static Asset<Texture2D> NiflheimEnter13ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimEnter13Path, AssetRequestMode.ImmediateLoad);
+                public static string NiflheimEnter13Path = "Images/Niflheim/TrueNPC/NiflheimEnter13";
+                public static Asset<Texture2D> NiflheimEnter14Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimEnter14Path);
+                public static Asset<Texture2D> NiflheimEnter14ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimEnter14Path, AssetRequestMode.ImmediateLoad);
+                public static string NiflheimEnter14Path = "Images/Niflheim/TrueNPC/NiflheimEnter14";
+                public static Asset<Texture2D> NiflheimEnter15Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimEnter15Path);
+                public static Asset<Texture2D> NiflheimEnter15ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimEnter15Path, AssetRequestMode.ImmediateLoad);
+                public static string NiflheimEnter15Path = "Images/Niflheim/TrueNPC/NiflheimEnter15";
+                public static Asset<Texture2D> NiflheimIdle0Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimIdle0Path);
+                public static Asset<Texture2D> NiflheimIdle0ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimIdle0Path, AssetRequestMode.ImmediateLoad);
+                public static string NiflheimIdle0Path = "Images/Niflheim/TrueNPC/NiflheimIdle0";
+                public static Asset<Texture2D> NiflheimIdle1Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimIdle1Path);
+                public static Asset<Texture2D> NiflheimIdle1ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimIdle1Path, AssetRequestMode.ImmediateLoad);
+                public static string NiflheimIdle1Path = "Images/Niflheim/TrueNPC/NiflheimIdle1";
+                public static Asset<Texture2D> NiflheimIdle2Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimIdle2Path);
+                public static Asset<Texture2D> NiflheimIdle2ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimIdle2Path, AssetRequestMode.ImmediateLoad);
+                public static string NiflheimIdle2Path = "Images/Niflheim/TrueNPC/NiflheimIdle2";
+                public static Asset<Texture2D> NiflheimIdle3Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimIdle3Path);
+                public static Asset<Texture2D> NiflheimIdle3ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimIdle3Path, AssetRequestMode.ImmediateLoad);
+                public static string NiflheimIdle3Path = "Images/Niflheim/TrueNPC/NiflheimIdle3";
+                public static Asset<Texture2D> NiflheimIdle4Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimIdle4Path);
+                public static Asset<Texture2D> NiflheimIdle4ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimIdle4Path, AssetRequestMode.ImmediateLoad);
+                public static string NiflheimIdle4Path = "Images/Niflheim/TrueNPC/NiflheimIdle4";
+                public static Asset<Texture2D> NiflheimIdle5Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimIdle5Path);
+                public static Asset<Texture2D> NiflheimIdle5ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiflheimIdle5Path, AssetRequestMode.ImmediateLoad);
+                public static string NiflheimIdle5Path = "Images/Niflheim/TrueNPC/NiflheimIdle5";
+            }
+
+        }
+
         public static class Seeri
         {
             public static Asset<Texture2D> Seeri0Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(Seeri0Path);
@@ -301,6 +739,25 @@ public static class ModAssets_Texture2D
             public static Asset<Texture2D> Seeri7Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(Seeri7Path);
             public static Asset<Texture2D> Seeri7ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(Seeri7Path, AssetRequestMode.ImmediateLoad);
             public static string Seeri7Path = "Images/Seeri/Seeri7";
+        }
+
+        public static class SharkBoss
+        {
+            public static Asset<Texture2D> Item_2320Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(Item_2320Path);
+            public static Asset<Texture2D> Item_2320ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(Item_2320Path, AssetRequestMode.ImmediateLoad);
+            public static string Item_2320Path = "Images/SharkBoss/Item_2320";
+            public static Asset<Texture2D> Item_2331Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(Item_2331Path);
+            public static Asset<Texture2D> Item_2331ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(Item_2331Path, AssetRequestMode.ImmediateLoad);
+            public static string Item_2331Path = "Images/SharkBoss/Item_2331";
+            public static Asset<Texture2D> Item_2332Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(Item_2332Path);
+            public static Asset<Texture2D> Item_2332ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(Item_2332Path, AssetRequestMode.ImmediateLoad);
+            public static string Item_2332Path = "Images/SharkBoss/Item_2332";
+            public static Asset<Texture2D> Item_2341Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(Item_2341Path);
+            public static Asset<Texture2D> Item_2341ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(Item_2341Path, AssetRequestMode.ImmediateLoad);
+            public static string Item_2341Path = "Images/SharkBoss/Item_2341";
+            public static Asset<Texture2D> Item_2342Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(Item_2342Path);
+            public static Asset<Texture2D> Item_2342ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(Item_2342Path, AssetRequestMode.ImmediateLoad);
+            public static string Item_2342Path = "Images/SharkBoss/Item_2342";
         }
 
     }
@@ -443,6 +900,33 @@ public static class ModAssets_Texture2D
 
     }
 
+    public static class NPCs
+    {
+        public static class Bosses
+        {
+            public static class NiflheimBoss
+            {
+                public static Asset<Texture2D> Extra_199Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(Extra_199Path);
+                public static Asset<Texture2D> Extra_199ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(Extra_199Path, AssetRequestMode.ImmediateLoad);
+                public static string Extra_199Path = "NPCs/Bosses/NiflheimBoss/Extra_199";
+                public static Asset<Texture2D> NiShelterAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiShelterPath);
+                public static Asset<Texture2D> NiShelterImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(NiShelterPath, AssetRequestMode.ImmediateLoad);
+                public static string NiShelterPath = "NPCs/Bosses/NiflheimBoss/NiShelter";
+                public static Asset<Texture2D> ShelterAltarAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(ShelterAltarPath);
+                public static Asset<Texture2D> ShelterAltarImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(ShelterAltarPath, AssetRequestMode.ImmediateLoad);
+                public static string ShelterAltarPath = "NPCs/Bosses/NiflheimBoss/ShelterAltar";
+                public static Asset<Texture2D> ShelterBrickAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(ShelterBrickPath);
+                public static Asset<Texture2D> ShelterBrickImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(ShelterBrickPath, AssetRequestMode.ImmediateLoad);
+                public static string ShelterBrickPath = "NPCs/Bosses/NiflheimBoss/ShelterBrick";
+                public static Asset<Texture2D> ShelterWallAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(ShelterWallPath);
+                public static Asset<Texture2D> ShelterWallImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(ShelterWallPath, AssetRequestMode.ImmediateLoad);
+                public static string ShelterWallPath = "NPCs/Bosses/NiflheimBoss/ShelterWall";
+            }
+
+        }
+
+    }
+
     public static class Projectiles
     {
         public static Asset<Texture2D> arzunaProjAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(arzunaProjPath);
@@ -472,9 +956,6 @@ public static class ModAssets_Texture2D
         public static Asset<Texture2D> LightningProjAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(LightningProjPath);
         public static Asset<Texture2D> LightningProjImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(LightningProjPath, AssetRequestMode.ImmediateLoad);
         public static string LightningProjPath = "Projectiles/LightningProj";
-        public static Asset<Texture2D> MawOfDeepProjAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(MawOfDeepProjPath);
-        public static Asset<Texture2D> MawOfDeepProjImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(MawOfDeepProjPath, AssetRequestMode.ImmediateLoad);
-        public static string MawOfDeepProjPath = "Projectiles/MawOfDeepProj";
         public static Asset<Texture2D> PumpkinAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(PumpkinPath);
         public static Asset<Texture2D> PumpkinImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(PumpkinPath, AssetRequestMode.ImmediateLoad);
         public static string PumpkinPath = "Projectiles/Pumpkin";
@@ -484,9 +965,6 @@ public static class ModAssets_Texture2D
         public static Asset<Texture2D> TombstoneProjAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(TombstoneProjPath);
         public static Asset<Texture2D> TombstoneProjImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(TombstoneProjPath, AssetRequestMode.ImmediateLoad);
         public static string TombstoneProjPath = "Projectiles/TombstoneProj";
-        public static Asset<Texture2D> TombstoneProj1Asset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(TombstoneProj1Path);
-        public static Asset<Texture2D> TombstoneProj1ImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(TombstoneProj1Path, AssetRequestMode.ImmediateLoad);
-        public static string TombstoneProj1Path = "Projectiles/TombstoneProj1";
         public static Asset<Texture2D> WarJavelinProjAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(WarJavelinProjPath);
         public static Asset<Texture2D> WarJavelinProjImmediateAsset => ModAssets_Utils.Mod.Assets.Request<Texture2D>(WarJavelinProjPath, AssetRequestMode.ImmediateLoad);
         public static string WarJavelinProjPath = "Projectiles/WarJavelinProj";

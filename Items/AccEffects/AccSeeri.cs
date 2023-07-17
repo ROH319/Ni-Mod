@@ -17,12 +17,9 @@ namespace Ni.Items.AccEffects
         public bool Seeri;
         public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers)/* tModPorter If you don't need the Projectile, consider using ModifyHitNPC instead */
         {
-            if (Seeri && proj.DamageType == DamageClass.Summon)
+            if (Seeri && proj.DamageType == DamageClass.Summon && Main.rand.NextBool(20))
             {
-                if (Main.rand.NextBool(20))
-                {
-                    modifiers.SetCrit();
-                }
+                modifiers.SetCrit();
             }
         }
 
@@ -36,13 +33,9 @@ namespace Ni.Items.AccEffects
     {
         public override void ModifyHitByProjectile(NPC npc, Projectile projectile, ref NPC.HitModifiers modifiers)
         {
-            if (projectile.TryGetGlobalProjectile<SeeriGProj>(out SeeriGProj se) && se.Seeried && projectile.npcProj)
+            if (projectile.TryGetGlobalProjectile<SeeriGProj>(out SeeriGProj se) && se.Seeried && projectile.npcProj && Main.rand.NextBool(20))
             {
-                if (Main.rand.NextBool(20))
-                {
-
-                    modifiers.SetCrit();//TO TEST
-                }
+                modifiers.SetCrit();//TO TEST
             }
             base.ModifyHitByProjectile(npc, projectile, ref modifiers);
         }

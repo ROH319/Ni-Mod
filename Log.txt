@@ -1,0 +1,12 @@
+Source:Hjson
+Message:System.ArgumentException: Expected ':', got '''. At line 307, column 7
+   在 Hjson.BaseReader.Expect(Char expected)
+   在 Hjson.HjsonReader.ReadCore(Boolean objectWithoutBraces)
+   在 Hjson.HjsonReader.ReadCore(Boolean objectWithoutBraces)
+   在 Hjson.HjsonReader.ReadCore(Boolean objectWithoutBraces)
+   在 Hjson.HjsonReader.ReadCore(Boolean objectWithoutBraces)
+   在 Hjson.HjsonReader.Read()
+   在 Hjson.HjsonValue.Parse(String hjsonString)
+   在 QuickAssetReference.TModLoader.CreateHjson.<>c__DisplayClass8_0.<Execute>b__1(ITaskItem file)
+   在 System.Array.ForEach[T](T[] array, Action`1 action)
+   在 QuickAssetReference.TModLoader.CreateHjson.<Execute>b__8_0()

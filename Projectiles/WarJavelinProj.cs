@@ -17,7 +17,6 @@ namespace Ni.Projectiles
         {
             QuickSD(20, 20, 200, DamageClass.Ranged, 1f, true, false, -1, 0, -1, 1, 114514, false, false, true, true);
         }
-        //Vector2[] verLasers = new Vector2[600];
         Vector2 plrpos = new Vector2(0,0);
         public override void Kill(int timeLeft)
         {
@@ -34,11 +33,8 @@ namespace Ni.Projectiles
                 Dust d = Dust.NewDustPerfect(player.Center, MyDustId.YellowFx1, null, 0, default, 1.3f);
                 d.velocity = new Vector2(10, 0).RotatedBy(MathHelper.TwoPi / 50 * i);
                 d.noGravity = true;
-                //d.alpha /= 2;
             }
-            //Lighting.AddLight(player.Center, TorchID.Yellow);
             SoundEngine.PlaySound(AssetHelper.WarJavelin_Tp, player.Center);
-            //NiUtil.VertexLaserDraw(null, Ni.Color_Yellow_Orange2, Ni.TrailShape, Ni.Laser1, verLasers, plrpos, (plrpos - player.Center).ToRotation(), 3f, 0);
             base.Kill(timeLeft);
         }
         public override void AI()
@@ -50,10 +46,6 @@ namespace Ni.Projectiles
             Projectile.penetrate = -1;
             Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver4 + MathHelper.PiOver2;
             Projectile.Fall(0.999f, 0.02f, 10f);
-        }
-
-        public override void PostDraw(Color lightColor)
-        {
         }
     }
 }

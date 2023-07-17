@@ -13,7 +13,7 @@ namespace Ni.Items.AccEffects
     public class AccEmergencyTriage : BaseAcc
     {
         public float EmergencyMul = 0.5f;
-        public bool EmergencyTriage; 
+        public bool EmergencyTriage;
         
         public override void GetHealLife(Item item, bool quickHeal, ref int healValue)
         {
@@ -30,12 +30,12 @@ namespace Ni.Items.AccEffects
     public class EmergencyTriageGItem : NiGItem
     {
         public bool Emergencied;
-
+        public int ImmuneTimeInTicks = 120;
         public override bool? UseItem(Item item, Player player)
         {
             if (player.TryGetModPlayer<AccEmergencyTriage>(out AccEmergencyTriage mf) && mf.EmergencyTriage && item.healLife > 0)
             {
-                player.SetImmuneTimeForAllTypes(2 * 60);
+                player.SetImmuneTimeForAllTypes(ImmuneTimeInTicks);
             }
             return base.UseItem(item, player);
         }

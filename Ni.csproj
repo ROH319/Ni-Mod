@@ -44,4 +44,61 @@
   <ItemGroup>
     <ModFile Remove="Helpers\AssetHelper.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ModFile Remove="Core\Systems\ParticleSystem\BasicParticle.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ModFile Remove="Core\Systems\TitleSystem.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ModFile Remove="NPCs\NPCState.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ModFile Remove="NPCs\Bosses\NiflheimBoss\Niflheim.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Tiles\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ModFile Remove="NPCs\Bosses\NiflheimBoss\Projectiles.IceBullet.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ModFile Remove="NPCs\Bosses\NiflheimBoss\Projectiles.IceCrystal.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ModFile Remove="NPCs\Bosses\NiflheimBoss\Projectiles.Icicle.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ModFile Remove="NPCs\Bosses\NiflheimBoss\Projectiles.IceSpear.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ModFile Remove="NPCs\Bosses\NiflheimBoss\Tiles.ShelterBrick.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ModFile Remove="NPCs\Bosses\NiflheimBoss\Tiles.ShelterWall.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ModFile Remove="NPCs\Bosses\NiflheimBoss\Projectiles.IcePillar.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ModFile Remove="Core\Systems\WorldGeneration.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ModFile Remove="Core\Systems\WorldGeneration\Texture2DGenerator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ModFile Remove="Helpers\WorldGenHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ModFile Remove="Helpers\TileHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ModFile Remove="Core\Systems\WorldGeneration\NiWorld.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ModFile Remove="Core\Systems\WorldGeneration\GenNiflheimShelter.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ModFile Remove="NPCs\Bosses\NiflheimBoss\Tiles.ShelterAltar.cs" />
+  </ItemGroup>
 </Project>

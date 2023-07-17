@@ -29,7 +29,7 @@ namespace Ni.Items.Accessories
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.TryGetModPlayer<AccATC>(out AccATC atc);
-            atc.ATC += 1;
+            atc.ATCEnabled = true;
             if (Item.Upgraded())
             {
                 CardPlayer.HasUpgradedItem[1] = true;
@@ -44,7 +44,6 @@ namespace Ni.Items.Accessories
             {
                 if (!CardPlayer.Upgraded[1])
                 {
-                    //niPlayer.Upgraded[1] = true;
                     return ModContent.PrefixType<UpgradeCard>();
                 }
                 else if (Main.rand.NextBool(10))

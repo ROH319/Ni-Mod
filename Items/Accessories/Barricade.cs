@@ -30,7 +30,7 @@ namespace Ni.Items.Accessories
             player.noKnockback = true;
             player.TryGetModPlayer<NiPlayer>(out NiPlayer niplayer);
             player.statLifeMax2 += (int)(player.statDefense * (Item.Upgraded() ? 1.5 : 1));
-            niplayer.Barricade = true;
+            //niplayer.Barricade = true;
             if (Item.Upgraded())
             {
                 CardPlayer.HasUpgradedItem[0] = true;

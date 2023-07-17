@@ -31,10 +31,7 @@ namespace Ni.Core.Systems
             //{
                 
             //}
-            if (!Main.dedServ)
-            {
-                Main.instance.Window.Title = "泰拉瑞亚：你说得对，但是《TModloader》是由Tml团队开发的一个知名游戏引擎";
-            }
+            
         }
         public override void ModifyScreenPosition()
         {
@@ -74,27 +71,6 @@ namespace Ni.Core.Systems
         {
             
             base.ModifyWorldGenTasks(tasks, ref totalWeight);
-        }
-        public override void PostWorldGen()
-        {
-            //for(int i = 0; i < Main.maxTilesX; i++)
-            //{
-            //    for(int j = 0; j < Main.maxTilesY; j++)
-            //    {
-            //        Tile tile = Main.tile[i, j];
-            //        if (tile.HasTile && j > Main.spawnTileY + 200 && j < Main.maxTilesY - 400)
-            //        {
-                        
-            //            WorldGen.KillTile(i, j, noItem: true);
-            //        }
-            //    }
-            //}
-            base.PostWorldGen();
-        }
-        public override void PostDrawTiles()
-        {
-            //NiUtil.DrawDustTrail();
-            base.PostDrawTiles();
         }
     }
 }

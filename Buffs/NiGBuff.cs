@@ -17,8 +17,6 @@ namespace Ni.Buffs
 {
     public class NiGBuff:GlobalBuff
     {
-
-        //public override bool InstancePerEntity => true;
         public int count;
         public int cooldown;
         
@@ -43,8 +41,6 @@ namespace Ni.Buffs
                 cooldown = 60;
             }
             cooldown--;
-
-
 
             //if (type == BuffID.Poisoned)
             //{

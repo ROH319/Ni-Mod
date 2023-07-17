@@ -121,40 +121,6 @@ namespace Ni.Projectiles
             sb.Begin(SpriteSortMode.Immediate, BlendState.Additive, SamplerState.PointWrap, DepthStencilState.None, RasterizerState.CullNone, AssetHelper.MyColor, Main.GameViewMatrix.ZoomMatrix);
             if (player != null && player.active && !player.dead)
             {
-                /*
-                float num = 1f;
-                float num2 = 0.1f;
-                float num3 = 0.9f;
-                if (!Main.gamePaused)
-                {
-                    player.flameRingScale += 0.004f;
-                }
-
-                if (player.flameRingScale < 1f)
-                {
-                    num = player.flameRingScale;
-                }
-                else
-                {
-                    player.flameRingScale = 0.8f;
-                    num = player.flameRingScale;
-                }
-
-                if (!Main.gamePaused)
-                {
-                    player.flameRingRot += 0.05f;
-                }
-
-                if (player.flameRingRot > (float)Math.PI * 2f)
-                {
-                    player.flameRingRot -= (float)Math.PI * 2f;
-                }
-
-                if (player.flameRingRot < (float)Math.PI * -2f)
-                {
-                    player.flameRingRot += (float)Math.PI * 2f;
-                }
-                */
                 List<VertexInfo2> bars = new();
                 int width = 40;
                 for(int i = 0; i < 100; i++)
@@ -169,24 +135,6 @@ namespace Ni.Projectiles
                 List<VertexInfo2> triangleList = new();
                 if (bars.Count > 2)
                 {
-                    //for (int i = 0; i < bars.Count - 2; i += 2)
-                    //{
-                    //    triangleList.Add(bars[i]);
-                    //    triangleList.Add(bars[i + 2]);
-                    //    triangleList.Add(bars[i + 1]);
-
-                    //    triangleList.Add(bars[i + 1]);
-                    //    triangleList.Add(bars[i + 2]);
-                    //    triangleList.Add(bars[i + 3]);
-                    //}
-
-                    //triangleList.Add(bars[bars.Count - 2]);
-                    //triangleList.Add(bars[bars.Count - 1]);
-                    //triangleList.Add(bars[0]);
-
-                    //triangleList.Add(bars[bars.Count - 1]);
-                    //triangleList.Add(bars[0]);
-                    //triangleList.Add(bars[1]);
                     //按照顺序连接三角形
                     triangleList.Add(bars[0]);
                     triangleList.Add(bars[1]);

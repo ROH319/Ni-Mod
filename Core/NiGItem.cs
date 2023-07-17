@@ -18,10 +18,6 @@ namespace Ni.Core
         public bool Flowered;
         public override void SetDefaults(Item item)
         {
-            //if(item.type == 4956)
-            //{
-            //    item.damage = 10000000;
-            //}
             base.SetDefaults(item);
         }
         public override void HoldItem(Item item, Player player)

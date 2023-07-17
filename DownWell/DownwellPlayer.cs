@@ -20,6 +20,7 @@ namespace Ni.DownWell
     {
         public static ModKeybind JumpKey;
         public Rectangle TestRect = new Rectangle(0, 0, 1, 1);
+        public int FireBufferFrame;
         public bool KeyUpJump;
         public bool JustPressedJump;
         public bool JumpInAir;
@@ -42,11 +43,14 @@ namespace Ni.DownWell
 
         private void On_Player_JumpMovement(On_Player.orig_JumpMovement orig, Player self)
         {
-            if (DownWellWorldGen.DownWellWorld && !Collision.SolidCollision(self.position + new Vector2(0, self.height), self.width, 2) && JumpKey != null)
+            if (DownWellWorldGen.DownWellWorld && !Collision.SolidCollision(self.position + new Vector2(0, self.height), self.width, 2) && !TileID.Sets.Platforms[Main.tile[(self.position + new Vector2(0,self.height)).ToTileCoordinates()].TileType] && JumpKey != null)
             {
+                Tile tile1 = Main.tile[(self.position + new Vector2(0, self.height)).ToTileCoordinates()];
+                Tile tile2 = Main.tile[(self.position + new Vector2(self.width, self.height)).ToTileCoordinates()];
+
                 if (!JumpKey.JustReleased)
                 {
-                    return;
+                    //return;
                 }
             }
             orig(self);
@@ -90,7 +94,7 @@ namespace Ni.DownWell
                         }
                     }
                 }
-
+                ClearDungeon();
                 for (int offsetx = 0; offsetx < 20; offsetx++)
                 {
                     if(offsetx>6 && offsetx < 14)
@@ -119,7 +123,7 @@ namespace Ni.DownWell
             if (DownWellWorldGen.DownWellWorld)
             {
                 Combo = 0;
-                MaxCharger = 8;
+                MaxCharger = 10;
                 Charger = MaxCharger;
             }
             base.OnRespawn();
@@ -170,9 +174,12 @@ namespace Ni.DownWell
         {
             if (DownWellWorldGen.DownWellWorld)
             {
+
                 #region 在地上时刷新弹夹并结算连击
-                if (Collision.SolidCollision(Player.position + new Vector2(0, Player.height), Player.width, 2))
+                //if (Collision.SolidCollision(Player.position + new Vector2(0, Player.height), Player.width, 2))
+                if(Collision.TileCollision(Player.position, Player.velocity, Player.width, Player.height).Y == 0)
                 {
+                    
                     RefreshCharger();
                     AccountCombo();
                 }
@@ -204,8 +211,8 @@ namespace Ni.DownWell
                         Player.controlUseItem = true;
                         //Player.legFrame.Y = Player.legFrame.Height * 1;
                         //Player.gravDir = 0;
-                        Player.gravity = 0;
-                        Player.velocity.Y = 0;
+                        //Player.gravity = 0;
+                        //Player.velocity.Y = 0;
                     }
                     if (JumpKey.JustPressed && Collision.SolidCollision(Player.position + new Vector2(0, Player.height), Player.width, 2) && !JumpInAir)
                     {
@@ -240,7 +247,6 @@ namespace Ni.DownWell
                     Rectangle npcrect = npc.getRect().Modified(0, 0, 0, -npc.height * 2 / 3);
                     if (rect.Intersects(npcrect) && (npc.noTileCollide || Collision.CanHit(Player.position, Player.width, Player.height, npc.position, npc.width, npc.height)))
                     {
-                        float knockback = 5f;
                         int direction = Player.direction;
                         if (Player.velocity.X < 0f)
                             direction = -1;
@@ -259,7 +265,12 @@ namespace Ni.DownWell
                 }
                 #endregion
 
-
+                if (FireBufferFrame > 0)
+                {
+                    Player.velocity.Y = 2 - FireBufferFrame / 2;
+                    FireBufferFrame--;
+                }
+                //Player.velocity.Y = 2;
                 base.PreUpdateMovement();
             }
         }
@@ -270,12 +281,13 @@ namespace Ni.DownWell
                 JustPressedJump = false;
                 Player.defaultItemGrabRange *= 2;
                 #region 移动属性设置
-                Player.runAcceleration *= 2f;
-                Player.accRunSpeed *= 4f;
+                Player.runSlowdown *= 4f;
+                Player.runAcceleration *= 2.5f;
+                Player.accRunSpeed *= 2.5f;
                 Player.noFallDmg = true;
-                Player.jumpSpeedBoost += 10f;
-                Player.maxFallSpeed *= 2f;
-                Player.gravity *= 1.5f;
+                Player.jumpSpeedBoost += 5f;
+                Player.maxFallSpeed *= 1f;
+                Player.gravity *= 1f;
                 #endregion
             }
         }
